@@ -5,32 +5,32 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"os"
 
 	"github.com/google/uuid"
 	"github.com/hidenari-yuda/todo_app/config"
-	"github.com/lib/pq"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 var Db *sql.DB
 
 var err error
 
-/*const (
+const (
 	tableNameUser    = "users"
 	tableNameTodo    = "todos"
 	tableNameSession = "sessions"
-)*/
+)
 
 func init() {
-	url := os.Getenv("DATABASE_URL")
+	/*url := os.Getenv("DATABASE_URL")
 	conncetion, _ := pq.ParseURL(url)
 	conncetion += "sslmode=require"
 	Db, err = sql.Open(config.Config.SQLDriver, conncetion)
 	if err != nil {
 		log.Fatalln(err)
-	}
-	/*Db, err = sql.Open(config.Config.SQLDriver, config.Config.DbName)
+	}*/
+
+	Db, err = sql.Open(config.Config.SQLDriver, config.Config.DbName)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -60,7 +60,7 @@ func init() {
 		user_id STRING,
 		created_at DATETIME)`, tableNameSession)
 
-	Db.Exec(cmdS)*/
+	Db.Exec(cmdS)
 
 }
 
