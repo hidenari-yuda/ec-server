@@ -1,15 +1,12 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/hidenari-yuda/todo_app/app/controllers"
-	"github.com/hidenari-yuda/todo_app/app/models"
 )
 
 func main() {
 
-	fmt.Println(models.Db)
+	//fmt.Println(models.Db)
 
 	/*u := &models.User{}
 	u.Name = "test"

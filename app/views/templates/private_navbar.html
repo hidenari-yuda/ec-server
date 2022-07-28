@@ -1,5 +1,14 @@
 {{define "navbar" }}
-<div class="container">
-    <a href="/logout">ログアウト</a>
-</div>
+<nav class="navbar">
+    <div class="container">
+            <div align="left">
+                <a href="/todos"><button type="button" class="btn navbar-btn navbar-left">ホーム</button></a>
+            </div>
+            <div align="right">
+                <a href="/todos/new"><button type="button" class="btn navbar-btn navbar-right">タスク作成</button></a>
+            <a href="/profile"><button type="button" class="btn navbar-btn navbar-right">アカウント</button></a>
+            <a href="/logout"><button type="button" class="btn navbar-btn navbar-right">ログアウト</button></a>
+            </div>
+    </div>
+ </nav>
 {{end}}

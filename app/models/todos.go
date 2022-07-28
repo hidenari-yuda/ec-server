@@ -26,7 +26,7 @@ func (u *User) CreateTodo(content string) (err error) {
 }
 
 func GetTodo(id int) (todo Todo, err error) {
-	cmd := `select id , content ,user_id, created_at 
+	cmd := `select id , content ,user_id, created_at
 	from todos where id =?`
 	todo = Todo{}
 
@@ -86,6 +86,46 @@ func (u *User) GetTodosByUser() (todos []Todo, err error) {
 
 	return todos, err
 }
+
+/*func (u *User) GetTodosBySort(sortType string) (todos []Todo, err error) {
+var (
+	cmd string
+)
+if sortType == "asc" {
+	cmd = `select id , content ,user_id, created_at from todos ordered by id asc`
+
+} else if sortType == "created_at" {
+	cmd = `select id , content ,user_id, created_at from todos ordered by created_at asc`
+
+} else if sortType == "ended_at" {
+	cmd = `select id , content ,user_id, created_at from todos ordered by ended_at asc`
+
+} else {
+	cmd = `select id, content ,user_id, created_at from todos where user_id =?`
+
+}*/
+
+/*rows, err := Db.Query(cmd, u.ID)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	for rows.Next() {
+		var todo Todo
+		err = rows.Scan(&todo.ID,
+			&todo.Content,
+			&todo.UserID,
+			&todo.CreatedAt)
+
+		if err != nil {
+			log.Fatalln(err)
+		}
+		todos = append(todos, todo)
+	}
+	rows.Close()
+
+	return todos, err
+}*/
 
 func (t *Todo) UpdateTodo() error {
 	cmd := `update todos set content = ?, user_id =? where id = ?`

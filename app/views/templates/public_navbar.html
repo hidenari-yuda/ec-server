@@ -1,7 +1,13 @@
 {{define "navbar" }}
-<div class="container">
-    <a href="/">トップページ</a>
-    <a href="/signup">サインアップ</a>
-    <a href="/login">ログイン</a>
-</div>
+<nav class="navbar">
+    <div class="container">
+            <div align="left">
+                <a href="/todos"><button type="button" class="btn navbar-btn navbar-left">ホーム</button></a>
+            </div>
+            <div align="right">
+            <a href="/signup"><button type="button" class="btn navbar-btn navbar-right">サインアップ</button></a>
+            <a href="/login"><button type="button" class="btn navbar-btn navbar-right">ログイン</button></a>
+            </div>
+    </div>
+ </nav>
 {{end}}

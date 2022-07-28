@@ -1,0 +1,24 @@
+nav.navbar {
+    background: #6d7fcc;
+    color: #fff;
+    border-bottom: none;
+    border-radius: 0;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+    padding: 15px 0;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+/* Navbar Button */
+nav.navbar button.navbar-btn {
+    border-radius: 0;
+    border-color: #6172b9;
+    background: #6172b9;
+    color: #fff;
+}
+
+nav.navbar button.navbar-btn:hover {
+        background: #fff;
+        color: #6172b9;
+}

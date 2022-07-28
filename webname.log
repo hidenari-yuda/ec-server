@@ -1,1 +1,5 @@
 2022/07/24 21:31:20 base.go:34: sql: unknown driver "postgres" (forgotten import?)
+2022/07/28 18:47:21 todos.go:25: table todos has no column named ended_at
+2022/07/28 18:48:19 todos.go:25: near ")": syntax error
+2022/07/28 18:48:43 todos.go:25: near ")": syntax error
+2022/07/28 18:49:58 todos.go:24: near ")": syntax error

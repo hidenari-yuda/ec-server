@@ -36,9 +36,8 @@ var validPath = regexp.MustCompile("^/todos/(edit|update|delete)/([0-9]+)$")
 
 func parseURL(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		// /todos/edit/1
+		// /todos/edit/
 		q := validPath.FindStringSubmatch(r.URL.Path)
-		fmt.Println(q)
 		if q == nil {
 			http.NotFound(w, r)
 			return
