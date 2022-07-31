@@ -1,4 +1,4 @@
-drop table sessions;
+/*drop table sessions;
 drop table users;
 drop table todos;
  

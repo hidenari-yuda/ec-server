@@ -1,0 +1,11 @@
+div.todolist button.navbar-btn {
+    border-radius: 0;
+    border-color: #3d4151;
+    background: #585e73;
+    color: #fff;
+}
+
+div.todolist button.navbar-btn:hover {
+        background: #fff;
+        color: #6172b9;
+}

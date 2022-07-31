@@ -1,12 +1,13 @@
 {{define "content"}}
-{{.Content}}
 <form role="form" action="/todos/update/{{.ID}}" method="post">
-    <div class="lead">タスクを更新する</div>
+    <h1>タスクを更新する</h1>
     <div class="form-group">
       <textarea class="form-control" name="content" id="content" placeholder="Todoを更新" rows="4">{{.Content}}</textarea>
       <br/>
       <br/>
-      <button class="btn btn-lg btn-primary pull-right" type="submit">更新</button>
+      <div class="todolist">
+      <button class="btn btn-lg btn-primary pull-right navbar-btn" type="submit">更新</button>
+    </div>
     </div>
   </form>
 {{end}}

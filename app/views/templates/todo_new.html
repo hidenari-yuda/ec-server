@@ -1,11 +1,13 @@
 {{define "content"}}
 <form role="form" action="/todos/save" method="post">
-    <div class="lead">タスクを作成する</div>
+    <h1>タスクを作成する</h1>
     <div class="form-group">
       <textarea class="form-control" name="content" id="content" placeholder="タスクを追加" rows="4"></textarea>
       <br/>
       <br/>
-      <button class="btn btn-lg btn-primary pull-right" type="submit">作成</button>
+      <div class="todolist">
+      <button class="btn btn-lg btn-primary pull-right navbar-btn" type="submit">作成</button>
+      </div>
     </div>
 </form> 
 {{end}}
