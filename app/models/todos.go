@@ -87,25 +87,25 @@ func (u *User) GetTodosByUser() (todos []Todo, err error) {
 	return todos, err
 }
 
-/*func (u *User) GetTodosBySort(sortType string) (todos []Todo, err error) {
-var (
-	cmd string
-)
-if sortType == "asc" {
-	cmd = `select id , content ,user_id, created_at from todos ordered by id asc`
+func (u *User) GetTodosBySort(sortType string) (todos []Todo, err error) {
+	var (
+		cmd string
+	)
+	if sortType == "createdat_asc" {
+		cmd = `select id , content ,user_id, created_at from todos order by created_at desc`
 
-} else if sortType == "created_at" {
-	cmd = `select id , content ,user_id, created_at from todos ordered by created_at asc`
+	} else if sortType == "createdat_desc" {
+		cmd = `select id , content ,user_id, created_at from todos order by created_at asc`
 
-} else if sortType == "ended_at" {
-	cmd = `select id , content ,user_id, created_at from todos ordered by ended_at asc`
+		//} else if sortType == "deadline_asc" {
+		//	cmd = `select id , content ,user_id, created_at from todos ordered by deadline asc`
 
-} else {
-	cmd = `select id, content ,user_id, created_at from todos where user_id =?`
+	} else {
+		cmd = `select id, content ,user_id, created_at from todos where user_id =?`
 
-}*/
+	}
 
-/*rows, err := Db.Query(cmd, u.ID)
+	rows, err := Db.Query(cmd, u.ID)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -125,7 +125,7 @@ if sortType == "asc" {
 	rows.Close()
 
 	return todos, err
-}*/
+}
 
 func (t *Todo) UpdateTodo() error {
 	cmd := `update todos set content = ?, user_id =? where id = ?`

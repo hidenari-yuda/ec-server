@@ -31,6 +31,22 @@ func index(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func todoSort(w http.ResponseWriter, r *http.Request) {
+	sess, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/", 302)
+	} else {
+		user, err := sess.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		r.ParseForm()
+		todos, _ := user.GetTodosBySort(r.PostFormValue("sort"))
+		user.Todos = todos
+		generateHTML(w, user, "layout", "private_navbar", "index")
+	}
+}
+
 func todoNew(w http.ResponseWriter, r *http.Request) {
 	_, err := session(w, r)
 	if err != nil {

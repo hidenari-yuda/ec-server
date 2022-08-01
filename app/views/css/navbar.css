@@ -17,8 +17,9 @@ nav.navbar button.navbar-btn {
     background: #6172b9;
     color: #fff;
 }
-
-nav.navbar button.navbar-btn:hover {
+    nav.navbar button.navbar-btn:hover {
         background: #fff;
         color: #6172b9;
-}
+    }
+
+

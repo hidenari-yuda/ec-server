@@ -3,3 +3,26 @@
 2022/07/28 18:48:19 todos.go:25: near ")": syntax error
 2022/07/28 18:48:43 todos.go:25: near ")": syntax error
 2022/07/28 18:49:58 todos.go:24: near ")": syntax error
+2022/08/01 22:31:11 server.go:3197: http: panic serving 127.0.0.1:52848: open app/views/templates/sort.html: no such file or directory
+goroutine 20 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4490320, 0xc000130810})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x456bec0?, 0xc00011c2a0}, {0x44bcb60, 0xc00011a800}, {0xc0000cb850?, 0x4, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.todoSort({0x456bec0, 0xc00011c2a0}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_main.go:46 +0x367
+net/http.HandlerFunc.ServeHTTP(0x4e19ed8?, {0x456bec0?, 0xc00011c2a0?}, 0x400e8c5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x456bec0, 0xc00011c2a0}, 0xc00010c400)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc00009b440?}, {0x456bec0, 0xc00011c2a0}, 0xc00010c400)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0000b6fa0, {0x456c148, 0xc00009b350})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/01 22:47:50 todos.go:110: no such column: desc
