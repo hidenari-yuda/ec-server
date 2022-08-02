@@ -31,7 +31,7 @@
             <td><div name="created">{{.CreatedAt}}</div></td>
             <td><div name="deadline">{{.Deadline}}</div></td>
             <td><a href="/todos/edit/{{.ID}}"><button type="button" class="btn navbar-btn navbar-right">編集</button></a></td>
-            <td><a href="/todos/delete/{{.ID}}"><button type="button" class ="btn navbar-btn navbar-right">削除</button></a></td>
+            <td><a href="/todos/delete/{{.ID}}" onclick="return confirm('削除しますか')"><button type="button" class ="btn navbar-btn navbar-right">削除</button></a></td>
         </tr>
     {{end}}
 </div>

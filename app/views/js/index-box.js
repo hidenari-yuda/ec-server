@@ -5,11 +5,20 @@ function body() {
 
     for (var i = 0; i < len; i++){
       var datesText = dates[i].innerText
-      
+
       subDates = datesText.substring(0, 11);
 
         dates[i].innerText = subDates
         }
+
+//タスクの削除確認
+const result = confirm('削除しますか');
+
+if(result){
+  console.log('削除しました');
+}else{
+  console.log('削除をとりやめました');
+}
 }
 
 
