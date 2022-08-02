@@ -26,3 +26,28 @@ net/http.(*conn).serve(0xc0000b6fa0, {0x456c148, 0xc00009b350})
 created by net/http.(*Server).Serve
 	/usr/local/go/src/net/http/server.go:3071 +0x4db
 2022/08/01 22:47:50 todos.go:110: no such column: desc
+2022/08/02 09:35:53 todos.go:115: no such column: deadline
+2022/08/02 09:36:32 todos.go:75: no such column: deadline
+2022/08/02 09:37:31 todos.go:75: near "from": syntax error
+2022/08/02 09:38:03 todos.go:25: near ")": syntax error
+2022/08/02 09:47:45 todos.go:25: near ")": syntax error
+2022/08/02 09:48:35 todos.go:25: near ")": syntax error
+2022/08/02 09:50:05 todos.go:25: near ")": syntax error
+2022/08/02 09:50:42 todos.go:25: near ")": syntax error
+2022/08/02 09:52:52 todos.go:25: table todos has no column named deadline
+2022/08/02 10:00:21 todos.go:25: table todos has no column named deadline
+2022/08/02 10:04:23 todos.go:25: table todos has no column named deadline
+2022/08/02 10:06:28 todos.go:25: table todos has no column named deadline
+2022/08/02 10:11:31 todos.go:49: no such column: deadline
+2022/08/02 10:14:53 route_main.go:77: table todos has no column named deadline
+2022/08/02 12:15:30 route_main.go:77: table todos has no column named deadline
+2022/08/02 16:44:34 route_main.go:77: table todos has no column named deadline
+2022/08/02 16:55:39 todos.go:86: sql: expected 4 destination arguments in Scan, not 5
+2022/08/02 17:13:40 todos.go:86: sql: Scan error on column index 4, name "deadline": converting NULL to string is unsupported
+2022/08/02 17:14:30 todos.go:86: sql: Scan error on column index 4, name "deadline": converting NULL to string is unsupported
+2022/08/02 17:14:55 todos.go:86: sql: Scan error on column index 4, name "deadline": converting NULL to string is unsupported
+2022/08/02 17:15:26 todos.go:86: sql: Scan error on column index 4, name "deadline": converting NULL to string is unsupported
+2022/08/02 17:15:42 todos.go:86: sql: Scan error on column index 4, name "deadline": converting NULL to string is unsupported
+2022/08/02 17:15:58 todos.go:86: sql: Scan error on column index 4, name "deadline": converting NULL to string is unsupported
+2022/08/02 17:16:09 todos.go:86: sql: Scan error on column index 4, name "deadline": converting NULL to string is unsupported
+2022/08/02 17:18:12 todos.go:127: sql: Scan error on column index 4, name "deadline": converting NULL to string is unsupported

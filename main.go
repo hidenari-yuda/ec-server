@@ -6,7 +6,11 @@ import (
 
 func main() {
 
-	//fmt.Println(models.Db)
+	/*user, _ := models.GetUser(1)
+
+	user.CreateTodo("test deadline", "2019-01-01")
+	getTodos, _ := models.GetTodos()
+	fmt.Println(getTodos)*/
 
 	/*u := &models.User{}
 	u.Name = "test"

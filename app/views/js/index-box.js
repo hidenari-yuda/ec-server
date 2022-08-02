@@ -4,13 +4,22 @@ function body() {
     var len = dates.length;
 
     for (var i = 0; i < len; i++){
-        datesText = dates[i].innerText;
+      var datesText = dates[i].innerText
+      
+      subDates = datesText.substring(0, 11);
 
-        var subDates = datesText.substring(0, 11);
-
-        dates[i].innerText = subDates;
+        dates[i].innerText = subDates
         }
 }
+
+
+/*var datesText = new Date(dates[i].innerText)
+console.log(datesText)
+const year = datesText.getFullYear()
+const month = datesText.getMonth() + 1
+const day = datesText.getDate()
+
+var subDates = `${year}/${month}/${day}`
 
 // createdAtを表示形式変更
 /*function dateFormat() {

@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -70,8 +71,8 @@ func todoSave(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
-		content := r.PostFormValue("content")
-		if err := user.CreateTodo(content); err != nil {
+		content, deadline := r.PostFormValue("content"), r.PostFormValue("deadline")
+		if err := user.CreateTodo(content, deadline); err != nil {
 			log.Println(err)
 		}
 		http.Redirect(w, r, "/todos", 302)
@@ -108,8 +109,9 @@ func todoUpdate(w http.ResponseWriter, r *http.Request, id int) {
 		if err != nil {
 			log.Println(err)
 		}
-		content := r.PostFormValue("content")
-		t := &models.Todo{ID: id, Content: content, UserID: user.ID}
+		content, deadline := r.PostFormValue("content"), r.PostFormValue("deadline")
+		fmt.Println(content, deadline)
+		t := &models.Todo{ID: id, Content: content, UserID: user.ID, Deadline: deadline}
 		if err := t.UpdateTodo(); err != nil {
 			log.Println(err)
 		}
