@@ -10,8 +10,10 @@ function body() {
 
         dates[i].innerText = subDates
         }
+}
 
-//タスクの削除確認
+
+function tododelete(){ 
 const result = confirm('削除しますか');
 
 if(result){

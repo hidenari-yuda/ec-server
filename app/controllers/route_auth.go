@@ -81,3 +81,16 @@ func logout(w http.ResponseWriter, r *http.Request) {
 	}
 	http.Redirect(w, r, "/login", 302)
 }
+
+func profile(w http.ResponseWriter, r *http.Request) {
+	sess, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/login", 302)
+	} else {
+		user, err := sess.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		generateHTML(w, user, "layout", "private_navbar", "profile")
+	}
+}

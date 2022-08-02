@@ -53,7 +53,7 @@ func init() {
 		deadline STRING)`, tableNameTodo)
 	Db.Exec(cmdT)
 
-	cmdTAdd := fmt.Sprintf(`ALTER TABLE IF NOT EXISTS %s ADD deadline STRING`, tableNameTodo)
+	cmdTAdd := fmt.Sprintf(`ALTER TABLE %s ADD deadline STRING`, tableNameTodo)
 	Db.Exec(cmdTAdd)
 
 	cmdS := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
