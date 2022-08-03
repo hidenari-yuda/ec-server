@@ -41,7 +41,10 @@ func init() {
 		name STRING,
 		email STRING,
 		password STRING,
-		created_at DATETIME)`, tableNameUser)
+		created_at DATETIME、
+		department STRING NUll,
+		position STRING NULL,
+		phone STRING NULL,)`, tableNameUser)
 
 	Db.Exec(cmdU)
 
@@ -50,11 +53,8 @@ func init() {
 		content TEXT,
 		user_id INTEGER,
 		created_at DATETIME,
-		deadline STRING)`, tableNameTodo)
+		deadline STRING NOT NULL)`, tableNameTodo)
 	Db.Exec(cmdT)
-
-	cmdTAdd := fmt.Sprintf(`ALTER TABLE %s ADD deadline STRING`, tableNameTodo)
-	Db.Exec(cmdTAdd)
 
 	cmdS := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
 		id INTEGER PRIMARY KEY AUTOINCREMENT,

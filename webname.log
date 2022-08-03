@@ -51,3 +51,20 @@ created by net/http.(*Server).Serve
 2022/08/02 17:15:58 todos.go:86: sql: Scan error on column index 4, name "deadline": converting NULL to string is unsupported
 2022/08/02 17:16:09 todos.go:86: sql: Scan error on column index 4, name "deadline": converting NULL to string is unsupported
 2022/08/02 17:18:12 todos.go:127: sql: Scan error on column index 4, name "deadline": converting NULL to string is unsupported
+2022/08/03 14:35:25 route_auth.go:105: sql: Scan error on column index 5, name "phone": converting NULL to string is unsupported
+2022/08/03 14:35:26 route_auth.go:92: sql: Scan error on column index 5, name "phone": converting NULL to string is unsupported
+2022/08/03 14:35:29 route_auth.go:105: sql: Scan error on column index 5, name "phone": converting NULL to string is unsupported
+2022/08/03 14:40:12 route_auth.go:92: sql: Scan error on column index 5, name "phone": converting NULL to string is unsupported
+2022/08/03 14:40:21 route_auth.go:92: sql: Scan error on column index 5, name "phone": converting NULL to string is unsupported
+2022/08/03 14:40:23 route_auth.go:92: sql: Scan error on column index 5, name "phone": converting NULL to string is unsupported
+2022/08/03 14:40:24 route_auth.go:105: sql: Scan error on column index 5, name "phone": converting NULL to string is unsupported
+2022/08/03 14:40:50 route_auth.go:105: sql: Scan error on column index 5, name "phone": converting NULL to string is unsupported
+2022/08/03 14:40:55 route_auth.go:92: sql: Scan error on column index 5, name "phone": converting NULL to string is unsupported
+2022/08/03 14:42:43 route_auth.go:92: sql: expected 9 destination arguments in Scan, not 5
+2022/08/03 14:49:57 route_main.go:27: sql: Scan error on column index 5, name "phone": converting NULL to string is unsupported
+2022/08/03 14:50:39 users.go:51: 7 values for 8 columns
+2022/08/03 16:13:53 route_main.go:26: sql: Scan error on column index 5, name "phone": converting NULL to string is unsupported
+2022/08/03 16:13:56 route_auth.go:92: sql: Scan error on column index 5, name "phone": converting NULL to string is unsupported
+2022/08/03 16:14:00 route_auth.go:105: sql: Scan error on column index 5, name "phone": converting NULL to string is unsupported
+2022/08/03 16:14:00 route_auth.go:109: sql: Scan error on column index 6, name "phone": converting NULL to string is unsupported
+2022/08/03 16:14:11 route_auth.go:126: sql: Scan error on column index 5, name "phone": converting NULL to string is unsupported

@@ -94,3 +94,43 @@ func profile(w http.ResponseWriter, r *http.Request) {
 		generateHTML(w, user, "layout", "private_navbar", "profile")
 	}
 }
+
+func profileEdit(w http.ResponseWriter, r *http.Request, id int) {
+	sess, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/login", 302)
+	} else {
+		_, err := sess.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		u, err := models.GetUser(id)
+		if err != nil {
+			log.Println(err)
+		}
+		generateHTML(w, u, "layout", "private_navbar", "profile_edit")
+	}
+}
+
+func profileUpdate(w http.ResponseWriter, r *http.Request, id int) {
+	sess, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "login", 302)
+	} else {
+		err := r.ParseForm()
+		if err != nil {
+			log.Println(err)
+		}
+		_, err = sess.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		name, email, phone, department, position := r.PostFormValue("name"), r.PostFormValue("email"), r.PostFormValue("phone"), r.PostFormValue("department"), r.PostFormValue("position")
+		u := &models.User{ID: id, Name: name, Email: email, Phone: phone, Department: department, Position: position}
+		if err := u.UpdateUser(); err != nil {
+			log.Println(err)
+		} else {
+			http.Redirect(w, r, "/profile", 302)
+		}
+	}
+}

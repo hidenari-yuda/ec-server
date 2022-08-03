@@ -1,0 +1,25 @@
+{{define "content"}}
+<div class="todolist"></div>
+<h1>プロフィール編集</h1>
+</br>
+<form role="form" action="/profile/update/{{.ID}}" method="post">
+    <div class="form-group">
+        <label for="name">名前</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{.Name}}" required>
+        <label for="email">メールアドレス</label>
+        <input type="email" class="form-control" id="email" name="email" value="{{.Email}}" required>
+        <label for="phone">電話番号</label>
+        <input type="text" class="form-control" id="phone" name="phone" value="{{.Phone}}">
+        <label for="department">所属</label>
+        <input type="text" class="form-control" id="department" name="department" value="{{.Department}}">
+        <label for="position">役職</label>
+        <input type="text" class="form-control" id="position" name="position" value="{{.Position}}">
+    </br>
+        <div class="todolist">
+        <button class="btn btn-lg btn-primary pull-right navbar-btn" type="submit">編集</button>
+      </div>
+    </br>
+    </div>
+</form>
+</div>
+{{end}}

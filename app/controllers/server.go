@@ -36,8 +36,25 @@ var validPath = regexp.MustCompile("^/todos/(edit|update|delete)/([0-9]+)$")
 
 func parseURL(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		// /todos/edit/
 		q := validPath.FindStringSubmatch(r.URL.Path)
+		if q == nil {
+			http.NotFound(w, r)
+			return
+		}
+		qi, err := strconv.Atoi(q[2])
+		if err != nil {
+			http.NotFound(w, r)
+			return
+		}
+		fn(w, r, qi)
+	}
+}
+
+var validPathProfile = regexp.MustCompile("^/profile/(edit|update)/([0-9]+)$")
+
+func parseURLProfile(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		q := validPathProfile.FindStringSubmatch(r.URL.Path)
 		if q == nil {
 			http.NotFound(w, r)
 			return
@@ -60,6 +77,8 @@ func StartMainServer() error {
 	http.HandleFunc("/login", login)
 	http.HandleFunc("/authenticate", authenticate)
 	http.HandleFunc("/profile", profile)
+	http.HandleFunc("/profile/edit/", parseURLProfile(profileEdit))
+	http.HandleFunc("/profile/update/", parseURLProfile(profileUpdate))
 	http.HandleFunc("/todos", index)
 	http.HandleFunc("/logout", logout)
 	http.HandleFunc("/todos/new", todoNew)

@@ -6,13 +6,16 @@ import (
 )
 
 type User struct {
-	ID        int
-	UUID      string
-	Name      string
-	Email     string
-	PassWord  string
-	CreatedAt time.Time
-	Todos     []Todo
+	ID         int
+	UUID       string
+	Name       string
+	Email      string
+	PassWord   string
+	CreatedAt  time.Time
+	Todos      []Todo
+	Phone      string
+	Department string
+	Position   string
 }
 
 type Session struct {
@@ -29,14 +32,20 @@ func (u *User) CreateUser() (err error) {
 		name,
 		email,
 		password,
-		created_at) values(?,?,?,?,?)`
+		created_at,
+		phone,
+		department,
+		position) values(?, ?, ?, ?, ?, ?, ?,?)`
 
 	_, err = Db.Exec(cmd,
 		createUUID(),
 		u.Name,
 		u.Email,
 		Encrypt(u.PassWord),
-		time.Now())
+		time.Now(),
+		u.Phone,
+		u.Department,
+		u.Position)
 
 	if err != nil {
 		log.Fatalln(err)
@@ -48,7 +57,7 @@ func (u *User) CreateUser() (err error) {
 
 func GetUser(id int) (user User, err error) {
 	user = User{}
-	cmd := `select id, uuid, name , email, password, created_at 
+	cmd := `select id, uuid, name , email, password, created_at, phone, department, position
 	from users where id =?`
 
 	err = Db.QueryRow(cmd, id).Scan(
@@ -57,19 +66,20 @@ func GetUser(id int) (user User, err error) {
 		&user.Name,
 		&user.Email,
 		&user.PassWord,
-		&user.CreatedAt)
+		&user.CreatedAt,
+		&user.Phone,
+		&user.Department,
+		&user.Position)
 
 	return user, err
 }
 
 func (u *User) UpdateUser() (err error) {
-	cmd := `update users set name = ?, email = ? where id = ?`
-
-	_, err = Db.Exec(cmd, u.Name, u.Email, u.ID)
+	cmd := `update users set name = ?, email = ? ,phone = ?,  department = ?, position=? where id = ?`
+	_, err = Db.Exec(cmd, u.Name, u.Email, u.Phone, u.Department, u.Position, u.ID)
 	if err != nil {
 		log.Fatalln(err)
 	}
-
 	return err
 }
 
@@ -157,13 +167,16 @@ func (sess *Session) DeleteSessionByUUID() (err error) {
 
 func (sess *Session) GetUserBySession() (user User, err error) {
 	user = User{}
-	cmd := `select id, uuid, name, email, created_at 
+	cmd := `select id, uuid, name, email, created_at, phone, department, position
 	from users where id =?`
 	err = Db.QueryRow(cmd, sess.UserID).Scan(
 		&user.ID,
 		&user.UUID,
 		&user.Name,
 		&user.Email,
-		&user.CreatedAt)
+		&user.CreatedAt,
+		&user.Phone,
+		&user.Department,
+		&user.Position)
 	return user, err
 }

@@ -1,3 +1,29 @@
 {{define "content"}}
-<h1>アカウント名：{{.Name}}</h1>
+<div class="todolist">
+<h1>プロフィール詳細</h1>
+</br>
+<table class="table table-striped  text-center table-hover">
+        <tr>
+            <td>名前</td>
+            <td>{{.Name}}</td>
+        </tr>
+        <tr>
+            <td>メールアドレス</td>
+            <td>{{.Email}}</td>
+        </tr>
+            <td>電話番号</td>
+            <td>{{.Phone}}</td>
+        </tr>
+        <tr>
+            <td>所属</td>
+            <td>{{.Department}}</td>
+        </tr>
+        <tr>
+            <td>役職</td>
+            <td>{{.Position}}</td>
+        </tr>
+        <tr><td></td><td><a href="/profile/edit/{{.ID}}"><button type="button" class="btn navbar-btn navbar-right">編集</button></a></td>
+        </tr>
+</table>
+</div>
 {{end}}

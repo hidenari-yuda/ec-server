@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
@@ -110,7 +109,6 @@ func todoUpdate(w http.ResponseWriter, r *http.Request, id int) {
 			log.Println(err)
 		}
 		content, deadline := r.PostFormValue("content"), r.PostFormValue("deadline")
-		fmt.Println(content, deadline)
 		t := &models.Todo{ID: id, Content: content, UserID: user.ID, Deadline: deadline}
 		if err := t.UpdateTodo(); err != nil {
 			log.Println(err)
