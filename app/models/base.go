@@ -19,6 +19,7 @@ const (
 	tableNameUser    = "users"
 	tableNameTodo    = "todos"
 	tableNameSession = "sessions"
+	tableNameChat    = "chats"
 )
 
 func init() {

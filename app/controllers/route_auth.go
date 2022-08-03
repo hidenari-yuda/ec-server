@@ -134,3 +134,11 @@ func profileUpdate(w http.ResponseWriter, r *http.Request, id int) {
 		}
 	}
 }
+
+func aboutus(w http.ResponseWriter, r *http.Request) {
+	generateHTML(w, nil, "layout", "aboutus")
+}
+
+func contact(w http.ResponseWriter, r *http.Request) {
+	generateHTML(w, nil, "layout", "contact")
+}

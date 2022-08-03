@@ -1,8 +1,10 @@
 {{define "content"}}
 <form role="form" action="/todos/save" method="post">
+</br>
     <h1>タスクを作成する</h1>
     <div class="form-group">
       <textarea class="form-control" name="content" id="content" placeholder="タスクを追加" rows="4"></textarea>
+</br>
       <h3>期限を作成</h3>
       <input type="date" class="form-control" name="deadline" id="deadline" required>
       <br/>

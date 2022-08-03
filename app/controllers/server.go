@@ -87,6 +87,8 @@ func StartMainServer() error {
 	http.HandleFunc("/todos/update/", parseURL(todoUpdate))
 	http.HandleFunc("/todos/delete/", parseURL(todoDelete))
 	http.HandleFunc("/sort", todoSort)
+	http.HandleFunc("/contact", contact)
+	http.HandleFunc("/aboutus", aboutus)
 
 	//port := os.Getenv("PORT")
 	return http.ListenAndServe(":"+config.Config.Port, nil)
