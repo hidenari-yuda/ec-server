@@ -17,9 +17,10 @@ func (u *User) CreateChat(content string) (err error) {
 	cmd := `insert into chats (
 		content,
 		user_id,
-		created_at) values(?, ?, ?)`
+		created_at,
+		group_id,) values(?, ?, ?, ?)`
 
-	_, err = Db.Exec(cmd, content, u.ID, time.Now())
+	_, err = Db.Exec(cmd, content, u.ID, time.Now(), u.ChatGroup.ID)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -27,7 +28,7 @@ func (u *User) CreateChat(content string) (err error) {
 }
 
 func GetChat(id int) (chat Chat, err error) {
-	cmd := `select id , content ,user_id, created_at
+	cmd := `select id , content ,user_id, created_at, group_id
 	from chats where id =?`
 	chat = Chat{}
 
@@ -41,7 +42,7 @@ func GetChat(id int) (chat Chat, err error) {
 }
 
 func GetChats() (chats []Chat, err error) {
-	cmd := `select id , content ,user_id, created_at from chats`
+	cmd := `select id , content ,user_id, created_at, group_id from chats`
 	rows, err := Db.Query(cmd)
 	if err != nil {
 		log.Fatalln(err)
@@ -53,7 +54,8 @@ func GetChats() (chats []Chat, err error) {
 			&chat.ID,
 			&chat.Content,
 			&chat.UserID,
-			&chat.CreatedAt)
+			&chat.CreatedAt,
+			&chat.GroupID)
 		if err != nil {
 			log.Fatalln(err)
 		}
@@ -66,7 +68,7 @@ func GetChats() (chats []Chat, err error) {
 
 func (u *User) GetChatsByUser() (chats []Chat, err error) {
 
-	cmd := `select id, content ,user_id, created_at from chats where user_id =?`
+	cmd := `select id, content ,user_id, created_at, group_id where user_id =?`
 
 	rows, err := Db.Query(cmd, u.ID)
 	if err != nil {
@@ -78,7 +80,8 @@ func (u *User) GetChatsByUser() (chats []Chat, err error) {
 			&chat.ID,
 			&chat.Content,
 			&chat.UserID,
-			&chat.CreatedAt)
+			&chat.CreatedAt,
+			&chat.GroupID)
 		if err != nil {
 			log.Fatalln(err)
 		}
@@ -91,9 +94,9 @@ func (u *User) GetChatsByUser() (chats []Chat, err error) {
 
 func (u *User) GetChatsByGroup() (chats []Chat, err error) {
 
-	cmd := `select id, content ,user_id, created_at, group_id from chats where group_id =?`
+	cmd := `select id, content ,user_id, created_at from chats where group_id =?`
 
-	rows, err := Db.Query(cmd, u.ID)
+	rows, err := Db.Query(cmd, u.ChatGroup.ID)
 	if err != nil {
 		log.Fatalln(err)
 	}

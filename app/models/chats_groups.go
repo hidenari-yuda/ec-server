@@ -1,18 +1,30 @@
 package models
 
-/*import (
+import (
 	"log"
 	"time"
 )
 
-func (u *User) CreateChatGroup(content string) (err error) {
-	cmd := `insert into chats (
-		content,
+type ChatGroup struct {
+	ID         int
+	UserID     int
+	CreatedAt  time.Time
+	ChatOwner  int
+	ChatMember int
+	ChatName   string
+	Chat       []Chat
+}
+
+func (u *User) CreateChatGroup(ChatOwner int, ChatMember int, ChatName string, GroupID int) (err error) {
+	cmd := `insert into chat_groups (
+		id,
 		user_id,
 		created_at,
-		group_id) values(?, ?, ?, ?)`
+		chat_owner,
+		chat_member,
+		chat_name) values(?, ?, ?, ?, ?, ?)`
 
-	_, err = Db.Exec(cmd, content, u.ID, time.Now(), cg.ID)
+	_, err = Db.Exec(cmd, u.ID, time.Now(), ChatOwner, ChatMember, ChatName)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -20,81 +32,85 @@ func (u *User) CreateChatGroup(content string) (err error) {
 }
 
 func GetChatGroup(id int) (chat_group ChatGroup, err error) {
-	cmd := `select id, follow_id, follower_id, created_at
+	cmd := `select id, user_id, created_at, chat_owner, chat_member, chat_name
 	from chat_groups where id =?`
-	chat = Chat{}
+	chat_group = ChatGroup{}
 
 	err = Db.QueryRow(cmd, id).Scan(
-		&chat_groups.ID,
-		&chat_groups.Content,
-		&chat_groups.UserID,
-		&chat_groups.CreatedAt,
-		&chat_groups.GroupID)
+		&chat_group.ID,
+		&chat_group.UserID,
+		&chat_group.CreatedAt,
+		&chat_group.ChatOwner,
+		&chat_group.ChatMember,
+		&chat_group.ChatName)
 	return chat_group, err
 }
 
-func GetChats() (chats []Chat, err error) {
-	cmd := `select id , content ,user_id, created_at, group_id from chats`
+func GetChatsGroup() (chatgroups []ChatGroup, err error) {
+	cmd := `select id ,user_id, created_at, chat_owner, chat_member, chat_name from chatgroups`
 	rows, err := Db.Query(cmd)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
 	for rows.Next() {
-		var chat Chat
+		var chatgroup ChatGroup
 		err = rows.Scan(
-			&chat.ID,
-			&chat.Content,
-			&chat.UserID,
-			&chat.CreatedAt,
-			&chat.GroupID)
+			&chatgroup.ID,
+			&chatgroup.UserID,
+			&chatgroup.CreatedAt,
+			&chatgroup.ChatOwner,
+			&chatgroup.ChatMember,
+			&chatgroup.ChatName)
+
 		if err != nil {
 			log.Fatalln(err)
 		}
-		chats = append(chats, chat)
+		chatgroups = append(chatgroups, chatgroup)
 	}
 	rows.Close()
 
-	return chats, err
+	return chatgroups, err
 }
 
-func (u *User) GetChatsByUser() (chats []Chat, err error) {
+func (u *User) GetChatGroupByUser() (chatgroups []ChatGroup, err error) {
 
-	cmd := `select id, content ,user_id, created_at, group_id from chats where user_id =?`
+	cmd := `select id, user_id, created_at, chat_owner, chat_member, chat_name from chatgroups where user_id =?`
 
 	rows, err := Db.Query(cmd, u.ID)
 	if err != nil {
 		log.Fatalln(err)
 	}
 	for rows.Next() {
-		var chat Chat
+		var chatgroup ChatGroup
 		err = rows.Scan(
-			&chat.ID,
-			&chat.Content,
-			&chat.UserID,
-			&chat.CreatedAt,
-			&chat.GroupID)
+			&chatgroup.ID,
+			&chatgroup.UserID,
+			&chatgroup.CreatedAt,
+			&chatgroup.ChatOwner,
+			&chatgroup.ChatMember,
+			&chatgroup.ChatName)
 		if err != nil {
 			log.Fatalln(err)
 		}
-		chats = append(chats, chat)
+		chatgroups = append(chatgroups, chatgroup)
 	}
 	rows.Close()
 
-	return chats, err
+	return chatgroups, err
 }
 
-func (c *Chat) UpdateChat() error {
-	cmd := `update chats set content = ?, user_id =?, where id = ?`
+func (cg *ChatGroup) UpdateChatGroup() error {
+	cmd := `update chatgroups set chat_name = ?, where id = ?`
 
-	_, err = Db.Exec(cmd, c.Content, c.UserID, c.ID)
+	_, err = Db.Exec(cmd, cg.ChatName, cg.ID)
 
 	return err
 
 }
 
-func (c *Chat) DeleteChat() error {
-	cmd := `delete from chats where id =?`
+func (c *Chat) DeleteChatGroup() error {
+	cmd := `delete from chatgroups where id =?`
 
 	_, err = Db.Exec(cmd, c.ID)
 
@@ -103,4 +119,4 @@ func (c *Chat) DeleteChat() error {
 	}
 
 	return err
-}*/
+}

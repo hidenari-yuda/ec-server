@@ -16,7 +16,9 @@ type User struct {
 	Department string
 	Position   string
 	Todos      []Todo
-	Chats      []Chat
+	Chat       []Chat
+	ChatGroup  ChatGroup
+	ChatGroups []ChatGroup
 }
 
 type Session struct {
