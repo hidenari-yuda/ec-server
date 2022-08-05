@@ -1,0 +1,17 @@
+{{define "content"}}
+<form role="form" action="/chat/update/{{.ID}}" method="post">
+</br>
+    <h1>タスクを編集する</h1>
+    <div class="form-group">
+      <textarea class="form-control" name="content" id="content" placeholder="Todoを更新" rows="4">{{.Content}}</textarea>
+</br>
+      <h3>期限を編集</h3>
+      <input type="date" class="form-control" name="deadline" id="deadline" placeholder="{{.Deadline}}">
+      <br/>
+      <br/>
+      <div class="todolist">
+      <button class="btn btn-lg btn-primary pull-right navbar-btn" type="submit">編集</button>
+    </div>
+    </div>
+  </form>
+{{end}}

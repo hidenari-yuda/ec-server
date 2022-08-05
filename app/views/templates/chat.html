@@ -1,5 +1,19 @@
 {{define "content"}}
-<div class="container">
-    
+<div class="chat">
+	<h1>ルーム名：{{.Name}}</h1>
+	<div class="content">
+        {{range .Chats}}
+		<div class="message-area me">
+			<div class="mymessage">{{.Content}}<span><div class="date" name="created">{{.CreatedAt}}</div></span></div>
+            
+        </div>
+            {{end}}
+	</div>
+	<div class="form">
+		<form role="form" action="/chat/save" method="post">
+			<input type="text" class="text" name="content" id="content" placeholder="メッセージ">
+			<button type="submit" class="submit">送信</button>
+		</form>
+	</div>
 </div>
 {{end}}

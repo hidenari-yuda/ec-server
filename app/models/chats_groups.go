@@ -1,47 +1,40 @@
 package models
 
-import (
+/*import (
 	"log"
 	"time"
 )
 
-type Chat struct {
-	ID        int
-	Content   string
-	UserID    int
-	CreatedAt time.Time
-	GroupID   int
-}
-
-func (u *User) CreateChat(content string) (err error) {
+func (u *User) CreateChatGroup(content string) (err error) {
 	cmd := `insert into chats (
 		content,
 		user_id,
-		created_at) values(?, ?, ?)`
+		created_at,
+		group_id) values(?, ?, ?, ?)`
 
-	_, err = Db.Exec(cmd, content, u.ID, time.Now())
+	_, err = Db.Exec(cmd, content, u.ID, time.Now(), cg.ID)
 	if err != nil {
 		log.Fatalln(err)
 	}
 	return err
 }
 
-func GetChat(id int) (chat Chat, err error) {
-	cmd := `select id , content ,user_id, created_at
-	from chats where id =?`
+func GetChatGroup(id int) (chat_group ChatGroup, err error) {
+	cmd := `select id, follow_id, follower_id, created_at
+	from chat_groups where id =?`
 	chat = Chat{}
 
 	err = Db.QueryRow(cmd, id).Scan(
-		&chat.ID,
-		&chat.Content,
-		&chat.UserID,
-		&chat.CreatedAt,
-		&chat.GroupID)
-	return chat, err
+		&chat_groups.ID,
+		&chat_groups.Content,
+		&chat_groups.UserID,
+		&chat_groups.CreatedAt,
+		&chat_groups.GroupID)
+	return chat_group, err
 }
 
 func GetChats() (chats []Chat, err error) {
-	cmd := `select id , content ,user_id, created_at from chats`
+	cmd := `select id , content ,user_id, created_at, group_id from chats`
 	rows, err := Db.Query(cmd)
 	if err != nil {
 		log.Fatalln(err)
@@ -53,7 +46,8 @@ func GetChats() (chats []Chat, err error) {
 			&chat.ID,
 			&chat.Content,
 			&chat.UserID,
-			&chat.CreatedAt)
+			&chat.CreatedAt,
+			&chat.GroupID)
 		if err != nil {
 			log.Fatalln(err)
 		}
@@ -66,32 +60,7 @@ func GetChats() (chats []Chat, err error) {
 
 func (u *User) GetChatsByUser() (chats []Chat, err error) {
 
-	cmd := `select id, content ,user_id, created_at from chats where user_id =?`
-
-	rows, err := Db.Query(cmd, u.ID)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	for rows.Next() {
-		var chat Chat
-		err = rows.Scan(
-			&chat.ID,
-			&chat.Content,
-			&chat.UserID,
-			&chat.CreatedAt)
-		if err != nil {
-			log.Fatalln(err)
-		}
-		chats = append(chats, chat)
-	}
-	rows.Close()
-
-	return chats, err
-}
-
-func (u *User) GetChatsByGroup() (chats []Chat, err error) {
-
-	cmd := `select id, content ,user_id, created_at, group_id from chats where group_id =?`
+	cmd := `select id, content ,user_id, created_at, group_id from chats where user_id =?`
 
 	rows, err := Db.Query(cmd, u.ID)
 	if err != nil {
@@ -134,4 +103,4 @@ func (c *Chat) DeleteChat() error {
 	}
 
 	return err
-}
+}*/

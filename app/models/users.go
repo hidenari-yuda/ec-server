@@ -12,10 +12,11 @@ type User struct {
 	Email      string
 	PassWord   string
 	CreatedAt  time.Time
-	Todos      []Todo
 	Phone      string
 	Department string
 	Position   string
+	Todos      []Todo
+	Chats      []Chat
 }
 
 type Session struct {

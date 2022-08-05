@@ -68,6 +68,24 @@ func parseURLProfile(fn func(http.ResponseWriter, *http.Request, int)) http.Hand
 	}
 }
 
+var validPathChat = regexp.MustCompile("^/chat/(edit|update)/([0-9]+)$")
+
+func parseURLChat(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		q := validPathChat.FindStringSubmatch(r.URL.Path)
+		if q == nil {
+			http.NotFound(w, r)
+			return
+		}
+		qi, err := strconv.Atoi(q[2])
+		if err != nil {
+			http.NotFound(w, r)
+			return
+		}
+		fn(w, r, qi)
+	}
+}
+
 func StartMainServer() error {
 	files := http.FileServer(http.Dir(config.Config.Static))
 	http.Handle("/static/", http.StripPrefix("/static/", files))
@@ -89,6 +107,11 @@ func StartMainServer() error {
 	http.HandleFunc("/sort", todoSort)
 	http.HandleFunc("/contact", contact)
 	http.HandleFunc("/aboutus", aboutus)
+	http.HandleFunc("/chat", chat)
+	http.HandleFunc("/chat/save", chatSave)
+	http.HandleFunc("/chat/edit/", parseURLChat(chatEdit))
+	http.HandleFunc("/chat/update/", parseURLChat(chatUpdate))
+	http.HandleFunc("/chat/delete/", parseURLChat(chatDelete))
 
 	//port := os.Getenv("PORT")
 	return http.ListenAndServe(":"+config.Config.Port, nil)

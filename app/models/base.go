@@ -57,6 +57,15 @@ func init() {
 		deadline STRING NOT NULL)`, tableNameTodo)
 	Db.Exec(cmdT)
 
+	cmdC := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		content TEXT,
+		user_id STRING,
+		created_at DATETIME,
+		groupe_id INTEGER)`, tableNameChat)
+
+	Db.Exec(cmdC)
+
 	cmdS := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		uuid STRING NOT NULL UNIQUE,
