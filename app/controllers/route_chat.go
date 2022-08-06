@@ -9,7 +9,7 @@ import (
 )
 
 //チャットのグループの処理
-func chatGroup(w http.ResponseWriter, r *http.Request) {
+/*func chatGroup(w http.ResponseWriter, r *http.Request) {
 	sess, err := session(w, r)
 	if err != nil {
 		http.Redirect(w, r, "/login", 302)
@@ -18,27 +18,27 @@ func chatGroup(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
-		chats, err := user.GetChatsGroupsByUser()
+		chatgroups, err := user.GetChatGroupsByUser()
 		if err != nil {
 			log.Println(err)
 		}
-		user.Chats = chats
-		fmt.Println(user.Chats)
+		user.ChatGroups = chatgroups
+		fmt.Println(user.ChatGroups)
 		generateHTML(w, user, "layout", "private_navbar", "chat")
 	}
 }
 
-func chatNew(w http.ResponseWriter, r *http.Request) {
+func chatGroupNew(w http.ResponseWriter, r *http.Request) {
 	_, err := session(w, r)
 	if err != nil {
 		http.Redirect(w, r, "/login", 302)
 	} else {
-		generateHTML(w, nil, "layout", "private_navbar", "chat_new")
+		generateHTML(w, nil, "layout", "private_navbar", "chatGroup_new")
 	}
 
 }
 
-func chatSave(w http.ResponseWriter, r *http.Request) {
+func chatGroupSave(w http.ResponseWriter, r *http.Request) {
 	sess, err := session(w, r)
 	if err != nil {
 		http.Redirect(w, r, "/login", 302)
@@ -51,14 +51,14 @@ func chatSave(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
-		content := r.PostFormValue("content")
-		if err := user.CreateChat(content); err != nil {
+		chat_owner, chat_member, chat_name := r.PostFormValue("chat_owner"), r.PostFormValue("chat_member"), r.PostFormValue("chat_name")
+		if err := user.CreateChatGroup(chat_owner, chat_member, chat_name); err != nil {
 			log.Println(err)
 		}
 		http.Redirect(w, r, "/chat", 302)
 	}
 }
-func chatEdit(w http.ResponseWriter, r *http.Request, id int) {
+func chatGroupEdit(w http.ResponseWriter, r *http.Request, id int) {
 	sess, err := session(w, r)
 	if err != nil {
 		http.Redirect(w, r, "/login", 302)
@@ -76,7 +76,7 @@ func chatEdit(w http.ResponseWriter, r *http.Request, id int) {
 	}
 }
 
-func chatUpdate(w http.ResponseWriter, r *http.Request, id int) {
+func chatGroupUpdate(w http.ResponseWriter, r *http.Request, id int) {
 	sess, err := session(w, r)
 	if err != nil {
 		http.Redirect(w, r, "login", 302)
@@ -91,14 +91,14 @@ func chatUpdate(w http.ResponseWriter, r *http.Request, id int) {
 		}
 		content := r.PostFormValue("content")
 		t := &models.Chat{ID: id, Content: content, UserID: user.ID}
-		if err := t.UpdateChat(); err != nil {
+		if err := t.UpdateChatGroup(); err != nil {
 			log.Println(err)
 		}
 		http.Redirect(w, r, "/chat", 302)
 	}
 }
 
-func chatDelete(w http.ResponseWriter, r *http.Request, id int) {
+func chatGroupDelete(w http.ResponseWriter, r *http.Request, id int) {
 	sess, err := session(w, r)
 	if err != nil {
 		http.Redirect(w, r, "/login", 302)
@@ -107,17 +107,17 @@ func chatDelete(w http.ResponseWriter, r *http.Request, id int) {
 		if err != nil {
 			log.Println(err)
 		}
-		t, err := models.GetChat(id)
+		cg, err := models.GetChatGroup(id)
 		if err != nil {
 			log.Println(err)
 		}
-		if err := t.DeleteChat(); err != nil {
+		if err := cg.DeleteChatGroup(); err != nil {
 			log.Println(err)
 		}
 		http.Redirect(w, r, "/chat", 302)
 	}
 
-}
+}*/
 
 //チャットのコンテンツの処理
 

@@ -73,7 +73,7 @@ func GetChatsGroup() (chatgroups []ChatGroup, err error) {
 	return chatgroups, err
 }
 
-func (u *User) GetChatGroupByUser() (chatgroups []ChatGroup, err error) {
+func (u *User) GetChatGroupsByUser() (chatgroups []ChatGroup, err error) {
 
 	cmd := `select id, user_id, created_at, chat_owner, chat_member, chat_name from chatgroups where user_id =?`
 
