@@ -130,8 +130,8 @@ func StartMainServer() error {
 	http.HandleFunc("/chat/edit/", parseURLChat(chatEdit))
 	http.HandleFunc("/chat/update/", parseURLChat(chatUpdate))
 	http.HandleFunc("/chat/delete/", parseURLChat(chatDelete))
-	http.HandleFunc("/chat", chatGroup)
-	http.HandleFunc("/chat/save", parseURLChatGroup(chatGroupDelete))
+	http.HandleFunc("/group", chatGroup)
+	http.HandleFunc("/group/save", chatGroupSave)
 
 	//port := os.Getenv("PORT")
 	return http.ListenAndServe(":"+config.Config.Port, nil)

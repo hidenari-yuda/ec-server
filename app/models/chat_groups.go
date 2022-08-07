@@ -9,22 +9,19 @@ type ChatGroup struct {
 	ID         int
 	UserID     int
 	CreatedAt  time.Time
-	ChatOwner  int
 	ChatMember int
 	ChatName   string
 	Chat       []Chat
 }
 
-func (u *User) CreateChatGroup(ChatOwner int, ChatMember int, ChatName string, GroupID int) (err error) {
-	cmd := `insert into chat_groups (
-		id,
+func (u *User) CreateChatGroup(ChatMember interface{}, ChatName string) (err error) {
+	cmd := `insert into chatgroups (
 		user_id,
 		created_at,
-		chat_owner,
 		chat_member,
-		chat_name) values(?, ?, ?, ?, ?, ?)`
+		chat_name) values(?, ?, ?, ?)`
 
-	_, err = Db.Exec(cmd, u.ID, time.Now(), ChatOwner, ChatMember, ChatName)
+	_, err = Db.Exec(cmd, u.ID, time.Now(), ChatMember, ChatName)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -32,22 +29,21 @@ func (u *User) CreateChatGroup(ChatOwner int, ChatMember int, ChatName string, G
 }
 
 func GetChatGroup(id int) (chat_group ChatGroup, err error) {
-	cmd := `select id, user_id, created_at, chat_owner, chat_member, chat_name
-	from chat_groups where id =?`
+	cmd := `select id, user_id, created_at, chat_member, chat_name
+	from chatgroups where id =?`
 	chat_group = ChatGroup{}
 
 	err = Db.QueryRow(cmd, id).Scan(
 		&chat_group.ID,
 		&chat_group.UserID,
 		&chat_group.CreatedAt,
-		&chat_group.ChatOwner,
 		&chat_group.ChatMember,
 		&chat_group.ChatName)
 	return chat_group, err
 }
 
 func GetChatsGroup() (chatgroups []ChatGroup, err error) {
-	cmd := `select id ,user_id, created_at, chat_owner, chat_member, chat_name from chatgroups`
+	cmd := `select id ,user_id, created_at, chat_member, chat_name from chatgroups`
 	rows, err := Db.Query(cmd)
 	if err != nil {
 		log.Fatalln(err)
@@ -59,7 +55,6 @@ func GetChatsGroup() (chatgroups []ChatGroup, err error) {
 			&chatgroup.ID,
 			&chatgroup.UserID,
 			&chatgroup.CreatedAt,
-			&chatgroup.ChatOwner,
 			&chatgroup.ChatMember,
 			&chatgroup.ChatName)
 
@@ -75,7 +70,7 @@ func GetChatsGroup() (chatgroups []ChatGroup, err error) {
 
 func (u *User) GetChatGroupsByUser() (chatgroups []ChatGroup, err error) {
 
-	cmd := `select id, user_id, created_at, chat_owner, chat_member, chat_name from chatgroups where user_id =?`
+	cmd := `select id, user_id, created_at, chat_member, chat_name from chatgroups where user_id =?`
 
 	rows, err := Db.Query(cmd, u.ID)
 	if err != nil {
@@ -87,7 +82,6 @@ func (u *User) GetChatGroupsByUser() (chatgroups []ChatGroup, err error) {
 			&chatgroup.ID,
 			&chatgroup.UserID,
 			&chatgroup.CreatedAt,
-			&chatgroup.ChatOwner,
 			&chatgroup.ChatMember,
 			&chatgroup.ChatName)
 		if err != nil {

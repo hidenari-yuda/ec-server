@@ -467,3 +467,410 @@ net/http.(*conn).serve(0xc0000b7360, {0x4572a68, 0xc00009b500})
 	/usr/local/go/src/net/http/server.go:1966 +0x5d7
 created by net/http.(*Server).Serve
 	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/07 23:46:47 chat_groups.go:82: no such table: chatgroups
+2022/08/07 23:49:34 chat_groups.go:82: no such table: chatgroups
+2022/08/07 23:50:05 chat_groups.go:82: no such table: chat_groups
+2022/08/07 23:53:41 chat_groups.go:82: no such table: chat_groups
+2022/08/07 23:55:04 server.go:3197: http: panic serving 127.0.0.1:51729: template: group.html:52: unexpected {{end}}
+goroutine 36 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc00008e160})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc0001aa0e0}, {0x44cab60, 0xc000170b40}, {0xc0001396e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc0001aa0e0}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e6cf68?, {0x4572260?, 0xc0001aa0e0?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc0001aa0e0}, 0xc000184200)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc0001136e0?}, {0x4572260, 0xc0001aa0e0}, 0xc000184200)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc00012f400, {0x45724e8, 0xc0001135f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/07 23:55:04 server.go:3197: http: panic serving 127.0.0.1:51730: template: group.html:52: unexpected {{end}}
+goroutine 22 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc0001114d0})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc0000ea000}, {0x44cab60, 0xc0000ee140}, {0xc0001396e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc0000ea000}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e6cf68?, {0x4572260?, 0xc0000ea000?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc0000ea000}, 0xc0000e4000)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc00009a570?}, {0x4572260, 0xc0000ea000}, 0xc0000e4000)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0000da000, {0x45724e8, 0xc0001135f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/07 23:55:04 server.go:3197: http: panic serving 127.0.0.1:51731: template: group.html:52: unexpected {{end}}
+goroutine 41 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc000111840})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc0001aa1c0}, {0x44cab60, 0xc000170dc0}, {0xc00013b6e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc0001aa1c0}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e6cf68?, {0x4572260?, 0xc0001aa1c0?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc0001aa1c0}, 0xc000184300)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc0001ba0f0?}, {0x4572260, 0xc0001aa1c0}, 0xc000184300)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc00012f540, {0x45724e8, 0xc0001135f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/07 23:55:27 server.go:3197: http: panic serving 127.0.0.1:51738: template: group.html:52: unexpected {{end}}
+goroutine 46 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc00008e4d0})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc0001aa2a0}, {0x44cab60, 0xc000171040}, {0xc00013b6e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc0001aa2a0}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e6cf68?, {0x4572260?, 0xc0001aa2a0?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc0001aa2a0}, 0xc000184400)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc0001baae0?}, {0x4572260, 0xc0001aa2a0}, 0xc000184400)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc00012f680, {0x45724e8, 0xc0001135f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/07 23:55:27 server.go:3197: http: panic serving 127.0.0.1:51739: template: group.html:52: unexpected {{end}}
+goroutine 27 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc00008e840})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc0000ea0e0}, {0x44cab60, 0xc0000ee3c0}, {0xc00013b6e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc0000ea0e0}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e6cf68?, {0x4572260?, 0xc0000ea0e0?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc0000ea0e0}, 0xc0000e4100)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc00009afc0?}, {0x4572260, 0xc0000ea0e0}, 0xc0000e4100)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0000da140, {0x45724e8, 0xc0001135f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/07 23:55:27 server.go:3197: http: panic serving 127.0.0.1:51740: template: group.html:52: unexpected {{end}}
+goroutine 32 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc00008ebb0})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc0000ea1c0}, {0x44cab60, 0xc0000ee640}, {0xc00013b6e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc0000ea1c0}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e6cf68?, {0x4572260?, 0xc0000ea1c0?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc0000ea1c0}, 0xc0000e4200)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc00009b9b0?}, {0x4572260, 0xc0000ea1c0}, 0xc0000e4200)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0000da1e0, {0x45724e8, 0xc0001135f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/08 00:47:06 server.go:3197: http: panic serving 127.0.0.1:51760: template: group.html:52: unexpected {{end}}
+goroutine 53 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc00008ef20})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc0000ea2a0}, {0x44cab60, 0xc0000ee8c0}, {0xc00013b6e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc0000ea2a0}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e21c40?, {0x4572260?, 0xc0000ea2a0?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc0000ea2a0}, 0xc0000e4300)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc0002243c0?}, {0x4572260, 0xc0000ea2a0}, 0xc0000e4300)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0000da280, {0x45724e8, 0xc0001135f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/08 00:47:06 server.go:3197: http: panic serving 127.0.0.1:51761: template: group.html:52: unexpected {{end}}
+goroutine 58 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc000111aa0})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc0000ea380}, {0x44cab60, 0xc0000eeb40}, {0xc00013b6e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc0000ea380}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e6cf68?, {0x4572260?, 0xc0000ea380?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc0000ea380}, 0xc0000e4400)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc000224db0?}, {0x4572260, 0xc0000ea380}, 0xc0000e4400)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0000da320, {0x45724e8, 0xc0001135f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/08 00:47:06 server.go:3197: http: panic serving 127.0.0.1:51762: template: group.html:52: unexpected {{end}}
+goroutine 49 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc000111d00})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc0001aa380}, {0x44cab60, 0xc0001712c0}, {0xc0001356e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc0001aa380}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e6cf68?, {0x4572260?, 0xc0001aa380?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc0001aa380}, 0xc000184500)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc0001bb050?}, {0x4572260, 0xc0001aa380}, 0xc000184500)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc00012f720, {0x45724e8, 0xc0001135f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/08 00:47:17 server.go:3197: http: panic serving 127.0.0.1:51788: template: group.html:52: unexpected {{end}}
+goroutine 68 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc000290070})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc0001aa460}, {0x44cab60, 0xc000171540}, {0xc0001376e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc0001aa460}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e6cf68?, {0x4572260?, 0xc0001aa460?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc0001aa460}, 0xc000184600)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc0001bb5c0?}, {0x4572260, 0xc0001aa460}, 0xc000184600)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc00012f7c0, {0x45724e8, 0xc0001135f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/08 00:47:17 server.go:3197: http: panic serving 127.0.0.1:51789: template: group.html:52: unexpected {{end}}
+goroutine 73 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc0002903e0})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc0001aa540}, {0x44cab60, 0xc0001717c0}, {0xc0001376e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc0001aa540}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e6cf68?, {0x4572260?, 0xc0001aa540?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc0001aa540}, 0xc000184700)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc0001bbfb0?}, {0x4572260, 0xc0001aa540}, 0xc000184700)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc00012f860, {0x45724e8, 0xc0001135f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/08 00:47:17 server.go:3197: http: panic serving 127.0.0.1:51790: template: group.html:52: unexpected {{end}}
+goroutine 78 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc000290750})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc0001aa620}, {0x44cab60, 0xc000171a40}, {0xc0001376e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc0001aa620}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e6cf68?, {0x4572260?, 0xc0001aa620?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc0001aa620}, 0xc000184800)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc0002a29c0?}, {0x4572260, 0xc0001aa620}, 0xc000184800)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc00012f900, {0x45724e8, 0xc0001135f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/08 00:50:06 server.go:3197: http: panic serving 127.0.0.1:51813: template: group.html:52: unexpected {{end}}
+goroutine 20 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc000012910})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc000206380}, {0x44cab60, 0xc0002103c0}, {0xc0000cb6e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc000206380}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e2cf68?, {0x4572260?, 0xc000206380?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc000206380}, 0xc000196400)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc00009b6e0?}, {0x4572260, 0xc000206380}, 0xc000196400)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0000b7360, {0x45724e8, 0xc00009b5f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/08 00:50:06 server.go:3197: http: panic serving 127.0.0.1:51816: template: group.html:52: unexpected {{end}}
+goroutine 9 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc0000999e0})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc000206460}, {0x44cab60, 0xc000210640}, {0xc0000bd6e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc000206460}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e2ce78?, {0x4572260?, 0xc000206460?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc000206460}, 0xc00010cb00)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc000202ae0?}, {0x4572260, 0xc000206460}, 0xc00010cb00)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0002000a0, {0x45724e8, 0xc00009b5f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/08 00:50:06 server.go:3197: http: panic serving 127.0.0.1:51817: template: group.html:52: unexpected {{end}}
+goroutine 25 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc000099d40})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc00012a380}, {0x44cab60, 0xc0000f8dc0}, {0xc0000bf6e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc00012a380}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e2cd88?, {0x4572260?, 0xc00012a380?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc00012a380}, 0xc00010cc00)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc00013e540?}, {0x4572260, 0xc00012a380}, 0xc00010cc00)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0000b74a0, {0x45724e8, 0xc00009b5f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/08 00:50:11 chats.go:75: no such column: id
+2022/08/08 00:53:33 server.go:3197: http: panic serving 127.0.0.1:51846: template: group.html:52: unexpected {{end}}
+goroutine 7 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc0000134d0})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc0001780e0}, {0x44cab60, 0xc00014ab40}, {0xc0001216e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc0001780e0}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e6a7e8?, {0x4572260?, 0xc0001780e0?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc0001780e0}, 0xc00015e200)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc00007f6e0?}, {0x4572260, 0xc0001780e0}, 0xc00015e200)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc000117360, {0x45724e8, 0xc00007f5f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/08 00:53:33 server.go:3197: http: panic serving 127.0.0.1:51847: template: group.html:52: unexpected {{end}}
+goroutine 12 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc000013800})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc0001781c0}, {0x44cab60, 0xc00014adc0}, {0xc0001216e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc0001781c0}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e6a7e8?, {0x4572260?, 0xc0001781c0?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc0001781c0}, 0xc00015e300)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc00007ffb0?}, {0x4572260, 0xc0001781c0}, 0xc00015e300)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc000117400, {0x45724e8, 0xc00007f5f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/08 00:53:33 server.go:3197: http: panic serving 127.0.0.1:51848: template: group.html:52: unexpected {{end}}
+goroutine 18 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x4483380, 0xc000013b30})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4572260?, 0xc0001782a0}, {0x44cab60, 0xc00014b040}, {0xc0001216e0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4572260, 0xc0001782a0}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x385
+net/http.HandlerFunc.ServeHTTP(0x4e6a7e8?, {0x4572260?, 0xc0001782a0?}, 0x400efc5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4572260, 0xc0001782a0}, 0xc00015e400)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc0001a2840?}, {0x4572260, 0xc0001782a0}, 0xc00015e400)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0001174a0, {0x45724e8, 0xc00007f5f0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/08 01:09:07 chats.go:25: near ")": syntax error
+2022/08/08 01:12:04 chat_groups.go:27: no such table: chat_groups
+2022/08/08 01:15:03 chat_groups.go:27: 6 values for 5 columns
+2022/08/08 01:15:47 chat_groups.go:27: not enough args to execute query: want 5 got 4
+2022/08/08 01:16:04 chat_groups.go:27: not enough args to execute query: want 5 got 4
+2022/08/08 01:17:42 chat_groups.go:26: 5 values for 4 columns

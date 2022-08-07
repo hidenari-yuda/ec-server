@@ -16,10 +16,11 @@ var Db *sql.DB
 var err error
 
 const (
-	tableNameUser    = "users"
-	tableNameTodo    = "todos"
-	tableNameSession = "sessions"
-	tableNameChat    = "chats"
+	tableNameUser      = "users"
+	tableNameTodo      = "todos"
+	tableNameSession   = "sessions"
+	tableNameChatGroup = "chatgroups"
+	tableNameChat      = "chats"
 )
 
 func init() {
@@ -57,12 +58,20 @@ func init() {
 		deadline STRING NOT NULL)`, tableNameTodo)
 	Db.Exec(cmdT)
 
+	cmdCG := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		user_id INTEGER,
+		created_at DATETIME,
+		chat_member STRING NULL,
+		chat_name STRING NULL)`, tableNameChatGroup)
+
+	Db.Exec(cmdCG)
+
 	cmdC := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		content TEXT,
 		user_id STRING,
-		created_at DATETIME,
-		groupe_id INTEGER)`, tableNameChat)
+		created_at DATETIME)`, tableNameChat)
 
 	Db.Exec(cmdC)
 
