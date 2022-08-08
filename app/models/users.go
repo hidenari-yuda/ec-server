@@ -15,6 +15,7 @@ type User struct {
 	Phone      string
 	Department string
 	Position   string
+	PhotoURL   string
 	Todos      []Todo
 	ChatGroup  ChatGroup
 	ChatGroups []ChatGroup

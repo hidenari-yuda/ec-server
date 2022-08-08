@@ -144,6 +144,7 @@ func chatSave(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, chat, 302)
 	}
 }
+
 func chatEdit(w http.ResponseWriter, r *http.Request, id int) {
 	sess, err := session(w, r)
 	if err != nil {

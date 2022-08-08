@@ -72,7 +72,8 @@ func init() {
 		content TEXT,
 		user_id STRING,
 		created_at DATETIME,
-		group_id STRING)`, tableNameChat)
+		group_id STRING,
+		user_name STRING NULL)`, tableNameChat)
 
 	Db.Exec(cmdC)
 

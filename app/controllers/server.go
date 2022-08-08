@@ -50,7 +50,7 @@ func parseURL(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc
 	}
 }
 
-var validPathProfile = regexp.MustCompile("^/profile/([0-9]+)$ | ^/profile/(edit|update)/([0-9]+)$")
+var validPathProfile = regexp.MustCompile("^/profile/(edit|update)/([0-9]+)$")
 
 func parseURLProfile(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
