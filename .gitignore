@@ -1,3 +1,9 @@
 .DS_Store
 
-//.chat body, .chat div,.chat h1{margin:0;padding:0;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}em,strong,code,address,th{font-weight:normal;font-style:normal;}ul,ol{list-style:none;}q:before,q:after{content:"";}abbr,acronym{border:0;}table{border-collapse:collapse;border-spacing:0;}th{text-align:left;}fieldset,img{border:0;}
+.example.sql
+
+.webapp.sql
+
+.webname.log
+
+.procfile
