@@ -71,7 +71,8 @@ func init() {
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		content TEXT,
 		user_id STRING,
-		created_at DATETIME)`, tableNameChat)
+		created_at DATETIME,
+		group_id STRING)`, tableNameChat)
 
 	Db.Exec(cmdC)
 

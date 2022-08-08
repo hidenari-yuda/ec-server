@@ -50,7 +50,7 @@ func parseURL(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc
 	}
 }
 
-var validPathProfile = regexp.MustCompile("^/profile/(edit|update)/([0-9]+)$")
+var validPathProfile = regexp.MustCompile("^/profile/([0-9]+)$ | ^/profile/(edit|update)/([0-9]+)$")
 
 func parseURLProfile(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -68,16 +68,17 @@ func parseURLProfile(fn func(http.ResponseWriter, *http.Request, int)) http.Hand
 	}
 }
 
-var validPathChat = regexp.MustCompile("^/chat/(edit|update)/([0-9]+)$")
+var validPathChat = regexp.MustCompile("^/chat/([0-9]+)$")
 
 func parseURLChat(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		q := validPathChat.FindStringSubmatch(r.URL.Path)
 		if q == nil {
+
 			http.NotFound(w, r)
 			return
 		}
-		qi, err := strconv.Atoi(q[2])
+		qi, err := strconv.Atoi(q[1])
 		if err != nil {
 			http.NotFound(w, r)
 			return
@@ -86,7 +87,27 @@ func parseURLChat(fn func(http.ResponseWriter, *http.Request, int)) http.Handler
 	}
 }
 
-var validPathChatGroup = regexp.MustCompile("^/chat/(edit|update)/([0-9]+)$")
+var validPathChatCRUD = regexp.MustCompile("^/chat/(save | edit |update)/([0-9]+)$")
+
+func parseURLChatCRUD(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		q := validPathChatCRUD.FindStringSubmatch(r.URL.Path)
+		if q == nil {
+
+			http.NotFound(w, r)
+			return
+		}
+		qi, err := strconv.Atoi(q[2])
+		if err != nil {
+			http.NotFound(w, r)
+			return
+		}
+		fmt.Println(qi)
+		fn(w, r, qi)
+	}
+}
+
+var validPathChatGroup = regexp.MustCompile("^/group/(edit|update)/([0-9]+)$")
 
 func parseURLChatGroup(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -125,7 +146,7 @@ func StartMainServer() error {
 	http.HandleFunc("/sort", todoSort)
 	http.HandleFunc("/contact", contact)
 	http.HandleFunc("/aboutus", aboutus)
-	http.HandleFunc("/chat", chat)
+	http.HandleFunc("/chat/", parseURLChat(chat))
 	http.HandleFunc("/chat/save", chatSave)
 	http.HandleFunc("/chat/edit/", parseURLChat(chatEdit))
 	http.HandleFunc("/chat/update/", parseURLChat(chatUpdate))

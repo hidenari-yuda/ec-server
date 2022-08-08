@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"fmt"
 	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/hidenari-yuda/todo_app/app/models"
 )
@@ -100,7 +100,7 @@ func chatGroupSave(w http.ResponseWriter, r *http.Request) {
 
 //チャットのコンテンツの処理
 
-func chat(w http.ResponseWriter, r *http.Request) {
+func chat(w http.ResponseWriter, r *http.Request, id int) {
 	sess, err := session(w, r)
 	if err != nil {
 		http.Redirect(w, r, "/login", 302)
@@ -109,24 +109,17 @@ func chat(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
-		chats, err := user.GetChatsByUser()
+
+		chatGroup, _ := user.GetChatGroup(id)
+		user.ChatGroup = chatGroup
+
+		chats, err := user.GetChatsByGroup(id)
 		if err != nil {
 			log.Println(err)
 		}
-		user.Chat = chats
-		fmt.Println(user.Chat)
-		generateHTML(w, user, "layout", "private_navbar", "chat")
+		user.ChatGroup.Chat = chats
+		generateHTML(w, user.ChatGroup, "layout", "private_navbar", "chat")
 	}
-}
-
-func chatNew(w http.ResponseWriter, r *http.Request) {
-	_, err := session(w, r)
-	if err != nil {
-		http.Redirect(w, r, "/login", 302)
-	} else {
-		generateHTML(w, nil, "layout", "private_navbar", "chat_new")
-	}
-
 }
 
 func chatSave(w http.ResponseWriter, r *http.Request) {
@@ -142,11 +135,13 @@ func chatSave(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
-		content := r.PostFormValue("content")
-		if err := user.CreateChat(content); err != nil {
+		content, groupId := r.PostFormValue("content"), r.PostFormValue("group_id")
+		groupIdTypeInt, _ := strconv.Atoi(groupId)
+		if err := user.CreateChat(content, groupIdTypeInt); err != nil {
 			log.Println(err)
 		}
-		http.Redirect(w, r, "/chat", 302)
+		chat := "/chat/" + groupId
+		http.Redirect(w, r, chat, 302)
 	}
 }
 func chatEdit(w http.ResponseWriter, r *http.Request, id int) {

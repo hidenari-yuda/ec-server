@@ -9,7 +9,7 @@ type ChatGroup struct {
 	ID         int
 	UserID     int
 	CreatedAt  time.Time
-	ChatMember int
+	ChatMember string
 	ChatName   string
 	Chat       []Chat
 }
@@ -28,7 +28,7 @@ func (u *User) CreateChatGroup(ChatMember interface{}, ChatName string) (err err
 	return err
 }
 
-func GetChatGroup(id int) (chat_group ChatGroup, err error) {
+func (u *User) GetChatGroup(id int) (chat_group ChatGroup, err error) {
 	cmd := `select id, user_id, created_at, chat_member, chat_name
 	from chatgroups where id =?`
 	chat_group = ChatGroup{}
@@ -70,9 +70,9 @@ func GetChatsGroup() (chatgroups []ChatGroup, err error) {
 
 func (u *User) GetChatGroupsByUser() (chatgroups []ChatGroup, err error) {
 
-	cmd := `select id, user_id, created_at, chat_member, chat_name from chatgroups where user_id =?`
+	cmd := `select id, user_id, created_at, chat_member, chat_name from chatgroups where user_id =? or chat_member =?`
 
-	rows, err := Db.Query(cmd, u.ID)
+	rows, err := Db.Query(cmd, u.ID, u.ID)
 	if err != nil {
 		log.Fatalln(err)
 	}

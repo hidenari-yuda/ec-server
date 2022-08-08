@@ -1,19 +1,25 @@
 {{define "content"}}
 <div class="chat">
-	<h1>ルーム名：{{.Name}}</h1>
-	<div class="content">
-        {{range .Chats}}
-		<div class="message-area me">
-			<div class="mymessage">{{.Content}}<span><div class="date" name="created">{{.CreatedAt}}</div></span></div>
-            
-        </div>
-            {{end}}
-	</div>
 	<div class="form">
 		<form role="form" action="/chat/save" method="post">
 			<input type="text" class="text" name="content" id="content" placeholder="メッセージ">
+			<input type="hidden" name="group_id", value="{{.ID}}" placeholder>
 			<button type="submit" class="submit">送信</button>
 		</form>
+		</div>
+	<h1>ルーム名：{{.ChatName}}</h1>
+	<div class="content">
+        {{range .Chat}}
+		<div class="message-area">
+			<div></div>
+			<div>{{.Content}}
+				<span>
+					<div class="date" name="created">{{.CreatedAt}}</div>
+				</span>
+			</div>
+        </div>
+            {{end}}
 	</div>
 </div>
+
 {{end}}

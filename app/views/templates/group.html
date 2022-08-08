@@ -23,7 +23,11 @@
         {{ range .ChatGroups}}
         <tr>
             <td>{{.ID}}</td>
-            <td><a href="/chat/{{.ID}}"><button type="button" class ="btn navbar-btn navbar-right">グループ名：{{.ChatName}}</button></a></td>
+            <td>
+                <a href="/chat/{{.ID}}">
+                    <button type="button" class ="btn navbar-btn navbar-right">{{.ChatName}}</button>
+                </a>
+            </td>
         </tr>
         {{ end }}
 </div>

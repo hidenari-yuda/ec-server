@@ -6,19 +6,19 @@ import (
 
 func main() {
 
-	/*user, _ := models.GetUser(1)
+	//user, _ := models.GetUser()
 
-	user.CreateTodo("test deadline", "2019-01-01")
+	/*user.CreateTodo("test deadline", "2019-01-01")
 	getTodos, _ := models.GetTodos()
 	fmt.Println(getTodos)*/
 
-	/*u := &models.User{}
-	u.Name = "test"
-	u.Email = "test@example.com"
-	u.PassWord = "test1234"
-	fmt.Println(u)
+	/*u := &models.Chat{}
+	u.Content = "こんにちは"
+	u.UserID = 3
+	u.CreatedAt = time.Now()
+	u.GroupID = 2
 
-	u.CreateUser()*/
+	u.CreateChat()*/
 
 	/*user, _ := models.GetUserByEmail("test@example.com")
 	fmt.Println(user)

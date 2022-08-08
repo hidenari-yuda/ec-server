@@ -13,14 +13,14 @@ type Chat struct {
 	GroupID   int
 }
 
-func (u *User) CreateChat(content string) (err error) {
+func (u *User) CreateChat(content string, group_id int) (err error) {
 	cmd := `insert into chats (
 		content,
 		user_id,
 		created_at,
-		group_id,) values(?, ?, ?, ?)`
+		group_id) values(?, ?, ?, ?)`
 
-	_, err = Db.Exec(cmd, content, u.ID, time.Now(), u.ChatGroup.ID)
+	_, err = Db.Exec(cmd, content, u.ID, time.Now(), group_id)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -92,11 +92,11 @@ func (u *User) GetChatsByUser() (chats []Chat, err error) {
 	return chats, err
 }
 
-func (u *User) GetChatsByGroup() (chats []Chat, err error) {
+func (u *User) GetChatsByGroup(group_id int) (chats []Chat, err error) {
 
-	cmd := `select id, content ,user_id, created_at from chats where group_id =?`
+	cmd := `select id, content ,user_id, created_at, group_id from chats where group_id =?`
 
-	rows, err := Db.Query(cmd, u.ChatGroup.ID)
+	rows, err := Db.Query(cmd, group_id)
 	if err != nil {
 		log.Fatalln(err)
 	}

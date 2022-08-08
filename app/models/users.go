@@ -16,7 +16,6 @@ type User struct {
 	Department string
 	Position   string
 	Todos      []Todo
-	Chat       []Chat
 	ChatGroup  ChatGroup
 	ChatGroups []ChatGroup
 }
