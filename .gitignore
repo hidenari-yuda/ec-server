@@ -1,9 +1,9 @@
 .DS_Store
 
-.example.sql
+example.sql
 
-.webapp.sql
+webapp.sql
 
-.webname.log
+webname.log
 
-.procfile
+procfile
