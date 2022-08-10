@@ -77,6 +77,36 @@ func GetUser(id int) (user User, err error) {
 	return user, err
 }
 
+func GetUsers() (users []User, err error) {
+	cmd := `select id, uuid, name , email, password, created_at, phone, department, position
+	from users`
+	rows, err := Db.Query(cmd)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	for rows.Next() {
+		var user User
+		err = rows.Scan(
+			&user.ID,
+			&user.UUID,
+			&user.Name,
+			&user.Email,
+			&user.PassWord,
+			&user.CreatedAt,
+			&user.Phone,
+			&user.Department,
+			&user.Position)
+		if err != nil {
+			log.Fatalln(err)
+		}
+		users = append(users, user)
+	}
+	rows.Close()
+
+	return users, err
+}
+
 func (u *User) UpdateUser() (err error) {
 	cmd := `update users set name = ?, email = ? ,phone = ?,  department = ?, position=? where id = ?`
 	_, err = Db.Exec(cmd, u.Name, u.Email, u.Phone, u.Department, u.Position, u.ID)

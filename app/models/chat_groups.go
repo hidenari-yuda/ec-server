@@ -28,7 +28,7 @@ func (u *User) CreateChatGroup(ChatMember interface{}, ChatName string) (err err
 	return err
 }
 
-func (u *User) GetChatGroup(id int) (chat_group ChatGroup, err error) {
+func GetChatGroup(id int) (chat_group ChatGroup, err error) {
 	cmd := `select id, user_id, created_at, chat_member, chat_name
 	from chatgroups where id =?`
 	chat_group = ChatGroup{}
@@ -42,7 +42,21 @@ func (u *User) GetChatGroup(id int) (chat_group ChatGroup, err error) {
 	return chat_group, err
 }
 
-func GetChatsGroup() (chatgroups []ChatGroup, err error) {
+func (u *User) GetChatGroupByID(id int) (chat_group ChatGroup, err error) {
+	cmd := `select id, user_id, created_at, chat_member, chat_name
+	from chatgroups where id =?`
+	chat_group = ChatGroup{}
+
+	err = Db.QueryRow(cmd, id).Scan(
+		&chat_group.ID,
+		&chat_group.UserID,
+		&chat_group.CreatedAt,
+		&chat_group.ChatMember,
+		&chat_group.ChatName)
+	return chat_group, err
+}
+
+func GetChatGroups() (chatgroups []ChatGroup, err error) {
 	cmd := `select id ,user_id, created_at, chat_member, chat_name from chatgroups`
 	rows, err := Db.Query(cmd)
 	if err != nil {
@@ -94,19 +108,19 @@ func (u *User) GetChatGroupsByUser() (chatgroups []ChatGroup, err error) {
 	return chatgroups, err
 }
 
-func (cg *ChatGroup) UpdateChatGroup() error {
+/*func (cg *ChatGroup) UpdateChatGroup() error {
 	cmd := `update chatgroups set chat_name = ?, where id = ?`
 
 	_, err = Db.Exec(cmd, cg.ChatName, cg.ID)
 
 	return err
 
-}
+}*/
 
-func (c *Chat) DeleteChatGroup() error {
+func (cg *ChatGroup) DeleteChatGroup() error {
 	cmd := `delete from chatgroups where id =?`
 
-	_, err = Db.Exec(cmd, c.ID)
+	_, err = Db.Exec(cmd, cg.ID)
 
 	if err != nil {
 		log.Fatalln(err)

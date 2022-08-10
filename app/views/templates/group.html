@@ -1,22 +1,12 @@
 {{define "content"}}
 <div class="todolist">
 <h1>チャット一覧</h1>
-<form role="form" action="/sort" method="post">
-    <div class="select select_child">
-            <select name="sort" required>
-                <option hidden>条件を指定</option>
-                <option value="createdat_asc">作成日が新しい順</option>
-                <option value="createdat_desc">作成日が古い順</option>
-                <option id="deadline_asc" value="deadline_asc">期限が近い順</option>
-            </select>
-        </div>
-    <button type="submit" class="btn navbar-btn home_nav">検索</button>
-</form>
 <table class="table table-striped table-bordered text-center table-sm">
     <thead>
         <tr>
             <td>ID</td>
             <td>グループ</td>
+            <td>削除</td>
         </tr>
     </thead>
     <tbody class="table-striped table-hover">
@@ -28,6 +18,9 @@
                     <button type="button" class ="btn navbar-btn navbar-right">{{.ChatName}}</button>
                 </a>
             </td>
+            <td onload="tododelete();">
+                <a href="/group/delete/{{.ID}}" onclick="return confirm('削除しますか')"><button type="button" class ="btn navbar-btn navbar-right">削除</button></a>
+            </td>
         </tr>
         {{ end }}
 </div>
@@ -37,12 +30,7 @@
     <h1>グループを作成する</h1>
     <div class="form-group">
         <div class="select select_child">
-            <select name="chat_member" required>
-                <option hidden>ユーザーを指定</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-            </select>
+            <input type="text" name="chat_member" placeholder="ユーザーIDを入力" required>
         </div>
       <textarea class="form-control" name="chat_name" id="chat_name" placeholder="チャット名" rows="1"></textarea>
 </br>

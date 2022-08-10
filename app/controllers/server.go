@@ -107,7 +107,7 @@ func parseURLChatCRUD(fn func(http.ResponseWriter, *http.Request, int)) http.Han
 	}
 }
 
-var validPathChatGroup = regexp.MustCompile("^/group/(edit|update)/([0-9]+)$")
+var validPathChatGroup = regexp.MustCompile("^/group/(edit|update|delete)/([0-9]+)$")
 
 func parseURLChatGroup(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -148,11 +148,10 @@ func StartMainServer() error {
 	http.HandleFunc("/aboutus", aboutus)
 	http.HandleFunc("/chat/", parseURLChat(chat))
 	http.HandleFunc("/chat/save", chatSave)
-	http.HandleFunc("/chat/edit/", parseURLChat(chatEdit))
-	http.HandleFunc("/chat/update/", parseURLChat(chatUpdate))
-	http.HandleFunc("/chat/delete/", parseURLChat(chatDelete))
+	http.HandleFunc("/chat/delete/", parseURLChatCRUD(chatDelete))
 	http.HandleFunc("/group", chatGroup)
 	http.HandleFunc("/group/save", chatGroupSave)
+	http.HandleFunc("/group/delete/", parseURLChatGroup(chatGroupDelete))
 
 	//port := os.Getenv("PORT")
 	return http.ListenAndServe(":"+config.Config.Port, nil)

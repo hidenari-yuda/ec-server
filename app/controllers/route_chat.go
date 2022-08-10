@@ -67,16 +67,16 @@ func chatGroupSave(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
-		t, err := models.GetChat(id)
+		cg, err := models.GetChatGroup(id)
 		if err != nil {
 			log.Println(err)
 		}
-		generateHTML(w, t, "layout", "private_navbar", "group_edit")
+		generateHTML(w, cg, "layout", "private_navbar", "group_edit")
 
 	}
-}*/
+}
 
-/*func chatGroupUpdate(w http.ResponseWriter, r *http.Request, id int) {
+func chatGroupUpdate(w http.ResponseWriter, r *http.Request, id int) {
 	sess, err := session(w, r)
 	if err != nil {
 		http.Redirect(w, r, "login", 302)
@@ -89,14 +89,34 @@ func chatGroupSave(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
-		content := r.PostFormValue("content")
-		cg := &models.ChatGroup{ID: id, UserID: user.ID}
+		chat_member, chat_name := r.PostFormValue("chat_member"), r.PostFormValue("chat_name")
+		cg := &models.ChatGroup{ID: id, ChatMember: chat_member, ChatName: chat_name, UserID: user.ID}
 		if err := cg.UpdateChatGroup(); err != nil {
 			log.Println(err)
 		}
-		http.Redirect(w, r, "/chat", 302)
+		http.Redirect(w, r, "/group", 302)
 	}
 }*/
+
+func chatGroupDelete(w http.ResponseWriter, r *http.Request, id int) {
+	sess, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/login", 302)
+	} else {
+		_, err = sess.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		cg, err := models.GetChatGroup(id)
+		if err != nil {
+			log.Println(err)
+		}
+		if err := cg.DeleteChatGroup(); err != nil {
+			log.Println(err)
+		}
+		http.Redirect(w, r, "/group", 302)
+	}
+}
 
 //チャットのコンテンツの処理
 
@@ -110,7 +130,7 @@ func chat(w http.ResponseWriter, r *http.Request, id int) {
 			log.Println(err)
 		}
 
-		chatGroup, _ := user.GetChatGroup(id)
+		chatGroup, _ := user.GetChatGroupByID(id)
 		user.ChatGroup = chatGroup
 
 		chats, err := user.GetChatsByGroup(id)
@@ -145,7 +165,7 @@ func chatSave(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func chatEdit(w http.ResponseWriter, r *http.Request, id int) {
+/*func chatEdit(w http.ResponseWriter, r *http.Request, id int) {
 	sess, err := session(w, r)
 	if err != nil {
 		http.Redirect(w, r, "/login", 302)
@@ -183,7 +203,7 @@ func chatUpdate(w http.ResponseWriter, r *http.Request, id int) {
 		}
 		http.Redirect(w, r, "/chat", 302)
 	}
-}
+}*/
 
 func chatDelete(w http.ResponseWriter, r *http.Request, id int) {
 	sess, err := session(w, r)
@@ -201,7 +221,7 @@ func chatDelete(w http.ResponseWriter, r *http.Request, id int) {
 		if err := t.DeleteChat(); err != nil {
 			log.Println(err)
 		}
-		http.Redirect(w, r, "/chat", 302)
+		http.Redirect(w, r, "/group", 302)
 	}
 
 }

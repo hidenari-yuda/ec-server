@@ -2441,3 +2441,138 @@ net/http.(*conn).serve(0xc0000b77c0, {0x45722c8, 0xc00009b620})
 created by net/http.(*Server).Serve
 	/usr/local/go/src/net/http/server.go:3071 +0x4db
 2022/08/09 01:03:31 chats.go:29: near ")": syntax error
+2022/08/10 23:12:20 server.go:3197: http: panic serving 127.0.0.1:51070: template: group.html:51: function "UserID" not defined
+goroutine 20 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44867a0, 0xc000012810})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4575ae0?, 0xc0001a0000}, {0x44cdf60, 0xc0001a6140}, {0xc0000cb6f0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4575ae0, 0xc0001a0000}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x345
+net/http.HandlerFunc.ServeHTTP(0x4f2ffe8?, {0x4575ae0?, 0xc0001a0000?}, 0x4011005?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575ae0, 0xc0001a0000}, 0xc000182300)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc00009d770?}, {0x4575ae0, 0xc0001a0000}, 0xc000182300)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0000b74a0, {0x4575d68, 0xc00009d680})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/10 23:12:20 server.go:3197: http: panic serving 127.0.0.1:51072: template: group.html:51: function "UserID" not defined
+goroutine 11 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44867a0, 0xc000216380})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4575ae0?, 0xc0001a00e0}, {0x44cdf60, 0xc0001a63c0}, {0xc0000bd6f0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4575ae0, 0xc0001a00e0}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x345
+net/http.HandlerFunc.ServeHTTP(0x4f2ffe8?, {0x4575ae0?, 0xc0001a00e0?}, 0x4011005?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575ae0, 0xc0001a00e0}, 0xc000182500)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc00007f9b0?}, {0x4575ae0, 0xc0001a00e0}, 0xc000182500)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc00019c0a0, {0x4575d68, 0xc00009d680})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/10 23:12:20 server.go:3197: http: panic serving 127.0.0.1:51073: template: group.html:51: function "UserID" not defined
+goroutine 36 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44867a0, 0xc000012d10})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4575ae0?, 0xc00021a0e0}, {0x44cdf60, 0xc0002383c0}, {0xc0002796f0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4575ae0, 0xc00021a0e0}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x345
+net/http.HandlerFunc.ServeHTTP(0x4f2ffe8?, {0x4575ae0?, 0xc00021a0e0?}, 0x4011005?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575ae0, 0xc00021a0e0}, 0xc000252100)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc000206a50?}, {0x4575ae0, 0xc00021a0e0}, 0xc000252100)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0002040a0, {0x4575d68, 0xc00009d680})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/10 23:12:25 server.go:3197: http: panic serving 127.0.0.1:51076: template: group.html:51: function "UserID" not defined
+goroutine 20 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44867a0, 0xc000099600})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4575ae0?, 0xc00012a0e0}, {0x44cdf60, 0xc0000f8c80}, {0xc0000c16f0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4575ae0, 0xc00012a0e0}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x345
+net/http.HandlerFunc.ServeHTTP(0x4f2ffe8?, {0x4575ae0?, 0xc00012a0e0?}, 0x4011005?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575ae0, 0xc00012a0e0}, 0xc00010c200)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc00009b770?}, {0x4575ae0, 0xc00012a0e0}, 0xc00010c200)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0000b74a0, {0x4575d68, 0xc00009b680})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/10 23:12:25 server.go:3197: http: panic serving 127.0.0.1:51077: template: group.html:51: function "UserID" not defined
+goroutine 25 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44867a0, 0xc000099a50})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4575ae0?, 0xc00012a1c0}, {0x44cdf60, 0xc0000f8f00}, {0xc0000c36f0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4575ae0, 0xc00012a1c0}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x345
+net/http.HandlerFunc.ServeHTTP(0x4f2ffe8?, {0x4575ae0?, 0xc00012a1c0?}, 0x4011005?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575ae0, 0xc00012a1c0}, 0xc00010c400)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc0001403f0?}, {0x4575ae0, 0xc00012a1c0}, 0xc00010c400)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0000b7540, {0x4575d68, 0xc00009b680})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/10 23:12:25 server.go:3197: http: panic serving 127.0.0.1:51078: template: group.html:51: function "UserID" not defined
+goroutine 30 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44867a0, 0xc000012470})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/todo_app/app/controllers.generateHTML({0x4575ae0?, 0xc00018c000}, {0x44cdf60, 0xc000194140}, {0xc0000c16f0?, 0x3, 0x10?})
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/todo_app/app/controllers.chatGroup({0x4575ae0, 0xc00018c000}, 0x0?)
+	/Users/hidenari-yuda/Documents/todo/todo_app/app/controllers/route_chat.go:26 +0x345
+net/http.HandlerFunc.ServeHTTP(0x4f2ffe8?, {0x4575ae0?, 0xc00018c000?}, 0x4011005?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575ae0, 0xc00018c000}, 0xc00010c600)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc000141080?}, {0x4575ae0, 0xc00018c000}, 0xc00010c600)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0000b75e0, {0x4575d68, 0xc00009b680})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/10 23:31:09 chats.go:119: sql: Scan error on column index 5, name "user_name": converting NULL to string is unsupported
+2022/08/10 23:36:26 chats.go:119: sql: Scan error on column index 5, name "user_name": converting NULL to string is unsupported
+2022/08/10 23:41:31 chats.go:119: sql: Scan error on column index 5, name "user_name": converting NULL to string is unsupported
