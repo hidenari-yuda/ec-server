@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/hidenari-yuda/todo_app/app/models"
+	"github.com/hidenari-yuda/ec-server/app/models"
 )
 
 func signup(w http.ResponseWriter, r *http.Request) {

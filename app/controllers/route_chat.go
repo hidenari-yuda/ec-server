@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/hidenari-yuda/todo_app/app/models"
+	"github.com/hidenari-yuda/ec-server/app/models"
 )
 
 //チャットのグループの処理

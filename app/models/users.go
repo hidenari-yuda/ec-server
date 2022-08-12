@@ -8,15 +8,16 @@ import (
 type User struct {
 	ID         int
 	UUID       string
+	CreatedAt  time.Time
 	Name       string
+	NickName   string
 	Email      string
 	PassWord   string
-	CreatedAt  time.Time
+	IconURL    string
 	Phone      string
-	Department string
-	Position   string
-	PhotoURL   string
-	Todos      []Todo
+	Adress     string
+	Birthday   time.Time
+	Itmes      []Item
 	ChatGroup  ChatGroup
 	ChatGroups []ChatGroup
 }
@@ -32,23 +33,27 @@ type Session struct {
 func (u *User) CreateUser() (err error) {
 	cmd := `insert into users(
 		uuid,
+		created_at,
 		name,
+		nick_name,
 		email,
 		password,
-		created_at,
+		icon_url,
 		phone,
-		department,
-		position) values(?, ?, ?, ?, ?, ?, ?,?)`
+		adress,
+		birthday) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
 
 	_, err = Db.Exec(cmd,
 		createUUID(),
+		time.Now(),
 		u.Name,
+		u.NickName,
 		u.Email,
 		Encrypt(u.PassWord),
-		time.Now(),
+		u.IconURL,
 		u.Phone,
-		u.Department,
-		u.Position)
+		u.Adress,
+		u.Birthday)
 
 	if err != nil {
 		log.Fatalln(err)
@@ -60,25 +65,28 @@ func (u *User) CreateUser() (err error) {
 
 func GetUser(id int) (user User, err error) {
 	user = User{}
-	cmd := `select id, uuid, name , email, password, created_at, phone, department, position
+	cmd := `select id, uuid, created_at, name, nick_name, email, password, icon_url, phone, adress, birthday
 	from users where id =?`
 
 	err = Db.QueryRow(cmd, id).Scan(
 		&user.ID,
 		&user.UUID,
+		&user.CreatedAt,
 		&user.Name,
+		&user.NickName,
 		&user.Email,
 		&user.PassWord,
-		&user.CreatedAt,
+		&user.IconURL,
 		&user.Phone,
-		&user.Department,
-		&user.Position)
+		&user.Adress,
+		&user.Birthday,
+	)
 
 	return user, err
 }
 
 func GetUsers() (users []User, err error) {
-	cmd := `select id, uuid, name , email, password, created_at, phone, department, position
+	cmd := `select id, uuid, created_at, name, nick_name, email, password, icon_url, phone, adress, birthday
 	from users`
 	rows, err := Db.Query(cmd)
 	if err != nil {
@@ -90,13 +98,16 @@ func GetUsers() (users []User, err error) {
 		err = rows.Scan(
 			&user.ID,
 			&user.UUID,
+			&user.CreatedAt,
 			&user.Name,
+			&user.NickName,
 			&user.Email,
 			&user.PassWord,
-			&user.CreatedAt,
+			&user.IconURL,
 			&user.Phone,
-			&user.Department,
-			&user.Position)
+			&user.Adress,
+			&user.Birthday,
+		)
 		if err != nil {
 			log.Fatalln(err)
 		}
@@ -107,9 +118,53 @@ func GetUsers() (users []User, err error) {
 	return users, err
 }
 
+func (sess *Session) GetUserBySession() (user User, err error) {
+	user = User{}
+	cmd := `select id, uuid, created_at, name, nick_name, email, password, icon_url, phone, adress, birthday
+	from users where id =?`
+	err = Db.QueryRow(cmd, sess.UserID).Scan(
+		&user.ID,
+		&user.UUID,
+		&user.CreatedAt,
+		&user.Name,
+		&user.NickName,
+		&user.Email,
+		&user.PassWord,
+		&user.IconURL,
+		&user.Phone,
+		&user.Adress,
+		&user.Birthday,
+	)
+	return user, err
+}
+
+func GetUserByEmail(email string) (user User, err error) {
+	user = User{}
+	cmd := `select id, uuid, created_at, name, nick_name, email, password, icon_url, phone, adress, birthday
+	from users where email =?`
+
+	err = Db.QueryRow(cmd, email).Scan(
+		&user.ID,
+		&user.UUID,
+		&user.CreatedAt,
+		&user.Name,
+		&user.NickName,
+		&user.Email,
+		&user.PassWord,
+		&user.IconURL,
+		&user.Phone,
+		&user.Adress,
+		&user.Birthday,
+	)
+
+	return user, err
+
+}
+
 func (u *User) UpdateUser() (err error) {
-	cmd := `update users set name = ?, email = ? ,phone = ?,  department = ?, position=? where id = ?`
-	_, err = Db.Exec(cmd, u.Name, u.Email, u.Phone, u.Department, u.Position, u.ID)
+	cmd := `update users set name = ?, email = ?, password = ?, icon_url = ?, phone = ?, adress = ?, birthday =?
+	where id = ?`
+	_, err = Db.Exec(cmd, u.Name, u.Email, Encrypt(u.PassWord), u.IconURL, u.Phone, u.Adress, u.Birthday, u.ID)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -125,22 +180,6 @@ func (u *User) DeleteUser() (err error) {
 	}
 
 	return err
-}
-
-func GetUserByEmail(email string) (user User, err error) {
-	user = User{}
-	cmd := `select id,uuid,name,email,password,created_at from users where email =?`
-
-	err = Db.QueryRow(cmd, email).Scan(
-		&user.ID,
-		&user.UUID,
-		&user.Name,
-		&user.Email,
-		&user.PassWord,
-		&user.CreatedAt)
-
-	return user, err
-
 }
 
 func (u *User) CreateSession() (session Session, err error) {
@@ -196,20 +235,4 @@ func (sess *Session) DeleteSessionByUUID() (err error) {
 		log.Println(err)
 	}
 	return err
-}
-
-func (sess *Session) GetUserBySession() (user User, err error) {
-	user = User{}
-	cmd := `select id, uuid, name, email, created_at, phone, department, position
-	from users where id =?`
-	err = Db.QueryRow(cmd, sess.UserID).Scan(
-		&user.ID,
-		&user.UUID,
-		&user.Name,
-		&user.Email,
-		&user.CreatedAt,
-		&user.Phone,
-		&user.Department,
-		&user.Position)
-	return user, err
 }

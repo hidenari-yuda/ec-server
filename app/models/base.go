@@ -17,10 +17,10 @@ var err error
 
 const (
 	tableNameUser      = "users"
-	tableNameTodo      = "todos"
 	tableNameSession   = "sessions"
+	tableNameItem      = "items"
 	tableNameChatGroup = "chatgroups"
-	tableNameChat      = "chats"
+	tableNameMessage   = "messages"
 )
 
 func init() {
@@ -40,22 +40,37 @@ func init() {
 	cmdU := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		uuid STRING NOT NULL UNIQUE,
+		created_at DATETIME,
 		name STRING,
+		nick_name STRING NULL,
 		email STRING,
 		password STRING,
-		created_at DATETIME、
-		department STRING NUll,
-		position STRING NULL,
-		phone STRING NULL,)`, tableNameUser)
+		icon_url STRING NULL,
+		phone STRING NULL,
+		address STRING NULL,
+		birthday STRING NULL,
+		)`, tableNameUser)
 
 	Db.Exec(cmdU)
 
+	cmdS := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		uuid STRING NOT NULL UNIQUE,
+		email STRING,
+		user_id STRING,
+		created_at DATETIME)`, tableNameSession)
+
+	Db.Exec(cmdS)
+
 	cmdT := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
-		content TEXT,
 		user_id INTEGER,
 		created_at DATETIME,
-		deadline STRING NOT NULL)`, tableNameTodo)
+		title STRING,
+		content TEXT NULL,
+		category STRING NULL,
+		price INTEGER,
+		)`, tableNameItem)
 	Db.Exec(cmdT)
 
 	cmdCG := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
@@ -67,30 +82,20 @@ func init() {
 
 	Db.Exec(cmdCG)
 
-	cmdC := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
+	cmdM := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		content TEXT,
 		user_id STRING,
 		created_at DATETIME,
 		group_id STRING,
-		user_name STRING NULL)`, tableNameChat)
+		user_name STRING NULL)`, tableNameMessage)
 
-	Db.Exec(cmdC)
-
-	cmdS := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
-		id INTEGER PRIMARY KEY AUTOINCREMENT,
-		uuid STRING NOT NULL UNIQUE,
-		email STRING,
-		user_id STRING,
-		created_at DATETIME)`, tableNameSession)
-
-	Db.Exec(cmdS)
-
+	Db.Exec(cmdM)
 }
 
-func createUUID() (uuidobj uuid.UUID) {
-	uuidobj, _ = uuid.NewUUID()
-	return uuidobj
+func createUUID() (uuidObj uuid.UUID) {
+	uuidObj, _ = uuid.NewUUID()
+	return uuidObj
 }
 
 func Encrypt(plaintext string) (cryptext string) {

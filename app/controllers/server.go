@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"text/template"
 
-	"github.com/hidenari-yuda/todo_app/app/models"
-	"github.com/hidenari-yuda/todo_app/config"
+	"github.com/hidenari-yuda/ec-server/app/models"
+	"github.com/hidenari-yuda/ec-server/config"
 )
 
 func generateHTML(w http.ResponseWriter, data interface{}, filenames ...string) {
