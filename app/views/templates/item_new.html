@@ -9,7 +9,9 @@
     <textarea class="form-control" name="content" placeholder="商品概要を追加" rows="4"></textarea>
     </br>
     <div>
-      <input type="file" name="photo_url" placeholder="写真を追加">
+      <input type="file" name="photo_url" placeholder="写真を追加" onchange="OutputImage(this);" />
+      <div id="samplePhotoURL">
+      </div>
     </div>
   </br>
     <div>

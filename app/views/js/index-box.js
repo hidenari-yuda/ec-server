@@ -5,23 +5,61 @@ function body() {
 
     for (var i = 0; i < len; i++){
       var datesText = dates[i].innerText
-
       subDates = datesText.substring(0, 11);
 
-        dates[i].innerText = subDates
+      dates[i].innerText = subDates
+    }
+
+    //var fileReader = new FileReader();
+
+      var items_images = document.getElementsByClassName("items_images");
+      console.log(items_images);
+      
+      var lens = items_images.length;
+      console.log(lens);
+
+      
+      for (var i = 0; i < lens; i++){
+
+      var src = items_images[i].getAttribute("src");
+      console.log(src)
+
+      // var srcURL = fileReader.readAsDataURL(src[i]);
+       var srcURL = window.URL.createObjectURL(src[i]);
+
+      console.log(srcURL)
+
+    }
+
+  }
+
+function OutputImage(target){
+    var reader = new FileReader();
+
+    reader.onload = function () {
+        $samplePhotoURL = $("#samplePhotoURL");
+
+        img = new Image();
+        img.src = this.result;
+        console.log(this.result);
+        img.onload = function() {
+            $samplePhotoURL.css("width", 500);
+            $samplePhotoURL.css("height", 400);
         }
 
-}
+        $samplePhotoURL.css("background", "url(" + this.result + ") center center / contain no-repeat");
+    }
 
+    reader.readAsDataURL(target.files[0]);
+}
 
 function tododelete(){ 
-const result = confirm('削除しますか');
-
-if(result){
-  console.log('削除しました');
-}else{
-  console.log('削除をとりやめました');
-}
+    const result = confirm('削除しますか');
+    if(result){
+      console.log('削除しました');
+    }else{
+      console.log('削除をとりやめました');
+    }
 }
 
 

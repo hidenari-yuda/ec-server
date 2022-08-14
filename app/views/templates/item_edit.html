@@ -10,8 +10,9 @@
     </br>
     <div>
       <img src="{{.PhotoURL}}" alt="{{.Title}}" class="img">
-      <input type="file" name="photo_url" placeholder="写真を追加">
-    </div>
+      <input type="file" name="photo_url" onchange="OutputImage(this);" placeholder="写真を追加">
+    <div id="samplePhotoURL"></div>
+  </div>
   </br>
     <div>
       <select name="category">
