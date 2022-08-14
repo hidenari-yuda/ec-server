@@ -33,7 +33,7 @@ func (u *User) CreateItem(photo_url string, title string, content string, catego
 	return err
 }
 
-func Getitem(id int) (item Item, err error) {
+func GetItem(id int) (item Item, err error) {
 	cmd := `select id, user_id, created_at, photo_url, title, content, category, price
 	from items where id =?`
 	item = Item{}
@@ -89,7 +89,15 @@ func GetItems() (items []Item, err error) {
 
 func (u *User) GetItemsByUser() (items []Item, err error) {
 
-	cmd := `select id, content ,user_id, created_at, deadline from itemswhere user_id =?`
+	cmd := `select
+	id, 
+	user_id,
+	created_at,
+	photo_url,
+	title,
+	content,
+	category,
+	price  from items where user_id =?`
 
 	rows, err := Db.Query(cmd, u.ID)
 	if err != nil {
@@ -98,7 +106,6 @@ func (u *User) GetItemsByUser() (items []Item, err error) {
 	for rows.Next() {
 		var item Item
 		err = rows.Scan(
-			&item.ID,
 			&item.ID,
 			&item.UserID,
 			&item.CreatedAt,
@@ -164,7 +171,7 @@ func (u *User) GetItemsBySort(sortType string) (items []Item, err error) {
 	return items, err
 }
 
-func (i *Item) UpdateTodo() error {
+func (i *Item) UpdateItem() error {
 	cmd := `update items set photo_url = ?, title = ?, content = ?, category = ?, price = ? where id = ?`
 
 	_, err = Db.Exec(cmd, i.PhotoURL, i.Title, i.Content, i.Category, i.Price, i.ID)
@@ -173,7 +180,7 @@ func (i *Item) UpdateTodo() error {
 
 }
 
-func (i *Item) DeleteTodo() error {
+func (i *Item) DeleteItem() error {
 	cmd := `delete from items where id =?`
 
 	_, err = Db.Exec(cmd, i.ID)

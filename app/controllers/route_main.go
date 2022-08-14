@@ -1,8 +1,10 @@
 package controllers
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/hidenari-yuda/ec-server/app/models"
 )
@@ -12,7 +14,7 @@ func top(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		generateHTML(w, nil, "layout", "public_navbar", "top")
 	} else {
-		http.Redirect(w, r, "/todos", 302)
+		http.Redirect(w, r, "/items", 302)
 	}
 }
 
@@ -25,13 +27,13 @@ func index(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
-		todos, _ := user.GetTodosByUser()
-		user.Todos = todos
+		items, _ := user.GetItemsByUser()
+		user.Items = items
 		generateHTML(w, user, "layout", "private_navbar", "index")
 	}
 }
 
-func todoSort(w http.ResponseWriter, r *http.Request) {
+func itemSort(w http.ResponseWriter, r *http.Request) {
 	sess, err := session(w, r)
 	if err != nil {
 		http.Redirect(w, r, "/", 302)
@@ -41,23 +43,23 @@ func todoSort(w http.ResponseWriter, r *http.Request) {
 			log.Println(err)
 		}
 		r.ParseForm()
-		todos, _ := user.GetTodosBySort(r.PostFormValue("sort"))
-		user.Todos = todos
+		items, _ := user.GetItemsBySort(r.PostFormValue("sort"))
+		user.Items = items
 		generateHTML(w, user, "layout", "private_navbar", "index")
 	}
 }
 
-func todoNew(w http.ResponseWriter, r *http.Request) {
+func itemNew(w http.ResponseWriter, r *http.Request) {
 	_, err := session(w, r)
 	if err != nil {
 		http.Redirect(w, r, "/login", 302)
 	} else {
-		generateHTML(w, nil, "layout", "private_navbar", "todo_new")
+		generateHTML(w, nil, "layout", "private_navbar", "item_new")
 	}
 
 }
 
-func todoSave(w http.ResponseWriter, r *http.Request) {
+func itemSave(w http.ResponseWriter, r *http.Request) {
 	sess, err := session(w, r)
 	if err != nil {
 		http.Redirect(w, r, "/login", 302)
@@ -70,14 +72,16 @@ func todoSave(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
-		content, deadline := r.PostFormValue("content"), r.PostFormValue("deadline")
-		if err := user.CreateTodo(content, deadline); err != nil {
+		photo_url, title, content, category, price := r.PostFormValue("photo_url"), r.PostFormValue("title"), r.PostFormValue("content"), r.PostFormValue("category"), r.PostFormValue("price")
+		priceInt, _ := strconv.Atoi(price)
+		fmt.Println(photo_url, title, content, category, price)
+		if err := user.CreateItem(photo_url, title, content, category, priceInt); err != nil {
 			log.Println(err)
 		}
-		http.Redirect(w, r, "/todos", 302)
+		http.Redirect(w, r, "/items", 302)
 	}
 }
-func todoEdit(w http.ResponseWriter, r *http.Request, id int) {
+func itemEdit(w http.ResponseWriter, r *http.Request, id int) {
 	sess, err := session(w, r)
 	if err != nil {
 		http.Redirect(w, r, "/login", 302)
@@ -86,16 +90,15 @@ func todoEdit(w http.ResponseWriter, r *http.Request, id int) {
 		if err != nil {
 			log.Println(err)
 		}
-		t, err := models.GetTodo(id)
+		t, err := models.GetItem(id)
 		if err != nil {
 			log.Println(err)
 		}
-		generateHTML(w, t, "layout", "private_navbar", "todo_edit")
-
+		generateHTML(w, t, "layout", "private_navbar", "item_edit")
 	}
 }
 
-func todoUpdate(w http.ResponseWriter, r *http.Request, id int) {
+func itemUpdate(w http.ResponseWriter, r *http.Request, id int) {
 	sess, err := session(w, r)
 	if err != nil {
 		http.Redirect(w, r, "login", 302)
@@ -104,20 +107,21 @@ func todoUpdate(w http.ResponseWriter, r *http.Request, id int) {
 		if err != nil {
 			log.Println(err)
 		}
-		user, err := sess.GetUserBySession()
+		_, err = sess.GetUserBySession()
 		if err != nil {
 			log.Println(err)
 		}
-		content, deadline := r.PostFormValue("content"), r.PostFormValue("deadline")
-		t := &models.Todo{ID: id, Content: content, UserID: user.ID, Deadline: deadline}
-		if err := t.UpdateTodo(); err != nil {
+		photo_url, title, content, category, price := r.PostFormValue("photo_url"), r.PostFormValue("title"), r.PostFormValue("content"), r.PostFormValue("category"), r.PostFormValue("price")
+		priceInt, _ := strconv.Atoi(price)
+		i := &models.Item{ID: id, PhotoURL: photo_url, Title: title, Content: content, Category: category, Price: priceInt}
+		if err := i.UpdateItem(); err != nil {
 			log.Println(err)
 		}
-		http.Redirect(w, r, "/todos", 302)
+		http.Redirect(w, r, "/items", 302)
 	}
 }
 
-func todoDelete(w http.ResponseWriter, r *http.Request, id int) {
+func itemDelete(w http.ResponseWriter, r *http.Request, id int) {
 	sess, err := session(w, r)
 	if err != nil {
 		http.Redirect(w, r, "/login", 302)
@@ -126,14 +130,14 @@ func todoDelete(w http.ResponseWriter, r *http.Request, id int) {
 		if err != nil {
 			log.Println(err)
 		}
-		t, err := models.GetTodo(id)
+		i, err := models.GetItem(id)
 		if err != nil {
 			log.Println(err)
 		}
-		if err := t.DeleteTodo(); err != nil {
+		if err := i.DeleteItem(); err != nil {
 			log.Println(err)
 		}
-		http.Redirect(w, r, "/todos", 302)
+		http.Redirect(w, r, "/items", 302)
 	}
 
 }

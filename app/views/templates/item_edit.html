@@ -1,0 +1,36 @@
+{{define "content"}}
+<form role="form" action="/items/update" method="post">
+</br>
+    <h1>商品を編集する</h1>
+  </br>
+    <div class="form-group">
+    <textarea class="form-control" name="title" placeholder="商品タイトルを編集" rows="1">{{.Title}}</textarea>
+    </br>
+    <textarea class="form-control" name="content" placeholder="商品概要を編集" rows="4">{{.Content}]</textarea>
+    </br>
+    <div>
+      <img src="{{.PhotoURL}}" alt="{{.Title}}" class="img">
+      <input type="file" name="photo_url" placeholder="写真を追加">
+    </div>
+  </br>
+    <div>
+      <select name="category">
+        <option hidden>カテゴリーを指定</option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+      </select>
+    </div>
+  </br>
+  <div>
+    <input type="number" min="100" step="10" name="price" placeholder="商品価格を追加">
+  </div>
+  </br>
+  <div class="todolist">
+    <button class="btn btn-lg btn-primary pull-right navbar-btn" type="submit">作成</button>
+  </div>
+    </div>
+</form> 
+{{end}}

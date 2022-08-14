@@ -32,7 +32,7 @@ func session(w http.ResponseWriter, r *http.Request) (sess models.Session, err e
 	return sess, err
 }
 
-var validPath = regexp.MustCompile("^/todos/(edit|update|delete)/([0-9]+)$")
+var validPath = regexp.MustCompile("^/items/(edit|update|delete)/([0-9]+)$")
 
 func parseURL(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -136,14 +136,14 @@ func StartMainServer() error {
 	http.HandleFunc("/profile", profile)
 	http.HandleFunc("/profile/edit/", parseURLProfile(profileEdit))
 	http.HandleFunc("/profile/update/", parseURLProfile(profileUpdate))
-	http.HandleFunc("/todos", index)
+	http.HandleFunc("/items", index)
 	http.HandleFunc("/logout", logout)
-	http.HandleFunc("/todos/new", todoNew)
-	http.HandleFunc("/todos/save", todoSave)
-	http.HandleFunc("/todos/edit/", parseURL(todoEdit))
-	http.HandleFunc("/todos/update/", parseURL(todoUpdate))
-	http.HandleFunc("/todos/delete/", parseURL(todoDelete))
-	http.HandleFunc("/sort", todoSort)
+	http.HandleFunc("/items/new", itemNew)
+	http.HandleFunc("/items/save", itemSave)
+	http.HandleFunc("/items/edit/", parseURL(itemEdit))
+	http.HandleFunc("/items/update/", parseURL(itemUpdate))
+	http.HandleFunc("/items/delete/", parseURL(itemDelete))
+	http.HandleFunc("/sort", itemSort)
 	http.HandleFunc("/contact", contact)
 	http.HandleFunc("/aboutus", aboutus)
 	http.HandleFunc("/chat/", parseURLChat(chat))

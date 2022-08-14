@@ -15,9 +15,9 @@ type User struct {
 	PassWord   string
 	IconURL    string
 	Phone      string
-	Adress     string
-	Birthday   time.Time
-	Itmes      []Item
+	Address    string
+	Birthday   string
+	Items      []Item
 	ChatGroup  ChatGroup
 	ChatGroups []ChatGroup
 }
@@ -40,8 +40,8 @@ func (u *User) CreateUser() (err error) {
 		password,
 		icon_url,
 		phone,
-		adress,
-		birthday) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+		address,
+		birthday) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
 
 	_, err = Db.Exec(cmd,
 		createUUID(),
@@ -52,7 +52,7 @@ func (u *User) CreateUser() (err error) {
 		Encrypt(u.PassWord),
 		u.IconURL,
 		u.Phone,
-		u.Adress,
+		u.Address,
 		u.Birthday)
 
 	if err != nil {
@@ -65,7 +65,7 @@ func (u *User) CreateUser() (err error) {
 
 func GetUser(id int) (user User, err error) {
 	user = User{}
-	cmd := `select id, uuid, created_at, name, nick_name, email, password, icon_url, phone, adress, birthday
+	cmd := `select id, uuid, created_at, name, nick_name, email, password, icon_url, phone, address, birthday
 	from users where id =?`
 
 	err = Db.QueryRow(cmd, id).Scan(
@@ -78,7 +78,7 @@ func GetUser(id int) (user User, err error) {
 		&user.PassWord,
 		&user.IconURL,
 		&user.Phone,
-		&user.Adress,
+		&user.Address,
 		&user.Birthday,
 	)
 
@@ -86,7 +86,7 @@ func GetUser(id int) (user User, err error) {
 }
 
 func GetUsers() (users []User, err error) {
-	cmd := `select id, uuid, created_at, name, nick_name, email, password, icon_url, phone, adress, birthday
+	cmd := `select id, uuid, created_at, name, nick_name, email, password, icon_url, phone, address, birthday
 	from users`
 	rows, err := Db.Query(cmd)
 	if err != nil {
@@ -105,7 +105,7 @@ func GetUsers() (users []User, err error) {
 			&user.PassWord,
 			&user.IconURL,
 			&user.Phone,
-			&user.Adress,
+			&user.Address,
 			&user.Birthday,
 		)
 		if err != nil {
@@ -120,7 +120,7 @@ func GetUsers() (users []User, err error) {
 
 func (sess *Session) GetUserBySession() (user User, err error) {
 	user = User{}
-	cmd := `select id, uuid, created_at, name, nick_name, email, password, icon_url, phone, adress, birthday
+	cmd := `select id, uuid, created_at, name, nick_name, email, password, icon_url, phone, address, birthday
 	from users where id =?`
 	err = Db.QueryRow(cmd, sess.UserID).Scan(
 		&user.ID,
@@ -132,7 +132,7 @@ func (sess *Session) GetUserBySession() (user User, err error) {
 		&user.PassWord,
 		&user.IconURL,
 		&user.Phone,
-		&user.Adress,
+		&user.Address,
 		&user.Birthday,
 	)
 	return user, err
@@ -140,7 +140,7 @@ func (sess *Session) GetUserBySession() (user User, err error) {
 
 func GetUserByEmail(email string) (user User, err error) {
 	user = User{}
-	cmd := `select id, uuid, created_at, name, nick_name, email, password, icon_url, phone, adress, birthday
+	cmd := `select id, uuid, created_at, name, nick_name, email, password, icon_url, phone, address, birthday
 	from users where email =?`
 
 	err = Db.QueryRow(cmd, email).Scan(
@@ -153,7 +153,7 @@ func GetUserByEmail(email string) (user User, err error) {
 		&user.PassWord,
 		&user.IconURL,
 		&user.Phone,
-		&user.Adress,
+		&user.Address,
 		&user.Birthday,
 	)
 
@@ -162,9 +162,9 @@ func GetUserByEmail(email string) (user User, err error) {
 }
 
 func (u *User) UpdateUser() (err error) {
-	cmd := `update users set name = ?, email = ?, password = ?, icon_url = ?, phone = ?, adress = ?, birthday =?
+	cmd := `update users set name = ?, email = ?, password = ?, icon_url = ?, phone = ?, address = ?, birthday =?
 	where id = ?`
-	_, err = Db.Exec(cmd, u.Name, u.Email, Encrypt(u.PassWord), u.IconURL, u.Phone, u.Adress, u.Birthday, u.ID)
+	_, err = Db.Exec(cmd, u.Name, u.Email, Encrypt(u.PassWord), u.IconURL, u.Phone, u.Address, u.Birthday, u.ID)
 	if err != nil {
 		log.Fatalln(err)
 	}

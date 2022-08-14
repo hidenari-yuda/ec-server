@@ -1,0 +1,35 @@
+{{define "content"}}
+<form role="form" action="/items/save" method="post">
+</br>
+    <h1>商品を登録する</h1>
+  </br>
+    <div class="form-group">
+    <textarea class="form-control" name="title" placeholder="商品タイトルを追加" rows="1"></textarea>
+    </br>
+    <textarea class="form-control" name="content" placeholder="商品概要を追加" rows="4"></textarea>
+    </br>
+    <div>
+      <input type="file" name="photo_url" placeholder="写真を追加">
+    </div>
+  </br>
+    <div>
+      <select name="category" placeholder="">
+        <option hidden>カテゴリーを指定</option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+      </select>
+    </div>
+  </br>
+  <div>
+    <input type="number" min="100" step="10" name="price" placeholder="商品価格を追加">
+  </div>
+  </br>
+  <div class="todolist">
+    <button class="btn btn-lg btn-primary pull-right navbar-btn" type="submit">作成</button>
+  </div>
+    </div>
+</form> 
+{{end}}

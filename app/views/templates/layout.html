@@ -4,7 +4,7 @@
 <head>
     <meta charset ="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>todo_app</title>
+    <title>ec-app</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/chat.css">
     <link rel="stylesheet" href="/static/css/form.css">
@@ -21,16 +21,7 @@
     <div class="container">
         {{template "content" .}}
     </div>
-<nav class="navbar">
-            <div class="container">
-                    <div align="left">
-                        <a href="/todos"><button type="button" class="btn navbar-btn navbar-left">ホーム</button></a>
-                    <a href="aboutus"><button type="button" class="btn navbar-btn navbar-left">このサイトについて</button></a>
-                    <a href="/contact"><button type="button" class="btn navbar-btn navbar-left">お問い合せ</button></a>
-                    </div>
-                    <p>Copyright © 2022. All rights reserved.</p>
-            </div>
- </nav>
+        {{template "footer"}}
 </body>
 </html>
 {{end}}

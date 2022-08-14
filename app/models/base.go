@@ -48,7 +48,7 @@ func init() {
 		icon_url STRING NULL,
 		phone STRING NULL,
 		address STRING NULL,
-		birthday STRING NULL,
+		birthday STRING NULL
 		)`, tableNameUser)
 
 	Db.Exec(cmdU)
@@ -69,7 +69,7 @@ func init() {
 		title STRING,
 		content TEXT NULL,
 		category STRING NULL,
-		price INTEGER,
+		price INTEGER
 		)`, tableNameItem)
 	Db.Exec(cmdT)
 

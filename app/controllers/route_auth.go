@@ -14,7 +14,7 @@ func signup(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			generateHTML(w, nil, "layout", "public_navbar", "signup")
 		} else {
-			http.Redirect(w, r, "/todos", 302)
+			http.Redirect(w, r, "/items", 302)
 		}
 	} else if r.Method == "POST" {
 		err := r.ParseForm()
@@ -22,7 +22,6 @@ func signup(w http.ResponseWriter, r *http.Request) {
 			log.Fatalln(err)
 		}
 		user := models.User{
-			Name:     r.PostFormValue("name"),
 			Email:    r.PostFormValue("email"),
 			PassWord: r.PostFormValue("password"),
 		}
@@ -39,7 +38,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		generateHTML(w, nil, "layout", "public_navbar", "login")
 	} else {
-		http.Redirect(w, r, "/todos", 302)
+		http.Redirect(w, r, "/items", 302)
 	}
 }
 
@@ -125,8 +124,8 @@ func profileUpdate(w http.ResponseWriter, r *http.Request, id int) {
 		if err != nil {
 			log.Println(err)
 		}
-		name, email, phone, department, position := r.PostFormValue("name"), r.PostFormValue("email"), r.PostFormValue("phone"), r.PostFormValue("department"), r.PostFormValue("position")
-		u := &models.User{ID: id, Name: name, Email: email, Phone: phone, Department: department, Position: position}
+		name, nick_name, email, icon_url, phone, address, birthday := r.PostFormValue("name"), r.PostFormValue("nick_name"), r.PostFormValue("email"), r.PostFormValue("icon_url"), r.PostFormValue("phone"), r.PostFormValue("address"), r.PostFormValue("birthday")
+		u := &models.User{ID: id, Name: name, NickName: nick_name, Email: email, IconURL: icon_url, Phone: phone, Address: address, Birthday: birthday}
 		if err := u.UpdateUser(); err != nil {
 			log.Println(err)
 		} else {
