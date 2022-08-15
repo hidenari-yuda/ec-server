@@ -1,5 +1,6 @@
 {{define "content"}}
-<form role="form" action="/items/save" method="post">
+<script type="text/javascript" src="/static/js/getImage.js"></script>
+<form role="form" action="/items/save" method="post" onsubmit="CreateItem()">
 </br>
     <h1>商品を登録する</h1>
   </br>
@@ -9,7 +10,7 @@
     <textarea class="form-control" name="content" placeholder="商品概要を追加" rows="4"></textarea>
     </br>
     <div>
-      <input type="file" name="photo_url" placeholder="写真を追加" onchange="OutputImage(this);" />
+      <input type="file" id="photo_url" name="photo_url" placeholder="写真を追加" onchange="OutputImage(this);" />
       <div id="samplePhotoURL">
       </div>
     </div>

@@ -1,8 +1,9 @@
 {{define "content"}}
 <div class="todolist">
 <h1>商品一覧</h1>
-<form role="form" action="/sort" method="post">
-    <div class="select select_child">
+<div>
+    <form role="form" action="/sort" method="post">
+        <div class="select select_child"  align="center">
             <select name="sort" required>
                 <option hidden>条件を指定</option>
                 <option value="createdat_asc">作成日が新しい順</option>
@@ -10,8 +11,9 @@
                 <option id="deadline_asc" value="deadline_asc">期限が近い順</option>
             </select>
         </div>
-    <button type="submit" class="btn navbar-btn home_nav">検索</button>
-</form>
+        <button type="submit" class="btn navbar-btn home_nav">検索</button>
+    </form>
+</div>
 <div class="imges-wrapper">
     {{range .Items}}
     <div class="img">
