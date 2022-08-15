@@ -1,5 +1,3 @@
-import { uploadBytes } from "firebase/storage";
-
 function body() {
     var dates = document.getElementsByName("created");
 
@@ -14,7 +12,7 @@ function body() {
 
     //var fileReader = new FileReader();
 
-      var items_images = document.getElementsByClassName("items_images");
+    /*var items_images = document.getElementsByClassName("items_images");
       console.log(items_images);
       
       var lens = items_images.length;
@@ -31,7 +29,7 @@ function body() {
 
       console.log(srcURL)
 
-    }
+    }*/
 
   }
 
@@ -43,7 +41,6 @@ function body() {
 
         img = new Image();
         img.src = this.result;
-        console.log(this.result);
         img.onload = function() {
             $samplePhotoURL.css("width", 500);
             $samplePhotoURL.css("height", 400);
@@ -55,15 +52,6 @@ function body() {
     reader.readAsDataURL(target.files[0]);
 }
 
-function CreateItem(){
-
-  var Inputimg = document.querySelector("#photo_url");
-  var src = Inputimg.getAttribute("src");
-
-  
-  uploadBytes(src, file).then((snapshot) => {
-      console.log('Uploaded a blob or file!');
-  });
 
 function tododelete(){ 
     const result = confirm('削除しますか');
@@ -73,7 +61,7 @@ function tododelete(){
       console.log('削除をとりやめました');
     }
 }
-}
+
 
 
 /*var datesText = new Date(dates[i].innerText)

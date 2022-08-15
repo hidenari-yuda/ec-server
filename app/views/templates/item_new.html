@@ -1,5 +1,5 @@
 {{define "content"}}
-<script type="text/javascript" src="/static/js/getImage.js"></script>
+<script type="text/javascript" src="/static/js/firebase.js"></script>
 <form role="form" action="/items/save" method="post" onsubmit="CreateItem()">
 </br>
     <h1>商品を登録する</h1>
@@ -16,13 +16,12 @@
     </div>
   </br>
     <div>
-      <select name="category" placeholder="">
-        <option hidden>カテゴリーを指定</option>
-        <option value=""></option>
-        <option value=""></option>
-        <option value=""></option>
-        <option value=""></option>
-        <option value=""></option>
+      <select name="category" placeholder="カテゴリーを指定">
+        <option value="0"></option>
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
       </select>
     </div>
   </br>
@@ -33,6 +32,44 @@
   <div class="todolist">
     <button class="btn btn-lg btn-primary pull-right navbar-btn" type="submit">作成</button>
   </div>
-    </div>
+  <script type="module">
+    //Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-app.js";
+    import { getStorage }  from "https://www.gstatic.com/firebasejs/9.9.2/firebase-storage.js";
+    
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC08wZzoDB-TojuqkdjM4S3h-TtGNLf7gI",
+      authDomain: "prac-ec.firebaseapp.com",
+      projectId: "prac-ec",
+      storageBucket: "prac-ec.appspot.com",
+      messagingSenderId: "216459314207",
+      appId: "1:216459314207:web:55ad381c9131426971012a"
+    };
+    
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    // Initialize Cloud Storage and get a reference to the service
+    
+    const storage = getStorage(app);
+
+    function CreateItem(){
+      
+      var files = document.querySelector("#photo_url").files;
+      console.log(files);
+      
+      var image = files[0];
+      console.log(image);
+      
+      var ref = storage.ref().child(image.name);
+      console.log(ref);
+  
+      ref.put(image).then(function(snapshot) {
+        alert('アップロードしました');
+        console.log(snapshot);
+      });
+    }  
+  </script>
+  </div>
 </form> 
 {{end}}
