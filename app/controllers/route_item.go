@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"strconv"
@@ -14,7 +13,7 @@ func top(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		generateHTML(w, nil, "layout", "public_navbar", "top")
 	} else {
-		http.Redirect(w, r, "/items", 302)
+		http.Redirect(w, r, "/onsale", 302)
 	}
 }
 
@@ -27,7 +26,7 @@ func onsale(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
-		items, _ := models.GetAllItems()
+		items, _ := user.GetItemsByOthers()
 		user.Items = items
 		generateHTML(w, user, "layout", "private_navbar", "onsale")
 	}
@@ -43,10 +42,25 @@ func onsaleSelect(w http.ResponseWriter, r *http.Request, id int) {
 			log.Println(err)
 		}
 		i, _ := models.GetItem(id)
-		fmt.Println(i)
 		//saleUser, _ := models.GetUser(item.UserID)
 		//user.NickName = saleUser.NickName
 		generateHTML(w, i, "layout", "private_navbar", "onsale_item")
+	}
+}
+
+func purchase(w http.ResponseWriter, r *http.Request, id int) {
+	sess, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/", 302)
+	} else {
+		_, err := sess.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		i, _ := models.GetItem(id)
+		//saleUser, _ := models.GetUser(item.UserID)
+		//user.NickName = saleUser.NickName
+		generateHTML(w, i, "layout", "private_navbar", "purchase")
 	}
 }
 

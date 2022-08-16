@@ -15,11 +15,11 @@
             <td>{{.ID}}</td>
             <td>
                 <a href="/chat/{{.ID}}">
-                    <button type="button" class ="btn navbar-btn navbar-right">{{.ChatName}}</button>
+                    <button type="button" class ="btn main-btn navbar-right">{{.ChatName}}</button>
                 </a>
             </td>
             <td onload="tododelete();">
-                <a href="/group/delete/{{.ID}}" onclick="return confirm('削除しますか')"><button type="button" class ="btn navbar-btn navbar-right">削除</button></a>
+                <a href="/group/delete/{{.ID}}" onclick="return confirm('削除しますか')"><button type="button" class ="btn main-btn navbar-right">削除</button></a>
             </td>
         </tr>
         {{ end }}
@@ -35,7 +35,7 @@
       <textarea class="form-control" name="chat_name" id="chat_name" placeholder="チャット名" rows="1"></textarea>
 </br>
       <div class="todolist">
-      <button class="btn btn-lg btn-primary pull-right navbar-btn" type="submit">作成</button>
+      <button class="btn btn-lg btn-primary pull-right main-btn" type="submit">作成</button>
       </div>
     </div>
 </form> 

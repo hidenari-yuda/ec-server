@@ -57,15 +57,16 @@ func GetItem(id int) (item Item, err error) {
 	return item, err
 }
 
-func GetAllItems() (items []Item, err error) {
+func (u *User) GetItemsByOthers() (items []Item, err error) {
 	cmd := `select 
 	id, 
 	user_id,
 	created_at,
 	photo_url,
 	title,
-	price from items`
-	rows, err := Db.Query(cmd)
+	price from items where user_id != ?`
+
+	rows, err := Db.Query(cmd, u.ID)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -141,6 +142,35 @@ func (u *User) GetItemsBySort(sortType string) (items []Item, err error) {
 	}
 
 	rows, err := Db.Query(cmd, u.ID)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	for rows.Next() {
+		var item Item
+		err = rows.Scan(
+			&item.ID,
+			&item.UserID,
+			&item.CreatedAt,
+			&item.PhotoURL,
+			&item.Title,
+			&item.Price,
+		)
+
+		if err != nil {
+			log.Fatalln(err)
+		}
+		items = append(items, item)
+	}
+	rows.Close()
+
+	return items, err
+}
+
+func GetItemsByFavorites(id int) (items []Item, err error) {
+	cmd := `select id, user_id, created_at, photo_url, title, price from items
+	where id in (select item_id from items where id =?)`
+	rows, err := Db.Query(cmd, id)
 	if err != nil {
 		log.Fatalln(err)
 	}

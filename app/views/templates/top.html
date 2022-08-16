@@ -1,3 +1,15 @@
 {{define "content"}}
-    <h1>タスク管理</h1>
- {{end}}
+<div class="todolist">
+    <h1>商品一覧</h1>
+    <form role="form" action="/sort" method="post">
+        <div class="select select_child">
+            <select name="sort" required>
+                <option hidden>条件を指定</option>
+                <option value="createdat_asc">作成日が新しい順</option>
+                <option value="createdat_desc">作成日が古い順</option>
+                <option id="deadline_asc" value="deadline_asc">期限が近い順</option>
+            </select>
+        </div>
+        <button type="submit" class="btn navbar-btn home_nav">検索</button>
+    </form>
+{{end}}

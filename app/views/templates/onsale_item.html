@@ -5,30 +5,26 @@
     <table class="table table-striped table-bordered" style="width: 250px">
              <tr>
                     <td nowrap>値段</td>
-                    <td nowrap>
-                        <div name="created">{{.Price}}</div>
-                    </td>
+                    <td nowrap>{{.Price}}</td>
                 </tr>
                 <tr>
                     <td nowrap>カテゴリー</td>
                     <td nowrap>{{.CategoryFirst}}・{{.CategorySecond}}・{{.CategoryThird}}</td>
                 </tr>
                 <tr>
-                    <td nowrap>商品について</td>
+                    <td nowrap>商品概要</td>
                     <td>{{.Content}}</td>
                 </tr>
                 <tr>
                     <td nowrap>
-                            <div class="todolist">
-                            <a href="/onsale/favorites/{{.ID}}">
+                            <a href="/favorites/{{.ID}}">
                                 <button type="button" class ="btn main-btn navbar-right">お気に入りに登録</button>
                             </a>
                         </td>
                         <td nowrap>
-                            <a href="/onsale/purcase/{{.ID}}">
+                            <a href="/purchase/{{.ID}}">
                                 <button type="button" class="btn main-btn">商品を購入する</button>
                             </a>
-                        </div>
                         </td>
                 </tr>
     </table>

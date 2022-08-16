@@ -16,7 +16,7 @@ type Chat struct {
 }
 
 func (u *User) CreateChat(content string, group_id int) (err error) {
-	cmd := `insert into chats (
+	cmd := `insert into messages (
 		content,
 		user_id,
 		created_at,
@@ -32,7 +32,7 @@ func (u *User) CreateChat(content string, group_id int) (err error) {
 
 func GetChat(id int) (chat Chat, err error) {
 	cmd := `select id , content ,user_id, created_at, group_id, user_name
-	from chats where id =?`
+	from messages where id =?`
 	chat = Chat{}
 
 	err = Db.QueryRow(cmd, id).Scan(
@@ -46,7 +46,7 @@ func GetChat(id int) (chat Chat, err error) {
 }
 
 func GetChats() (chats []Chat, err error) {
-	cmd := `select id , content ,user_id, created_at, group_id, user_name from chats`
+	cmd := `select id , content ,user_id, created_at, group_id, user_name from messages`
 	rows, err := Db.Query(cmd)
 	if err != nil {
 		log.Fatalln(err)
@@ -73,7 +73,7 @@ func GetChats() (chats []Chat, err error) {
 
 func (u *User) GetChatsByUser() (chats []Chat, err error) {
 
-	cmd := `select id, content ,user_id, created_at, group_id, user_name where user_id =?`
+	cmd := `select id, content ,user_id, created_at, group_id, user_name from messages where user_id =?`
 
 	rows, err := Db.Query(cmd, u.ID)
 	if err != nil {
@@ -100,7 +100,7 @@ func (u *User) GetChatsByUser() (chats []Chat, err error) {
 
 func (u *User) GetChatsByGroup(group_id int) (chats []Chat, err error) {
 
-	cmd := `select id, content ,user_id, created_at, group_id, user_name from chats where group_id =?`
+	cmd := `select id, content ,user_id, created_at, group_id, user_name from messages where group_id =?`
 
 	rows, err := Db.Query(cmd, group_id)
 	if err != nil {
@@ -126,7 +126,7 @@ func (u *User) GetChatsByGroup(group_id int) (chats []Chat, err error) {
 }
 
 func (c *Chat) UpdateChat() error {
-	cmd := `update chats set content = ?, user_id =?, where id = ?`
+	cmd := `update messages set content = ?, user_id =?, where id = ?`
 
 	_, err = Db.Exec(cmd, c.Content, c.UserID, c.ID)
 
@@ -135,7 +135,7 @@ func (c *Chat) UpdateChat() error {
 }
 
 func (c *Chat) DeleteChat() error {
-	cmd := `delete from chats where id =?`
+	cmd := `delete from messages where id =?`
 
 	_, err = Db.Exec(cmd, c.ID)
 

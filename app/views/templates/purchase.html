@@ -1,0 +1,18 @@
+{{define "content"}}
+<h1>購入を確定する</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{.Title}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>{{.Content}}</p>
+        </div>
+    </div>
+    <form role="form" action="/group/save" method="post">
+        <input type="hidden" name="chat_member" value="{{.UserID}}" />
+        <input type="hidden" name="chat_name" value="{{.Title}}" />
+        <button type="submit" class="btn main-btn">購入確定</button>
+    </form>
+{{end}}
