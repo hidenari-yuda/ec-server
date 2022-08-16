@@ -5,7 +5,7 @@
 <div>
   <div class="todolist">
   <input type="file" id="inputFile" placeholder="写真を追加" onchange="OutputImage(this);" />
-    <button type="button" class="btn btn-primary navbar-btn" id="uploadFile">写真を登録する</button>
+    <button type="button" class="btn btn-primary main-btn" id="uploadFile">写真を登録する</button>
   </div>
   <div id="samplePhotoURL">
   </div>
@@ -52,12 +52,31 @@
     <textarea class="form-control" name="content" placeholder="商品概要を追加" rows="4"></textarea>
     </br>
     <div>
-      <select name="category" placeholder="カテゴリーを指定">
-        <option value="0"></option>
-        <option value="1"></option>
-        <option value="2"></option>
-        <option value="3"></option>
-        <option value="4"></option>
+      <select name="category_first">
+          <option hidden>カテゴリー1を指定</option>
+          <option value="0"></option>
+          <option value="1"></option>
+          <option value="2"></option>
+          <option value="3"></option>
+          <option value="4"></option>
+        </select>
+        <select name="category_second">
+          <option hidden>カテゴリー2を指定</option>
+          <option value="0"></option>
+          <option value="1"></option>
+          <option value="2"></option>
+          <option value="3"></option>
+          <option value="4"></option>
+        </select>
+        <select name="category_third">
+          <option hidden>カテゴリー3を指定</option>
+          <option value="0"></option>
+          <option value="1"></option>
+          <option value="2"></option>
+          <option value="3"></option>
+          <option value="4"></option>
+        </select>
+      </div>
         </select>
     </div>
   </br>
@@ -67,7 +86,7 @@
   </br>
   <input type="hidden" name="photo_url" id="myimg" value="">
   <div class="todolist">
-    <button class="btn btn-lg btn-primary pull-right navbar-btn" type="submit">作成</button>
+    <button class="btn btn-lg btn-primary pull-right main-btn" type="submit">作成</button>
   </div>
   </div>
 </form> 

@@ -6,7 +6,7 @@
     <div class="form-group">
     <textarea class="form-control" name="title" placeholder="商品タイトルを編集" rows="1">{{.Title}}</textarea>
     </br>
-    <textarea class="form-control" name="content" placeholder="商品概要を編集" rows="4">{{.Content}]</textarea>
+    <textarea class="form-control" name="content" placeholder="商品概要を編集" rows="4">{{.Content}}</textarea>
     </br>
     <div>
       <img src="{{.PhotoURL}}" alt="{{.Title}}" class="img">
@@ -15,13 +15,29 @@
   </div>
   </br>
     <div>
-      <select name="category">
+      <select name="category_first">
         <option hidden>カテゴリーを指定</option>
-        <option value=""></option>
-        <option value=""></option>
-        <option value=""></option>
-        <option value=""></option>
-        <option value=""></option>
+        <option value="0"></option>
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+      </select>
+      <select name="category_second">
+        <option hidden>カテゴリーを指定</option>
+        <option value="0"></option>
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+      </select>
+      <select name="category_third">
+        <option hidden>カテゴリーを指定</option>
+        <option value="0"></option>
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
       </select>
     </div>
   </br>
@@ -30,13 +46,13 @@
   </div>
   </br>
   <div class="todolist">
-    <button class="btn btn-lg btn-primary pull-right navbar-btn" type="submit">作成</button>
+    <button class="btn btn-lg btn-primary pull-right main-btn" type="submit">作成</button>
   </div>
     </div>
 </form> 
 <div class="todolist" onload="confirmDelete()">
   <a href="/items/delete/{{.ID}}" onclick="return confirm('削除しますか')">
-    <button type="button" class ="btn navbar-btn navbar-right">削除</button>
+    <button type="button" class ="btn main-btn navbar-right">削除</button>
   </a>
 </div>
 {{end}}

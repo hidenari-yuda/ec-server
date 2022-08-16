@@ -125,7 +125,7 @@ func parseURLChatGroup(fn func(http.ResponseWriter, *http.Request, int)) http.Ha
 	}
 }
 
-var validPathOnsale = regexp.MustCompile("^/onsale/(item/buy)/([0-9]+)$")
+var validPathOnsale = regexp.MustCompile("^/onsale/([0-9]+)$")
 
 func parseURLOnsale(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -134,7 +134,7 @@ func parseURLOnsale(fn func(http.ResponseWriter, *http.Request, int)) http.Handl
 			http.NotFound(w, r)
 			return
 		}
-		qi, err := strconv.Atoi(q[2])
+		qi, err := strconv.Atoi(q[1])
 		if err != nil {
 			http.NotFound(w, r)
 			return
@@ -171,7 +171,7 @@ func StartMainServer() error {
 	http.HandleFunc("/group/save", chatGroupSave)
 	http.HandleFunc("/group/delete/", parseURLChatGroup(chatGroupDelete))
 	http.HandleFunc("/onsale", onsale)
-	http.HandleFunc("/onsale/item/", parseURLOnsale(onsaleSelect))
+	http.HandleFunc("/onsale/", parseURLOnsale(onsaleSelect))
 
 	//port := os.Getenv("PORT")
 	return http.ListenAndServe(":"+config.Config.Port, nil)

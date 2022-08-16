@@ -38,15 +38,15 @@ func onsaleSelect(w http.ResponseWriter, r *http.Request, id int) {
 	if err != nil {
 		http.Redirect(w, r, "/", 302)
 	} else {
-		user, err := sess.GetUserBySession()
+		_, err := sess.GetUserBySession()
 		if err != nil {
 			log.Println(err)
 		}
-		item, _ := models.GetItem(id)
-		user.Item = item
-		saleUser, _ := models.GetUser(item.UserID)
-		user.NickName = saleUser.NickName
-		generateHTML(w, user, "layout", "private_navbar", "onsale/item/")
+		i, _ := models.GetItem(id)
+		fmt.Println(i)
+		//saleUser, _ := models.GetUser(item.UserID)
+		//user.NickName = saleUser.NickName
+		generateHTML(w, i, "layout", "private_navbar", "onsale_item")
 	}
 }
 
@@ -104,15 +104,15 @@ func itemSave(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
-		photo_url, title, content, category, price := r.PostFormValue("photo_url"), r.PostFormValue("title"), r.PostFormValue("content"), r.PostFormValue("category"), r.PostFormValue("price")
+		photo_url, title, content, category_first, category_second, category_third, price := r.PostFormValue("photo_url"), r.PostFormValue("title"), r.PostFormValue("content"), r.PostFormValue("category_first"), r.PostFormValue("category_second"), r.PostFormValue("category_third"), r.PostFormValue("price")
 		priceInt, _ := strconv.Atoi(price)
-		fmt.Println(photo_url, title, content, category, price)
-		if err := user.CreateItem(photo_url, title, content, category, priceInt); err != nil {
+		if err := user.CreateItem(photo_url, title, content, category_first, category_second, category_third, priceInt); err != nil {
 			log.Println(err)
 		}
 		http.Redirect(w, r, "/items", 302)
 	}
 }
+
 func itemEdit(w http.ResponseWriter, r *http.Request, id int) {
 	sess, err := session(w, r)
 	if err != nil {
@@ -122,11 +122,11 @@ func itemEdit(w http.ResponseWriter, r *http.Request, id int) {
 		if err != nil {
 			log.Println(err)
 		}
-		t, err := models.GetItem(id)
+		i, err := models.GetItem(id)
 		if err != nil {
 			log.Println(err)
 		}
-		generateHTML(w, t, "layout", "private_navbar", "item_edit")
+		generateHTML(w, i, "layout", "private_navbar", "item_edit")
 	}
 }
 
@@ -143,9 +143,9 @@ func itemUpdate(w http.ResponseWriter, r *http.Request, id int) {
 		if err != nil {
 			log.Println(err)
 		}
-		photo_url, title, content, category, price := r.PostFormValue("photo_url"), r.PostFormValue("title"), r.PostFormValue("content"), r.PostFormValue("category"), r.PostFormValue("price")
+		photo_url, title, content, category_first, category_second, category_third, price := r.PostFormValue("photo_url"), r.PostFormValue("title"), r.PostFormValue("content"), r.PostFormValue("category_first"), r.PostFormValue("category_second"), r.PostFormValue("category_third"), r.PostFormValue("price")
 		priceInt, _ := strconv.Atoi(price)
-		i := &models.Item{ID: id, PhotoURL: photo_url, Title: title, Content: content, Category: category, Price: priceInt}
+		i := &models.Item{ID: id, PhotoURL: photo_url, Title: title, Content: content, CategoryFirst: category_first, CategorySecond: category_second, CategoryThird: category_third, Price: priceInt}
 		if err := i.UpdateItem(); err != nil {
 			log.Println(err)
 		}

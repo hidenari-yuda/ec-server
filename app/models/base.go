@@ -68,7 +68,9 @@ func init() {
 		created_at DATETIME,
 		title STRING,
 		content TEXT NULL,
-		category STRING NULL,
+		category_first STRING NULL,
+		category_second STRING NULL,
+		category_third STRING NULL,
 		price INTEGER
 		)`, tableNameItem)
 	Db.Exec(cmdT)

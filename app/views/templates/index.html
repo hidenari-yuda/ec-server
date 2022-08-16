@@ -30,6 +30,18 @@
                             <div name="created">{{.Price}}</div>
                         </td>
                     </tr>
+                    <tr>
+                        <td nowrap>
+                            <a href="/items/edit/{{.ID}}">
+                                <button type="button" class="btn main-btn">編集</button>
+                            </a>
+                        </td>
+                        <td class="todolist" onload="confirmDelete()">
+                            <a href="/items/delete/{{.ID}}" onclick="return confirm('削除しますか')">
+                              <button type="button" class ="btn main-btn navbar-right">削除</button>
+                            </a>
+                          </td>
+                    </tr>
         </table>
             </div>
             {{end}}
