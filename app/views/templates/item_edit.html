@@ -34,4 +34,9 @@
   </div>
     </div>
 </form> 
+<div class="todolist" onload="confirmDelete()">
+  <a href="/items/delete/{{.ID}}" onclick="return confirm('削除しますか')">
+    <button type="button" class ="btn navbar-btn navbar-right">削除</button>
+  </a>
+</div>
 {{end}}

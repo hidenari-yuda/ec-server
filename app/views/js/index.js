@@ -53,7 +53,7 @@ function body() {
 }
 
 
-function tododelete(){ 
+function confirmDelete(){ 
     const result = confirm('削除しますか');
     if(result){
       console.log('削除しました');

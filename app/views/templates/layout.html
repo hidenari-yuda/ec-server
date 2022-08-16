@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/static/css/chat.css">
     <link rel="stylesheet" href="/static/css/form.css">
     <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/items.css">
     <link rel="stylesheet" href="/static/css/navbar.css">
 
 </head>
@@ -19,7 +20,16 @@
     <div class="container">
         {{template "content" .}}
     </div>
-        {{template "footer"}}
+    <nav class="navbar">
+        <div class="container">
+            <div align="left">
+                <a href="/items"><button type="button" class="btn navbar-btn navbar-left">ホーム</button></a>
+            <a href="aboutus"><button type="button" class="btn navbar-btn navbar-left">このサイトについて</button></a>
+            <a href="/contact"><button type="button" class="btn navbar-btn navbar-left">お問い合せ</button></a>
+            </div>
+            <p>Copyright © 2022. All rights reserved.</p>
+        </div>
+    </nav>
 </body>
 </html>
 {{end}}

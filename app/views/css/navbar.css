@@ -1,5 +1,5 @@
 nav.navbar {
-    background: #6d7fcc;
+    background: #000000;
     color: #fff;
     border-bottom: none;
     border-radius: 0;
@@ -13,13 +13,13 @@ nav.navbar {
 /* Navbar Button */
 nav.navbar button.navbar-btn {
     border-radius: 0;
-    border-color: #6172b9;
-    background: #6172b9;
+    border-color: #141010;
+    background: #141010;
     color: #fff;
 }
     nav.navbar button.navbar-btn:hover {
         background: #fff;
-        color: #6172b9;
+        color: #302929;
     }
 
 
