@@ -1,0 +1,38 @@
+{{define "content"}}
+<div class="todolist">
+    <h1>商品一覧</h1>
+    <form role="form" action="/sort" method="post">
+        <div class="select select_child">
+            <select name="sort" required>
+                <option hidden>条件を指定</option>
+                <option value="createdat_asc">作成日が新しい順</option>
+                <option value="createdat_desc">作成日が古い順</option>
+                <option id="deadline_asc" value="deadline_asc">期限が近い順</option>
+            </select>
+        </div>
+        <button type="submit" class="btn navbar-btn home_nav">検索</button>
+    </form>
+</br>
+    <div class="images-wrapper">
+        {{range .Items}}
+        <div class="img">
+            <a href="/items/edit/{{.ID}}">
+                <img src="{{.PhotoURL}}" alt="{{.Title}}" id="items_images" class="items_images">
+            </a>
+            <table class="table table-striped table-bordered" style="width: 250px">
+                    <tr>
+                        <td nowrap>タイトル</td>
+                        <td nowrap>{{.Title}}</td>
+                    </tr>
+                    <tr>
+                        <td nowrap>値段</td>
+                        <td nowrap>
+                            <div name="created">{{.Price}}</div>
+                        </td>
+                    </tr>
+        </table>
+            </div>
+            {{end}}
+            </div>
+        </div>
+{{end}}

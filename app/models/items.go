@@ -51,7 +51,7 @@ func GetItem(id int) (item Item, err error) {
 	return item, err
 }
 
-func GetItems() (items []Item, err error) {
+func GetAllItems() (items []Item, err error) {
 	cmd := `select 
 	id, 
 	user_id,

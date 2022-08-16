@@ -18,6 +18,38 @@ func top(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func onsale(w http.ResponseWriter, r *http.Request) {
+	sess, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/", 302)
+	} else {
+		user, err := sess.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		items, _ := models.GetAllItems()
+		user.Items = items
+		generateHTML(w, user, "layout", "private_navbar", "onsale")
+	}
+}
+
+func onsaleSelect(w http.ResponseWriter, r *http.Request, id int) {
+	sess, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/", 302)
+	} else {
+		user, err := sess.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		item, _ := models.GetItem(id)
+		user.Item = item
+		saleUser, _ := models.GetUser(item.UserID)
+		user.NickName = saleUser.NickName
+		generateHTML(w, user, "layout", "private_navbar", "onsale/item/")
+	}
+}
+
 func index(w http.ResponseWriter, r *http.Request) {
 	sess, err := session(w, r)
 	if err != nil {

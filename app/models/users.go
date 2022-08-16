@@ -17,6 +17,7 @@ type User struct {
 	Phone      string
 	Address    string
 	Birthday   string
+	Item       Item
 	Items      []Item
 	ChatGroup  ChatGroup
 	ChatGroups []ChatGroup

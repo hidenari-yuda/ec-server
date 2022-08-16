@@ -38,6 +38,7 @@
 
     getDownloadURL(ref(storage, "images/" + image.name))
     .then((url) => {
+
       const input = document.getElementById('myimg');
       input.setAttribute('value', url);
     })

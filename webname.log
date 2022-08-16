@@ -70,3 +70,292 @@ net/http.(*conn).serve(0xc00025e0a0, {0x4575d48, 0xc00007f7d0})
 	/usr/local/go/src/net/http/server.go:1966 +0x5d7
 created by net/http.(*Server).Serve
 	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/16 17:45:28 server.go:3197: http: panic serving 127.0.0.1:57665: template: item_edit.html:9: unexpected "}" in operand
+goroutine 20 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44860c0, 0xc000184080})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/ec-server/app/controllers.generateHTML({0x4575840?, 0xc00012e0e0}, {0x44c6980, 0xc000122d20}, {0xc0000c3830?, 0x3, 0x8f?})
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/ec-server/app/controllers.itemEdit({0x4575840, 0xc00012e0e0}, 0xd?, 0x0?)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/route_main.go:113 +0x305
+github.com/hidenari-yuda/ec-server/app/controllers.parseURL.func1({0x4575840, 0xc00012e0e0}, 0xc00010c300)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:49 +0xcb
+net/http.HandlerFunc.ServeHTTP(0x4e2ffa8?, {0x4575840?, 0xc00012e0e0?}, 0x40104a5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575840, 0xc00012e0e0}, 0xc00010c300)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc00009b8c0?}, {0x4575840, 0xc00012e0e0}, 0xc00010c300)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0000b9680, {0x4575ac8, 0xc00009b7d0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/16 17:45:28 server.go:3197: http: panic serving 127.0.0.1:57666: template: item_edit.html:9: unexpected "}" in operand
+goroutine 34 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44860c0, 0xc0000995c0})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/ec-server/app/controllers.generateHTML({0x4575840?, 0xc0001ce000}, {0x44c6980, 0xc0001c0230}, {0xc0000bf830?, 0x3, 0x8f?})
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/ec-server/app/controllers.itemEdit({0x4575840, 0xc0001ce000}, 0xd?, 0x0?)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/route_main.go:113 +0x305
+github.com/hidenari-yuda/ec-server/app/controllers.parseURL.func1({0x4575840, 0xc0001ce000}, 0xc0001c4000)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:49 +0xcb
+net/http.HandlerFunc.ServeHTTP(0x4e2ffa8?, {0x4575840?, 0xc0001ce000?}, 0x40104a5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575840, 0xc0001ce000}, 0xc0001c4000)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc000182210?}, {0x4575840, 0xc0001ce000}, 0xc0001c4000)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0001c2000, {0x4575ac8, 0xc00009b7d0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/16 17:45:28 server.go:3197: http: panic serving 127.0.0.1:57667: template: item_edit.html:9: unexpected "}" in operand
+goroutine 27 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44860c0, 0xc000099850})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/ec-server/app/controllers.generateHTML({0x4575840?, 0xc00012e1c0}, {0x44c6980, 0xc000122f50}, {0xc0000c3830?, 0x3, 0x8f?})
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/ec-server/app/controllers.itemEdit({0x4575840, 0xc00012e1c0}, 0xd?, 0x0?)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/route_main.go:113 +0x305
+github.com/hidenari-yuda/ec-server/app/controllers.parseURL.func1({0x4575840, 0xc00012e1c0}, 0xc00010c400)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:49 +0xcb
+net/http.HandlerFunc.ServeHTTP(0x4e2ffa8?, {0x4575840?, 0xc00012e1c0?}, 0x40104a5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575840, 0xc00012e1c0}, 0xc00010c400)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc000146480?}, {0x4575840, 0xc00012e1c0}, 0xc00010c400)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0000b9720, {0x4575ac8, 0xc00009b7d0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/16 17:45:29 server.go:3197: http: panic serving 127.0.0.1:57668: template: item_edit.html:9: unexpected "}" in operand
+goroutine 30 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44860c0, 0xc000012240})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/ec-server/app/controllers.generateHTML({0x4575840?, 0xc00012e2a0}, {0x44c6980, 0xc000123180}, {0xc0000c3830?, 0x3, 0x8f?})
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/ec-server/app/controllers.itemEdit({0x4575840, 0xc00012e2a0}, 0xd?, 0x0?)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/route_main.go:113 +0x305
+github.com/hidenari-yuda/ec-server/app/controllers.parseURL.func1({0x4575840, 0xc00012e2a0}, 0xc00010c500)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:49 +0xcb
+net/http.HandlerFunc.ServeHTTP(0x4e2ffa8?, {0x4575840?, 0xc00012e2a0?}, 0x40104a5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575840, 0xc00012e2a0}, 0xc00010c500)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc000146ab0?}, {0x4575840, 0xc00012e2a0}, 0xc00010c500)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0000b97c0, {0x4575ac8, 0xc00009b7d0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/16 17:45:29 server.go:3197: http: panic serving 127.0.0.1:57669: template: item_edit.html:9: unexpected "}" in operand
+goroutine 9 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44860c0, 0xc0001843e0})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/ec-server/app/controllers.generateHTML({0x4575840?, 0xc00022e000}, {0x44c6980, 0xc00023c1c0}, {0xc000239830?, 0x3, 0x8f?})
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/ec-server/app/controllers.itemEdit({0x4575840, 0xc00022e000}, 0xd?, 0x0?)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/route_main.go:113 +0x305
+github.com/hidenari-yuda/ec-server/app/controllers.parseURL.func1({0x4575840, 0xc00022e000}, 0xc00022a000)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:49 +0xcb
+net/http.HandlerFunc.ServeHTTP(0x4e2ffa8?, {0x4575840?, 0xc00022e000?}, 0x40104a5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575840, 0xc00022e000}, 0xc00022a000)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc0002006f0?}, {0x4575840, 0xc00022e000}, 0xc00022a000)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc000228000, {0x4575ac8, 0xc00009b7d0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/16 17:45:29 server.go:3197: http: panic serving 127.0.0.1:57670: template: item_edit.html:9: unexpected "}" in operand
+goroutine 39 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44860c0, 0xc000099bb0})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/ec-server/app/controllers.generateHTML({0x4575840?, 0xc0001ce0e0}, {0x44c6980, 0xc0001c0460}, {0xc0000bf830?, 0x3, 0x8f?})
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/ec-server/app/controllers.itemEdit({0x4575840, 0xc0001ce0e0}, 0xd?, 0x0?)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/route_main.go:113 +0x305
+github.com/hidenari-yuda/ec-server/app/controllers.parseURL.func1({0x4575840, 0xc0001ce0e0}, 0xc0001c4100)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:49 +0xcb
+net/http.HandlerFunc.ServeHTTP(0x4e2ffa8?, {0x4575840?, 0xc0001ce0e0?}, 0x40104a5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575840, 0xc0001ce0e0}, 0xc0001c4100)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc000182b40?}, {0x4575840, 0xc0001ce0e0}, 0xc0001c4100)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0001c20a0, {0x4575ac8, 0xc00009b7d0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/16 17:48:17 server.go:3197: http: panic serving 127.0.0.1:57685: template: item_edit.html:9: unexpected "}" in operand
+goroutine 187 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44860c0, 0xc0001e64b0})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/ec-server/app/controllers.generateHTML({0x4575840?, 0xc00017f340}, {0x44c6980, 0xc0001ab7a0}, {0xc0002f3830?, 0x3, 0x0?})
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/ec-server/app/controllers.itemEdit({0x4575840, 0xc00017f340}, 0xd?, 0x0?)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/route_main.go:113 +0x305
+github.com/hidenari-yuda/ec-server/app/controllers.parseURL.func1({0x4575840, 0xc00017f340}, 0xc0001ee100)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:49 +0xcb
+net/http.HandlerFunc.ServeHTTP(0x4f88468?, {0x4575840?, 0xc00017f340?}, 0x40104a5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575840, 0xc00017f340}, 0xc0001ee100)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc0001c92f0?}, {0x4575840, 0xc00017f340}, 0xc0001ee100)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0001179a0, {0x4575ac8, 0xc00007f7d0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/16 17:48:17 server.go:3197: http: panic serving 127.0.0.1:57686: template: item_edit.html:9: unexpected "}" in operand
+goroutine 213 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44860c0, 0xc0001e6800})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/ec-server/app/controllers.generateHTML({0x4575840?, 0xc00017f420}, {0x44c6980, 0xc0001ab9d0}, {0xc000121830?, 0x3, 0x0?})
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/ec-server/app/controllers.itemEdit({0x4575840, 0xc00017f420}, 0xd?, 0x0?)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/route_main.go:113 +0x305
+github.com/hidenari-yuda/ec-server/app/controllers.parseURL.func1({0x4575840, 0xc00017f420}, 0xc0001ee200)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:49 +0xcb
+net/http.HandlerFunc.ServeHTTP(0x4f88468?, {0x4575840?, 0xc00017f420?}, 0x40104a5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575840, 0xc00017f420}, 0xc0001ee200)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc0001ecb70?}, {0x4575840, 0xc00017f420}, 0xc0001ee200)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc000117b80, {0x4575ac8, 0xc00007f7d0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/16 17:48:17 server.go:3197: http: panic serving 127.0.0.1:57687: template: item_edit.html:9: unexpected "}" in operand
+goroutine 218 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44860c0, 0xc0001e68a0})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/ec-server/app/controllers.generateHTML({0x4575840?, 0xc0000b6d20}, {0x44c6980, 0xc0003067e0}, {0xc00011d830?, 0x3, 0x0?})
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/ec-server/app/controllers.itemEdit({0x4575840, 0xc0000b6d20}, 0xd?, 0x0?)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/route_main.go:113 +0x305
+github.com/hidenari-yuda/ec-server/app/controllers.parseURL.func1({0x4575840, 0xc0000b6d20}, 0xc0001ee300)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:49 +0xcb
+net/http.HandlerFunc.ServeHTTP(0x4f88468?, {0x4575840?, 0xc0000b6d20?}, 0x40104a5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575840, 0xc0000b6d20}, 0xc0001ee300)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc0001ed470?}, {0x4575840, 0xc0000b6d20}, 0xc0001ee300)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc000117cc0, {0x4575ac8, 0xc00007f7d0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/16 17:51:13 server.go:3197: http: panic serving 127.0.0.1:57701: template: item_edit.html:9: unexpected "}" in operand
+goroutine 276 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44860c0, 0xc0001e6320})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/ec-server/app/controllers.generateHTML({0x4575840?, 0xc00055c000}, {0x44c6980, 0xc0005641c0}, {0xc0002f7830?, 0x3, 0x0?})
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/ec-server/app/controllers.itemEdit({0x4575840, 0xc00055c000}, 0xd?, 0x0?)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/route_main.go:113 +0x305
+github.com/hidenari-yuda/ec-server/app/controllers.parseURL.func1({0x4575840, 0xc00055c000}, 0xc000148300)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:49 +0xcb
+net/http.HandlerFunc.ServeHTTP(0x4f88378?, {0x4575840?, 0xc00055c000?}, 0x40104a5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575840, 0xc00055c000}, 0xc000148300)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc0004e8d20?}, {0x4575840, 0xc00055c000}, 0xc000148300)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc0004bc140, {0x4575ac8, 0xc00007f7d0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/16 17:51:13 server.go:3197: http: panic serving 127.0.0.1:57702: template: item_edit.html:9: unexpected "}" in operand
+goroutine 248 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44860c0, 0xc0001e6660})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/ec-server/app/controllers.generateHTML({0x4575840?, 0xc00055c0e0}, {0x44c6980, 0xc0005643f0}, {0xc0002f3830?, 0x3, 0x0?})
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/ec-server/app/controllers.itemEdit({0x4575840, 0xc00055c0e0}, 0xd?, 0x0?)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/route_main.go:113 +0x305
+github.com/hidenari-yuda/ec-server/app/controllers.parseURL.func1({0x4575840, 0xc00055c0e0}, 0xc0000a6400)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:49 +0xcb
+net/http.HandlerFunc.ServeHTTP(0x4f88468?, {0x4575840?, 0xc00055c0e0?}, 0x40104a5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575840, 0xc00055c0e0}, 0xc0000a6400)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc0004e80c0?}, {0x4575840, 0xc00055c0e0}, 0xc0000a6400)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc000116280, {0x4575ac8, 0xc00007f7d0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/16 17:51:13 server.go:3197: http: panic serving 127.0.0.1:57703: template: item_edit.html:9: unexpected "}" in operand
+goroutine 204 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0xbf
+panic({0x44860c0, 0xc0001e69a0})
+	/usr/local/go/src/runtime/panic.go:844 +0x258
+text/template.Must(...)
+	/usr/local/go/src/text/template/helper.go:25
+github.com/hidenari-yuda/ec-server/app/controllers.generateHTML({0x4575840?, 0xc00055c1c0}, {0x44c6980, 0xc000564620}, {0xc000439830?, 0x3, 0x0?})
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:20 +0x106
+github.com/hidenari-yuda/ec-server/app/controllers.itemEdit({0x4575840, 0xc00055c1c0}, 0xd?, 0x0?)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/route_main.go:113 +0x305
+github.com/hidenari-yuda/ec-server/app/controllers.parseURL.func1({0x4575840, 0xc00055c1c0}, 0xc000426300)
+	/Users/hidenari-yuda/Documents/prac-ec/ec-server/app/controllers/server.go:49 +0xcb
+net/http.HandlerFunc.ServeHTTP(0x4f88738?, {0x4575840?, 0xc00055c1c0?}, 0x40104a5?)
+	/usr/local/go/src/net/http/server.go:2084 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x4575840, 0xc00055c1c0}, 0xc000426300)
+	/usr/local/go/src/net/http/server.go:2462 +0x149
+net/http.serverHandler.ServeHTTP({0xc000352bd0?}, {0x4575840, 0xc00055c1c0}, 0xc000426300)
+	/usr/local/go/src/net/http/server.go:2916 +0x43b
+net/http.(*conn).serve(0xc00041a0a0, {0x4575ac8, 0xc00007f7d0})
+	/usr/local/go/src/net/http/server.go:1966 +0x5d7
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x4db
+2022/08/16 18:19:50 items.go:165: sql: expected 8 destination arguments in Scan, not 9

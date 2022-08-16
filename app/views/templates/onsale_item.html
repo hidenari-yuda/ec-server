@@ -1,0 +1,24 @@
+{{define "content"}}
+{{ range .Item}}
+</br>
+<h1>{{.Title}}</h1>
+<div class="img">
+    <img src="{{.PhotoURL}}" alt="{{.Title}}" id="items_images" class="items_images">
+    <table class="table table-striped table-bordered" style="width: 250px">
+        <tr>
+                    <td nowrap>値段</td>
+                    <td nowrap>
+                        <div name="created">{{.Price}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td nowrap>カテゴリー</td>
+                    <td nowrap>{{.Category}}</td>
+                </tr>
+                <tr>
+                    <td nowrap>商品について</td>
+                    <td>{{.Content}}</td>
+    </table>
+        </div>
+{{end}}
+{{end}}
