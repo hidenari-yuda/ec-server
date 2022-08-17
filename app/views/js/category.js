@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
 var categoryFirst = document.getElementsByClassName("category_first");
-var text = categorySecond[0].innerText
+var text = categoryFirst[0].innerText
 var categoryStr = categoryString(text)
 categoryFirst[0].innerText = categoryStr;
 
