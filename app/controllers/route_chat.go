@@ -130,7 +130,7 @@ func chat(w http.ResponseWriter, r *http.Request, id int) {
 			log.Println(err)
 		}
 
-		chatGroup, _ := user.GetChatGroupByID(id)
+		chatGroup, _ := models.GetChatGroup(id)
 		user.ChatGroup = chatGroup
 
 		chats, err := user.GetChatsByGroup(id)

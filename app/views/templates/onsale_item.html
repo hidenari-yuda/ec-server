@@ -1,6 +1,7 @@
 {{define "content"}}
+<script type="text/javascript" src="/static/js/category.js"></script>
 <h1>{{.Title}}</h1>
-<div class="img">
+<div class="img" onload="category();">
     <img src="{{.PhotoURL}}" alt="{{.Title}}" id="items_images" class="items_images">
     <table class="table table-striped table-bordered" style="width: 250px">
              <tr>
@@ -9,7 +10,17 @@
                 </tr>
                 <tr>
                     <td nowrap>カテゴリー</td>
-                    <td nowrap>{{.CategoryFirst}}・{{.CategorySecond}}・{{.CategoryThird}}</td>
+                    <td nowrap>
+                        <div class="category_first">
+                            {{.CategoryFirst}}
+                        </div>
+                        <div class="category_second">
+                            {{.CategorySecond}}
+                        </div>
+                        <div class="category_third">
+                            {{.CategoryThird}}
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td nowrap>商品概要</td>
