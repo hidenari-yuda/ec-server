@@ -2106,3 +2106,10 @@ created by net/http.(*Server).Serve
 2022/08/17 01:21:46 chats.go:107: no such table: chats
 2022/08/17 01:29:17 items.go:70: not enough args to execute query: want 1 got 0
 2022/08/17 01:36:48 items.go:71: unrecognized token: "!"
+2022/08/18 17:05:22 items.go:313: no such function: RegExp
+2022/08/18 17:06:43 items.go:313: no such function: regexp
+2022/08/18 17:08:32 items.go:313: near "title": syntax error
+2022/08/18 17:08:51 items.go:313: near "title": syntax error
+2022/08/18 17:14:15 items.go:315: no such column: ?
+2022/08/18 17:24:42 items.go:315: near "%": syntax error
+2022/08/18 17:24:48 items.go:315: near "%": syntax error

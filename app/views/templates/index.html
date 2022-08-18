@@ -1,17 +1,63 @@
 {{define "content"}}
-<script type="text/javascript" src="/static/js/category.js"></script>
-<div class="todolist">
     <h1>商品一覧</h1>
-    <form role="form" action="/sort" method="post">
+    <form role="form" action="/items/sort" method="post">
         <div class="select select_child">
             <select name="sort" required>
-                <option hidden>条件を指定</option>
-                <option value="createdat_asc">作成日が新しい順</option>
-                <option value="createdat_desc">作成日が古い順</option>
-                <option id="deadline_asc" value="deadline_asc">期限が近い順</option>
+                <option hidden>並び替え条件を指定</option>
+                <option value="price-high">価格が高い順</option>
+                <option value="price-low">価格が安い順</option>
+                <option value="createdat_asc">出品日が新しい順</option>
+                <option value="createdat_desc">出品日が古い順</option>
             </select>
         </div>
         <button type="submit" class="btn main-btn sort-btn">検索</button>
+    </form>
+    <form role="form" action="/items/category" method="post">
+        <div class="select select_child">
+            <select name="category_first" class="select select_child">
+                <option value="99" hidden>カテゴリーを指定</option>
+                <option value="0">テント・タープ</option>
+                <option value="1">チェア・テーブル</option>
+                <option value="2">セット用品</option>
+                <option value="3">調理用品</option>
+                <option value="4">寝袋・マット</option>
+                <option value="5">ランタン</option>
+                <option value="6">クーラーボックス</option>
+                <option value="7">焚き火</option>
+                <option value="8">その他</option>
+            </select>
+            <select name="category_second" class="select select_child">
+                <option  value="99" hidden>カテゴリー2を指定</option>
+                <option value="0">テント・タープ</option>
+                <option value="1">チェア・テーブル</option>
+                <option value="2">セット用品</option>
+                <option value="3">調理用品</option>
+                <option value="4">寝袋・マット</option>
+                <option value="5">ランタン</option>
+                <option value="6">クーラーボックス</option>
+                <option value="7">焚き火</option>
+                <option value="8">その他</option>
+            </select>
+            <select name="category_third" class="select select_child">
+                <option value="99" hidden>カテゴリー3を指定</option>
+                <option value="0">テント・タープ</option>
+                <option value="1">チェア・テーブル</option>
+                <option value="2">セット用品</option>
+                <option value="3">調理用品</option>
+                <option value="4">寝袋・マット</option>
+                <option value="5">ランタン</option>
+                <option value="6">クーラーボックス</option>
+                <option value="7">焚き火</option>
+                <option value="8">その他</option>
+            </select>
+        </div>
+        <button type="submit" class="btn main-btn sort-btn">検索</button>
+    </form>
+    <form role="form" action="/items/freewords" method="post">
+        <div class="form-group">
+            <input type="text" name="freewords" placeholder="商品名を入力">
+            <button type="submit" class="btn main-btn sort-btn">検索</button>
+        </div>
     </form>
 </br>
     <div class="images-wrapper">
@@ -37,9 +83,9 @@
                                 <button type="button" class="btn main-btn">編集</button>
                             </a>
                         </td>
-                        <td class="todolist" onload="confirmDelete()">
+                        <td>
                             <a href="/items/delete/{{.ID}}" onclick="return confirm('削除しますか')">
-                              <button type="button" class ="btn main-btn navbar-right">削除</button>
+                              <button type="button" class ="btn main-btn navbar-right confirmDelete">削除</button>
                             </a>
                           </td>
                     </tr>
@@ -47,6 +93,5 @@
             </div>
             {{end}}
             </div>
-        </div>
 {{end}}
 

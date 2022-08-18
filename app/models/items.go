@@ -167,6 +167,197 @@ func (u *User) GetItemsBySort(sortType string) (items []Item, err error) {
 	return items, err
 }
 
+func (u *User) GetItemsByCategory(category_first string, category_second string, category_third string) (items []Item, err error) {
+	var cmd string
+	if category_first != "99" {
+		cmd = `select id, user_id, created_at, photo_url, title, price from items 
+		where user_id = ? and category_first = ? or category_second = ? or category_third = ?`
+	} else {
+		cmd = `select id, user_id, created_at, photo_url, title, price from items 
+		where user_id = ?`
+	}
+
+	rows, err := Db.Query(cmd, u.ID, category_first, category_second, category_third, u.ID)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	for rows.Next() {
+		var item Item
+		err = rows.Scan(
+			&item.ID,
+			&item.UserID,
+			&item.CreatedAt,
+			&item.PhotoURL,
+			&item.Title,
+			&item.Price,
+		)
+
+		if err != nil {
+			log.Fatalln(err)
+		}
+		items = append(items, item)
+	}
+	rows.Close()
+
+	return items, err
+}
+
+func (u *User) GetItemsByFreeWords(freewords string) (items []Item, err error) {
+	var cmd string
+	if freewords != "" {
+		cmd = `select id, user_id, created_at, photo_url, title, price from items 
+		where user_id = ? and title like ?`
+	} else {
+		cmd = `select id, user_id, created_at, photo_url, title, price from items
+		where user_id = ?`
+	}
+
+	rows, err := Db.Query(cmd, u.ID, "%"+freewords+"%", u.ID)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	for rows.Next() {
+		var item Item
+		err = rows.Scan(
+			&item.ID,
+			&item.UserID,
+			&item.CreatedAt,
+			&item.PhotoURL,
+			&item.Title,
+			&item.Price,
+		)
+
+		if err != nil {
+			log.Fatalln(err)
+		}
+		items = append(items, item)
+	}
+	rows.Close()
+
+	return items, err
+}
+
+func (u *User) GetOnsaleBySort(sortType string) (items []Item, err error) {
+	var (
+		cmd string
+	)
+	if sortType == "createdat_asc" {
+		cmd = `select id, user_id, created_at, photo_url, title, price from items 
+		order by created_at desc`
+	} else if sortType == "createdat_desc" {
+		cmd = `select id, user_id, created_at, photo_url, title, price from items 
+		order by created_at asc`
+	} else if sortType == "price_high" {
+		cmd = `select id, user_id, created_at, photo_url, title, price from items
+		order by price desc`
+	} else if sortType == "price_low" {
+		cmd = `select id, user_id, created_at, photo_url, title, price from items
+		order by price asc`
+	} else {
+		cmd = `select id, user_id, created_at, photo_url, title, price
+		from items where user_id != ?`
+	}
+
+	rows, err := Db.Query(cmd, u.ID)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	for rows.Next() {
+		var item Item
+		err = rows.Scan(
+			&item.ID,
+			&item.UserID,
+			&item.CreatedAt,
+			&item.PhotoURL,
+			&item.Title,
+			&item.Price,
+		)
+
+		if err != nil {
+			log.Fatalln(err)
+		}
+		items = append(items, item)
+	}
+	rows.Close()
+
+	return items, err
+}
+
+func (u *User) GetOnsaleByCategory(category_first string, category_second string, category_third string) (items []Item, err error) {
+	var cmd string
+	if category_first != "99" {
+		cmd = `select id, user_id, created_at, photo_url, title, price from items 
+		where user_id != ? and category_first = ? or category_second = ? or category_third = ?`
+	} else {
+		cmd = `select id, user_id, created_at, photo_url, title, price from items
+		where user_id != ?`
+	}
+
+	rows, err := Db.Query(cmd, u.ID, category_first, category_second, category_third, u.ID)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	for rows.Next() {
+		var item Item
+		err = rows.Scan(
+			&item.ID,
+			&item.UserID,
+			&item.CreatedAt,
+			&item.PhotoURL,
+			&item.Title,
+			&item.Price,
+		)
+
+		if err != nil {
+			log.Fatalln(err)
+		}
+		items = append(items, item)
+	}
+	rows.Close()
+
+	return items, err
+}
+
+func (u *User) GetOnsaleByFreeWords(freewords string) (items []Item, err error) {
+	var cmd string
+	if freewords != "" {
+		cmd = `select id, user_id, created_at, photo_url, title, price from items 
+		where user_id != ? and title like ?`
+	} else {
+		cmd = `select id, user_id, created_at, photo_url, title, price from items
+		where user_id != ?`
+	}
+
+	rows, err := Db.Query(cmd, u.ID, "%"+freewords+"%", u.ID)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	for rows.Next() {
+		var item Item
+		err = rows.Scan(
+			&item.ID,
+			&item.UserID,
+			&item.CreatedAt,
+			&item.PhotoURL,
+			&item.Title,
+			&item.Price,
+		)
+
+		if err != nil {
+			log.Fatalln(err)
+		}
+		items = append(items, item)
+	}
+	rows.Close()
+
+	return items, err
+}
+
 func GetItemsByFavorites(id int) (items []Item, err error) {
 	cmd := `select id, user_id, created_at, photo_url, title, price from items
 	where id in (select item_id from items where id =?)`

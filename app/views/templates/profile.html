@@ -8,6 +8,10 @@
             <td>{{.Name}}</td>
         </tr>
         <tr>
+            <td>ニックネーム</td>
+            <td>{{.NickName}}</td>
+        </tr>
+        <tr>
             <td>メールアドレス</td>
             <td>{{.Email}}</td>
         </tr>
@@ -15,14 +19,20 @@
             <td>{{.Phone}}</td>
         </tr>
         <tr>
-            <td>所属</td>
-            <td>{{.Department}}</td>
+            <td>住所</td>
+            <td>{{.Address}}</td>
         </tr>
         <tr>
-            <td>役職</td>
-            <td>{{.Position}}</td>
+            <td>生年月日</td>
+            <td>{{.Birthday}}</td>
         </tr>
-        <tr><td></td><td><a href="/profile/edit/{{.ID}}"><button type="button" class="btn navbar-btn navbar-right">編集</button></a></td>
+        <tr>
+            <td></td>
+            <td>
+                <a href="/profile/edit/{{.ID}}">
+                    <button type="button" class="btn  main-btn navbar-right">編集</button>
+                </a>
+            </td>
         </tr>
 </table>
 </div>

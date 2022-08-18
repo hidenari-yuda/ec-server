@@ -1,23 +1,69 @@
 {{define "content"}}
 <script type="text/javascript" src="/static/js/category.js"></script>
 <script type="text/javascript" src="/static/js/imageUpload.js"></script>
-<form role="form" action="/items/update" method="post">
+<h1>商品を編集する</h1>
+<div>
+  <input type="file" id="inputFile" placeholder="写真を追加" onchange="OutputImage(this);" />
+    <button type="button" class="btn btn-primary main-btn" id="uploadFile">写真を登録する</button>
+  <img src="{{.PhotoURL}}" alt="{{.Title}}" class="img img-edited">
+  <div id="samplePhotoURL">
+  </div>
+</div>
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.2/firebase-app.js';
+  import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.9.2/firebase-storage.js';
+  const firebaseConfig = {
+    apiKey: "AIzaSyC08wZzoDB-TojuqkdjM4S3h-TtGNLf7gI",
+    authDomain: "prac-ec.firebaseapp.com",
+    projectId: "prac-ec",
+    storageBucket: "prac-ec.appspot.com",
+    messagingSenderId: "216459314207",
+    appId: "1:216459314207:web:55ad381c9131426971012a"
+  };
+  const app = initializeApp(firebaseConfig);
+  const storage = getStorage(app);
+  
+  
+  document.getElementById("uploadFile").addEventListener("click", function() {
+    var files = document.getElementById("inputFile").files;
+    
+    var image = files[0];
+    
+    const storageRef = ref(storage, "images/" + image.name);
+
+    function uploadFile() {
+      return new Promise((resolve) => {
+          uploadBytes(storageRef, image).then((snapshot) => {
+        alert('アップロードできました')
+        resolve()
+      })
+      });
+    }
+
+    async function imageDownload() {
+      await uploadFile();
+      
+       getDownloadURL(ref(storage, "images/" + image.name))
+      .then((url) => {
+        const input = document.getElementById('editImg');
+        input.setAttribute('value', url);
+      })
+    }
+    imageDownload();
+  })
+  
+</script>
+<form role="form" action="/items/update/{{.ID}}" method="post">
 </br>
-    <h1>商品を編集する</h1>
   </br>
     <div class="form-group">
     <textarea class="form-control" name="title" placeholder="商品タイトルを編集" rows="1">{{.Title}}</textarea>
     </br>
     <textarea class="form-control" name="content" placeholder="商品概要を編集" rows="4">{{.Content}}</textarea>
     </br>
-    <div>
-      <img src="{{.PhotoURL}}" alt="{{.Title}}" class="img">
-      <input type="file" name="photo_url" onchange="OutputImage(this);" placeholder="写真を追加">
-    <div id="samplePhotoURL"></div>
-  </div>
   </br>
     <div>
-      <select name="category_first">
+      <select name="category_first" class="select select_child">
         <option hidden class="category_first">{{.CategoryFirst}}</option>
         <option value="0">テント・タープ</option>
         <option value="1">チェア・テーブル</option>
@@ -29,7 +75,7 @@
         <option value="7">焚き火</option>
         <option value="8">その他</option>
       </select>
-      <select name="category_second">
+      <select name="category_second" class="select select_child">
         <option hidden class="category_second">{{.CategorySecond}}</option>
         <option value="0">テント・タープ</option>
         <option value="1">チェア・テーブル</option>
@@ -41,7 +87,7 @@
         <option value="7">焚き火</option>
         <option value="8">その他</option>
       </select>
-      <select name="category_third">
+      <select name="category_third" class="select select_child">
         <option hidden class="category_third">{{.CategoryThird}}</option>
         <option value="0">テント・タープ</option>
         <option value="1">チェア・テーブル</option>
@@ -59,14 +105,13 @@
     <input type="number" min="100" step="10" name="price" placeholder="商品価格を追加">
   </div>
   </br>
-  <div class="todolist">
-    <button class="btn btn-lg btn-primary pull-right main-btn" type="submit">作成</button>
-  </div>
+  <input type="hidden" name="photo_url" id="editImg" value="">
+    <button class="btn btn-lg btn-primary pull-right main-btn" type="submit">編集</button>
     </div>
 </form> 
-<div class="todolist" onload="confirmDelete()">
+<div>
   <a href="/items/delete/{{.ID}}" onclick="return confirm('削除しますか')">
-    <button type="button" class ="btn main-btn navbar-right">削除</button>
+    <button type="button" class ="btn main-btn navbar-right confirmDelete">削除</button>
   </a>
 </div>
 {{end}}

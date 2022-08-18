@@ -1,5 +1,4 @@
 {{define "content"}}
-<div class="todolist">
 <h1>チャット一覧</h1>
 <table class="table table-striped table-bordered text-center table-sm">
     <thead>
@@ -23,7 +22,6 @@
             </td>
         </tr>
         {{ end }}
-</div>
 </table>
 <form role="form" action="/group/save" method="post">
 </br>
@@ -34,9 +32,7 @@
         </div>
       <textarea class="form-control" name="chat_name" id="chat_name" placeholder="チャット名" rows="1"></textarea>
 </br>
-      <div class="todolist">
       <button class="btn btn-lg btn-primary pull-right main-btn" type="submit">作成</button>
-      </div>
     </div>
 </form> 
 {{end}}

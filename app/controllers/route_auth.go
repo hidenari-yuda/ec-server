@@ -29,7 +29,7 @@ func signup(w http.ResponseWriter, r *http.Request) {
 			log.Fatalln(err)
 		}
 
-		http.Redirect(w, r, "/", 302)
+		http.Redirect(w, r, "/profile", 302)
 	}
 }
 

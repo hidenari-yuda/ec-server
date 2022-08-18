@@ -95,6 +95,98 @@ func itemSort(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func onsaleSort(w http.ResponseWriter, r *http.Request) {
+	sess, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/", 302)
+	} else {
+		user, err := sess.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		r.ParseForm()
+		items, _ := user.GetOnsaleBySort(r.PostFormValue("sort"))
+		user.Items = items
+		generateHTML(w, user, "layout", "private_navbar", "onsale")
+	}
+}
+
+func itemSortByCategory(w http.ResponseWriter, r *http.Request) {
+	sess, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/", 302)
+	} else {
+		user, err := sess.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		r.ParseForm()
+		items, _ := user.GetItemsByCategory(
+			r.PostFormValue("category_first"),
+			r.PostFormValue("category_second"),
+			r.PostFormValue("category_third"),
+		)
+		user.Items = items
+		generateHTML(w, user, "layout", "private_navbar", "index")
+	}
+}
+
+func onsaleSortByCategory(w http.ResponseWriter, r *http.Request) {
+	sess, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/", 302)
+	} else {
+		user, err := sess.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		r.ParseForm()
+		items, _ := user.GetOnsaleByCategory(
+			r.PostFormValue("category_first"),
+			r.PostFormValue("category_second"),
+			r.PostFormValue("category_third"),
+		)
+		user.Items = items
+		generateHTML(w, user, "layout", "private_navbar", "onsale")
+	}
+}
+
+func itemSortByFreeWords(w http.ResponseWriter, r *http.Request) {
+	sess, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/", 302)
+	} else {
+		user, err := sess.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		r.ParseForm()
+		items, _ := user.GetItemsByFreeWords(
+			r.PostFormValue("freewords"),
+		)
+		user.Items = items
+		generateHTML(w, user, "layout", "private_navbar", "index")
+	}
+}
+
+func onsaleSortByFreeWords(w http.ResponseWriter, r *http.Request) {
+	sess, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/", 302)
+	} else {
+		user, err := sess.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		r.ParseForm()
+		items, _ := user.GetOnsaleByFreeWords(
+			r.PostFormValue("freewords"),
+		)
+		user.Items = items
+		generateHTML(w, user, "layout", "private_navbar", "onsale")
+	}
+}
+
 func itemNew(w http.ResponseWriter, r *http.Request) {
 	_, err := session(w, r)
 	if err != nil {

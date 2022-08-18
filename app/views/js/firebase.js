@@ -55,3 +55,22 @@ function CreateItem(){
          }
         );
 };*/
+
+/*// 画像アップロード
+await uploadBytes(storageRef, image)
+.then((snapshot) => {
+  alert('アップロードできました')
+   
+  // アップロードしたURLを取得
+// 引数にuploadBytes成功時の戻り値を使用
+  getDownloadURL(snapshot.ref) 
+    .then((url) => {
+      const input = document.getElementById('myimg');
+      input.setAttribute('value', url);
+    })
+    .catch((e) => {
+      console.log(e)
+      alert('画像の取得に失敗しました。')
+    })
+})
+.catch(() => alert('アップロードに失敗しました'));*/

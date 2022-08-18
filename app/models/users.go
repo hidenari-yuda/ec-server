@@ -163,9 +163,9 @@ func GetUserByEmail(email string) (user User, err error) {
 }
 
 func (u *User) UpdateUser() (err error) {
-	cmd := `update users set name = ?, email = ?, password = ?, icon_url = ?, phone = ?, address = ?, birthday =?
+	cmd := `update users set name = ?, nick_name = ?, email = ?, password = ?, icon_url = ?, phone = ?, address = ?, birthday =?
 	where id = ?`
-	_, err = Db.Exec(cmd, u.Name, u.Email, Encrypt(u.PassWord), u.IconURL, u.Phone, u.Address, u.Birthday, u.ID)
+	_, err = Db.Exec(cmd, u.Name, u.NickName, u.Email, Encrypt(u.PassWord), u.IconURL, u.Phone, u.Address, u.Birthday, u.ID)
 	if err != nil {
 		log.Fatalln(err)
 	}
