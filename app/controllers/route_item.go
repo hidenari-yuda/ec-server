@@ -160,10 +160,24 @@ func itemSortByFreeWords(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
+
 		r.ParseForm()
+
+		min := r.PostFormValue("price_min")
+		minInt, _ := strconv.Atoi(min)
+
+		max := r.PostFormValue("price_max")
+		maxInt, _ := strconv.Atoi(max)
+
 		items, _ := user.GetItemsByFreeWords(
 			r.PostFormValue("freewords"),
+			r.PostFormValue("category_first"),
+			r.PostFormValue("category_second"),
+			r.PostFormValue("category_third"),
+			minInt,
+			maxInt,
 		)
+
 		user.Items = items
 		generateHTML(w, user, "layout", "private_navbar", "index")
 	}
@@ -179,8 +193,18 @@ func onsaleSortByFreeWords(w http.ResponseWriter, r *http.Request) {
 			log.Println(err)
 		}
 		r.ParseForm()
+		min := r.PostFormValue("price_min")
+		minInt, _ := strconv.Atoi(min)
+		max := r.PostFormValue("price_max")
+		maxInt, _ := strconv.Atoi(max)
+
 		items, _ := user.GetOnsaleByFreeWords(
 			r.PostFormValue("freewords"),
+			r.PostFormValue("category_first"),
+			r.PostFormValue("category_second"),
+			r.PostFormValue("category_third"),
+			minInt,
+			maxInt,
 		)
 		user.Items = items
 		generateHTML(w, user, "layout", "private_navbar", "onsale")

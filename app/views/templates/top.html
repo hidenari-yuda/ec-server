@@ -1,15 +1,69 @@
 {{define "content"}}
-<div class="todolist">
-    <h1>商品一覧</h1>
-    <form role="form" action="/sort" method="post">
-        <div class="select select_child">
-            <select name="sort" required>
-                <option hidden>条件を指定</option>
-                <option value="createdat_asc">作成日が新しい順</option>
-                <option value="createdat_desc">作成日が古い順</option>
-                <option id="deadline_asc" value="deadline_asc">期限が近い順</option>
-            </select>
-        </div>
-        <button type="submit" class="btn navbar-btn home_nav">検索</button>
-    </form>
+<h1>商品一覧</h1>
+</br>
+    <div class="form-group">
+        <input type="text" name="freewords" placeholder="商品名を入力">
+        <a href="/login">
+            <button type="submit" class="btn main-btn main-btn">検索</button>
+        </a>
+        </br>
+        <p>価格を指定</p>
+        <input type="number" min="0" max="100000000" step="10" name="price_min" placeholder="最低価格を入力" value=0 />
+        <p class="inline">〜</p>
+        <input type="number" min="10" max="100000000" step="10" name="price_max" placeholder="最大価格を入力" value=100000000 />
+        <p class="inline">円</p>
+    </div>
+    <div class="select select_child">
+        <select name="category_first" class="select_child">
+            <option hidden value="99">カテゴリー1を指定</option>
+            <option value="0">テント・タープ</option>
+            <option value="1">チェア・テーブル</option>
+            <option value="2">セット用品</option>
+            <option value="3">調理用品</option>
+            <option value="4">寝袋・マット</option>
+            <option value="5">ランタン</option>
+            <option value="6">クーラーボックス</option>
+            <option value="7">焚き火</option>
+            <option value="8">その他</option>
+        </select>
+        <select name="category_second" class="select_child">
+            <option hidden value="99">カテゴリー2を指定</option>
+            <option value="0">テント・タープ</option>
+            <option value="1">チェア・テーブル</option>
+            <option value="2">セット用品</option>
+            <option value="3">調理用品</option>
+            <option value="4">寝袋・マット</option>
+            <option value="5">ランタン</option>
+            <option value="6">クーラーボックス</option>
+            <option value="7">焚き火</option>
+            <option value="8">その他</option>
+        </select>
+        <select name="category_third" class="select_child">
+            <option hidden value="99">カテゴリー3を指定</option>
+            <option value="0">テント・タープ</option>
+            <option value="1">チェア・テーブル</option>
+            <option value="2">セット用品</option>
+            <option value="3">調理用品</option>
+            <option value="4">寝袋・マット</option>
+            <option value="5">ランタン</option>
+            <option value="6">クーラーボックス</option>
+            <option value="7">焚き火</option>
+            <option value="8">その他</option>
+        </select>
+    </div>
+</br>
+    <div class="select select_child clear">
+        <select name="sort" required>
+            <option hidden>並び替え条件を指定</option>
+            <option value="price_high">価格が高い順</option>
+            <option value="price_low">価格が安い順</option>
+            <option value="createdat_asc">出品日が新しい順</option>
+            <option value="createdat_desc">出品日が古い順</option>
+        </select>
+    </div>
+    <a href="/login">
+        <button type="submit" class="btn main-btn sort-btn">検索</button>
+    </a>
+<br>
+<br>
 {{end}}

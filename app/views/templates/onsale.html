@@ -1,84 +1,89 @@
 {{define "content"}}
-    <h1>商品一覧</h1>
-    <form role="form" action="/onsale/sort" method="post">
-        <div class="select select_child">
-            <select name="sort" required>
-                <option hidden>並び替え条件を指定</option>
-                <option value="price-high">価格が高い順</option>
-                <option value="price-low">価格が安い順</option>
-                <option value="createdat_asc">出品日が新しい順</option>
-                <option value="createdat_desc">出品日が古い順</option>
-            </select>
-        </div>
-        <button type="submit" class="btn main-btn sort-btn">検索</button>
-    </form>
-    <form role="form" action="/onsale/category" method="post">
-        <div class="select select_child">
-            <select name="category_first" class="select select_child">
-                <option hidden value="99">カテゴリー1を指定</option>
-                <option value="0">テント・タープ</option>
-                <option value="1">チェア・テーブル</option>
-                <option value="2">セット用品</option>
-                <option value="3">調理用品</option>
-                <option value="4">寝袋・マット</option>
-                <option value="5">ランタン</option>
-                <option value="6">クーラーボックス</option>
-                <option value="7">焚き火</option>
-                <option value="8">その他</option>
-            </select>
-            <select name="category_second" class="select select_child">
-                <option hidden value="99">カテゴリー2を指定</option>
-                <option value="0">テント・タープ</option>
-                <option value="1">チェア・テーブル</option>
-                <option value="2">セット用品</option>
-                <option value="3">調理用品</option>
-                <option value="4">寝袋・マット</option>
-                <option value="5">ランタン</option>
-                <option value="6">クーラーボックス</option>
-                <option value="7">焚き火</option>
-                <option value="8">その他</option>
-            </select>
-            <select name="category_third" class="select select_child">
-                <option hidden value="99">カテゴリー3を指定</option>
-                <option value="0">テント・タープ</option>
-                <option value="1">チェア・テーブル</option>
-                <option value="2">セット用品</option>
-                <option value="3">調理用品</option>
-                <option value="4">寝袋・マット</option>
-                <option value="5">ランタン</option>
-                <option value="6">クーラーボックス</option>
-                <option value="7">焚き火</option>
-                <option value="8">その他</option>
-            </select>
-        </div>
-        <button type="submit" class="btn main-btn sort-btn">検索</button>
-    </form>
-    <form role="form" action="/onsale/freewords" method="post">
-        <div class="form-group">
-            <input type="text" name="freewords" placeholder="商品名を入力">
-            <button type="submit" class="btn main-btn sort-btn">検索</button>
-        </div>
-    </form>
+<h1>商品一覧</h1>
 </br>
-    <div class="images-wrapper">
-        {{range .Items}}
-        <div class="img">
-            <a href="/onsale/{{.ID}}">
-                <img src="{{.PhotoURL}}" alt="{{.Title}}" id="items_images" class="items_images">
-            </a>
-            <table class="table table-striped table-bordered" style="width: 250px">
-                    <tr>
-                        <td nowrap>タイトル</td>
-                        <td nowrap>{{.Title}}</td>
-                    </tr>
-                    <tr>
-                        <td nowrap>値段</td>
-                        <td nowrap>
-                            <div name="created">{{.Price}}</div>
-                        </td>
-                    </tr>
-            </table>
-        </div>
-        {{end}}
+<form role="form" action="/onsale/freewords" method="post">
+    <div class="form-group">
+        <input type="text" name="freewords" placeholder="商品名を入力">
+        <button type="submit" class="btn main-btn main-btn">検索</button>
+        </br>
+        <p>価格を指定</p>
+        <input type="number" min="0" max="100000000" step="10" name="price_min" placeholder="最低価格を入力" value=0 />
+        <p class="inline">〜</p>
+        <input type="number" min="10" max="100000000" step="10" name="price_max" placeholder="最大価格を入力" value=100000000 />
+        <p class="inline">円</p>
     </div>
+    <div class="select select_child">
+        <select name="category_first" class="select_child">
+            <option hidden value="99">カテゴリー1を指定</option>
+            <option value="0">テント・タープ</option>
+            <option value="1">チェア・テーブル</option>
+            <option value="2">セット用品</option>
+            <option value="3">調理用品</option>
+            <option value="4">寝袋・マット</option>
+            <option value="5">ランタン</option>
+            <option value="6">クーラーボックス</option>
+            <option value="7">焚き火</option>
+            <option value="8">その他</option>
+        </select>
+        <select name="category_second" class="select_child">
+            <option hidden value="99">カテゴリー2を指定</option>
+            <option value="0">テント・タープ</option>
+            <option value="1">チェア・テーブル</option>
+            <option value="2">セット用品</option>
+            <option value="3">調理用品</option>
+            <option value="4">寝袋・マット</option>
+            <option value="5">ランタン</option>
+            <option value="6">クーラーボックス</option>
+            <option value="7">焚き火</option>
+            <option value="8">その他</option>
+        </select>
+        <select name="category_third" class="select_child">
+            <option hidden value="99">カテゴリー3を指定</option>
+            <option value="0">テント・タープ</option>
+            <option value="1">チェア・テーブル</option>
+            <option value="2">セット用品</option>
+            <option value="3">調理用品</option>
+            <option value="4">寝袋・マット</option>
+            <option value="5">ランタン</option>
+            <option value="6">クーラーボックス</option>
+            <option value="7">焚き火</option>
+            <option value="8">その他</option>
+        </select>
+    </div>
+</form>
+</br>
+<form role="form" action="/onsale/sort" method="post" class="clear">
+    <div class="select select_child">
+        <select name="sort" required>
+            <option hidden>並び替え条件を指定</option>
+            <option value="price_high">価格が高い順</option>
+            <option value="price_low">価格が安い順</option>
+            <option value="createdat_asc">出品日が新しい順</option>
+            <option value="createdat_desc">出品日が古い順</option>
+        </select>
+    </div>
+    <button type="submit" class="btn main-btn sort-btn">検索</button>
+</form>
+<div class="images-wrapper">
+    {{range .Items}}
+    <div class="img">
+        <a href="/onsale/{{.ID}}">
+            <img src="{{.PhotoURL}}" alt="{{.Title}}" id="items_images" class="items_images">
+        </a>
+        <table class="table table-striped table-bordered" style="width: 250px">
+            <tr>
+                <td nowrap>タイトル</td>
+                <td nowrap>{{.Title}}</td>
+            </tr>
+            <tr>
+                <td nowrap>値段</td>
+                <td nowrap>
+                    <div name="created">{{.Price}}</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    {{end}}
+</div>
+</br>
 {{end}}

@@ -5,6 +5,8 @@
 .env.test.local
 .env.production.local
 
-.webapp.sql
-.webname.log
-.jquery_3.60.min.js
+/app/views/js/jquery_3.60.min.js
+/app/views/templates/item_new.html
+/app/views/templates/item_edit.html
+webapp.sql
+webname.log

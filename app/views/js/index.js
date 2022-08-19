@@ -10,18 +10,18 @@ document.addEventListener('DOMContentLoaded', function() {
       dates[i].innerText = subDates
     }
     
-    
-    document.getElementsByClassName("confirmDelete").addEventListener('click', function() {
-      const result = confirm('削除しますか');
-      if(result){
-        alert('削除しました');
-
-      }else{
-        alert('削除をとりやめました');
-      }
-    })
   })
-    
+
+ function confirmDelete(){ 
+    const result = confirm('削除しますか');
+
+    if (result){
+      alert('削除しました');
+    } else{
+      alert('削除をとりやめました');
+    }
+  }
+
   //var fileReader = new FileReader();
 
   /*var items_images = document.getElementsByClassName("items_images");
