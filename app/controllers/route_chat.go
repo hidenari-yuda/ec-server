@@ -6,6 +6,7 @@ import (
 	"strconv"
 
 	"github.com/hidenari-yuda/ec-server/app/models"
+	"github.com/hidenari-yuda/ec-server/app/sendgrid"
 )
 
 //チャットのグループの処理
@@ -54,6 +55,36 @@ func chatGroupSave(w http.ResponseWriter, r *http.Request) {
 		if err := user.CreateChatGroup(chat_member, chat_name); err != nil {
 			log.Println(err)
 		}
+		http.Redirect(w, r, "/group", 302)
+	}
+}
+
+func chatGroupSaveByPurchase(w http.ResponseWriter, r *http.Request) {
+	sess, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/login", 302)
+	} else {
+		user, err := sess.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		r.ParseForm()
+		chat_member, chat_name := r.PostFormValue("seller_id"), r.PostFormValue("title")
+		if err := user.CreateChatGroup(chat_member, chat_name); err != nil {
+			log.Println(err)
+		}
+
+		sellerID := r.PostFormValue("seller_id")
+		sellerIDInt, _ := strconv.Atoi(sellerID)
+
+		seller, _ := models.GetUser(sellerIDInt)
+
+		email, name := seller.Email, seller.Name
+
+		subject := "出品中の" + r.PostFormValue("title") + "が購入されました"
+		contents := "出品中の" + r.PostFormValue("title") + "が購入されました。" + "\n" + "購入者「" + user.Name + "」からのメッセージをご確認の上、商品を発送してください。"
+		sendgrid.SendMail(subject, contents, email, name)
+
 		http.Redirect(w, r, "/group", 302)
 	}
 }

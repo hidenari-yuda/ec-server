@@ -1,9 +1,6 @@
 # misc
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env
 
 /app/views/js/jquery_3.60.min.js
 /app/views/templates/item_new.html

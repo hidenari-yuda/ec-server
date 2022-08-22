@@ -98,7 +98,13 @@ func (cg *ChatGroup) DeleteChatGroup() error {
 	cmd := `delete from chatgroups where id =?`
 
 	_, err = Db.Exec(cmd, cg.ID)
+	if err != nil {
+		log.Fatalln(err)
+	}
 
+	cmdC := `delete from chats where group_id =?`
+
+	_, err = Db.Exec(cmdC, cg.ID)
 	if err != nil {
 		log.Fatalln(err)
 	}

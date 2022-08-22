@@ -180,6 +180,13 @@ func (u *User) DeleteUser() (err error) {
 		log.Fatalln(err)
 	}
 
+	cmdI := `delete from items where user_id =?`
+
+	_, err = Db.Exec(cmdI, u.ID)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
 	return err
 }
 

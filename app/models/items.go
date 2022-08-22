@@ -618,35 +618,6 @@ func (u *User) GetOnsaleByFreeWords(freewords string, category_first string, cat
 	return items, err
 }
 
-func GetItemsByFavorites(id int) (items []Item, err error) {
-	cmd := `SELECT id, user_id, created_at, photo_url, title, price FROM items
-	WHERE id in (SELECT item_id FROM items WHERE id =?)`
-	rows, err := Db.Query(cmd, id)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	for rows.Next() {
-		var item Item
-		err = rows.Scan(
-			&item.ID,
-			&item.UserID,
-			&item.CreatedAt,
-			&item.PhotoURL,
-			&item.Title,
-			&item.Price,
-		)
-
-		if err != nil {
-			log.Fatalln(err)
-		}
-		items = append(items, item)
-	}
-	rows.Close()
-
-	return items, err
-}
-
 func (i *Item) UpdateItem() error {
 	cmd := `update items set photo_url = ?, title = ?, content = ?, category_first= ? ,category_second = ?, category_third = ?, price = ? WHERE id = ?`
 

@@ -60,7 +60,7 @@ func StartMainServer() error {
 	http.HandleFunc("/chat/save", chatSave)
 	http.HandleFunc("/chat/delete/", parseURLChatCRUD(chatDelete))
 	http.HandleFunc("/group", chatGroup)
-	http.HandleFunc("/group/save", chatGroupSave)
+	http.HandleFunc("/group/save", chatGroupSaveByPurchase)
 	http.HandleFunc("/group/delete/", parseURLChatGroup(chatGroupDelete))
 	http.HandleFunc("/onsale", onsale)
 	http.HandleFunc("/onsale/", parseURLOnsale(onsaleSelect))
